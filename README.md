@@ -30,7 +30,7 @@
 <!--画像②-->
 
 ## 設計書
-![献立シェアアプリ](https://user-images.githubusercontent.com/85116099/177072341-e9724d77-8c7a-4ceb-836d-fd6236f36b28.jpg)
+![献立シェアアプリ drawio](https://user-images.githubusercontent.com/85116099/177114247-3dc7c7c3-0a69-4528-947e-ed2dd60176b0.png)
 
 
 ## 開発環境
