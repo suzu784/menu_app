@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   }
 
   namespace :admin do
-     root 'orders#index'
+     root 'posts#index'
      resources :customers, only: [:index, :edit, :update, :show]
      resources :posts, only: [:index, :show, :destroy]
      get 'confirm', to: 'posts#confirm'
