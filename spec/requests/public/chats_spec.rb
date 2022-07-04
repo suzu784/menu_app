@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe "Public::Messages", type: :request do
+RSpec.describe "Public::Chats", type: :request do
   describe "GET /show" do
     it "returns http success" do
-      get "/public/messages/show"
+      get "/public/chats/show"
       expect(response).to have_http_status(:success)
     end
   end
