@@ -30,6 +30,7 @@
 <!--画像②-->
 
 ## 設計書
+![献立シェアアプリ](https://user-images.githubusercontent.com/85116099/177072341-e9724d77-8c7a-4ceb-836d-fd6236f36b28.jpg)
 
 
 ## 開発環境
