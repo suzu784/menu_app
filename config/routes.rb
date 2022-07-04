@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  customer側ルーティング
+  # customer側ルーティング
   devise_for :customers,skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
@@ -13,7 +13,7 @@ Rails.application.routes.draw do
        resource :favorites, only: [:create, :destroy]
        resources :post_comments, only: [:create, :destroy]
      end
-    resources :customers, only: [:show, :edit, :update] do
+    resources :customers, only: [:index, :show, :edit, :update] do
       resource :relationships, only: [:create, :destroy]
         get :followings, to: 'customers#followings', as: 'followings'
         get :followers, to: 'customers#followers', as: 'followers'
@@ -22,7 +22,7 @@ Rails.application.routes.draw do
      resources :recipes, only: [:index, :show, :edit, :update]
    end
 
-  admin側ルーティング
+  # admin側ルーティング
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
   }
