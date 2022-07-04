@@ -7,4 +7,13 @@ class Public::CustomersController < ApplicationController
 
   def edit
   end
+  
+  def favorites
+  end
+  
+  def followings
+  end
+  
+  def followers
+  end
 end
