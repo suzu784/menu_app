@@ -1,1 +1,35 @@
-<h1>投稿</h1>
+<div class="text-center">
+  <h1>投稿</h1>
+    <hr>
+      <%= form_with model: @post, remote: true do |f| %>
+        <h4>画像</h4>
+          <%= f.file_field :post_image, accept: 'image/*' %>
+        <h4>日付</h4>
+          <%= f.datetime_field :created_at %>
+        <h4>料理名</h4>
+        　<p><%= f.text_field :cook_name %></p>
+        <h4>登録済み料理</h4>
+          <%= f.select :cook_name, options_from_collection_for_select(Post.all, :id, :cook_name) %>
+        <h4>難易度</h4>
+          <div id="star">
+            <%= f.hidden_field :star %>
+          </div>
+            <script>
+              $(document).on('turbolinks:load', function() {
+                $('#star').empty();
+                $('#star').raty({
+                  size : 36,
+                  starOff: '<%= asset_path('star-off.png') %>',
+                  starOn : '<%= asset_path('star-on.png') %>',
+                  starHalf: '<%= asset_path('star-half.png') %>',
+                  scoreName: 'item_comment[star]',
+                  half: true,
+                });
+              })
+            </script>
+        <h4>感想</h4>
+          <%= f.text_field :opinion %>
+        <h4>動画URL</h4>
+          <%= f.submit "送信", class: 'btn btn-primary' %>
+      <% end %>
+    </div>

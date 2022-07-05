@@ -1,65 +1,37 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-info">
+<nav class="border border-dark navbar navbar-expand-lg", style="background:rgba(255,255,255,1);">
   <div class="container-fluid">
     <div class="navbar-brand" style="padding-bottom: 15px;">
-      <%#= link_to root_path do %>
-        <%#= image_tag ('/assets/logo.png'), width:"230px", height:"60px" %>
-      <%# end %>
+      <%= link_to root_path do %>
+        <%= image_tag ('/assets/logo.png'), width:"100px", height:"50px" %>
+      <% end %>
     </div>
     <div>
-      <ul class="navbar-nav ml-auto", style="font-family: Hannotate SC;">
+      <ul class="navbar-nav ml-auto">
         <% if customer_signed_in? %>
 
           <!--会員ログイン時-->
-          <li><%= link_to "マイページ", root_path, class: 'btn btn-outline-light' %></li>
-          <li><%= link_to "アプリについて", about_path, class: 'btn btn-outline-light ml-3' %></li>
-          <li><%= link_to "投稿一覧", posts_path, class: 'btn btn-outline-light ml-3' %></li>
-          <li><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'btn btn-outline-light ml-3' %></li>
+          <li><%= link_to "マイページ", root_path, class: 'btn btn-white' %></li>
+          <li><%= link_to "アプリについて", about_path, class: 'btn btn-white ml-3' %></li>
+          <li><%= link_to "投稿一覧", posts_path, class: 'btn btn-white ml-3' %></li>
+          <li><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'btn btn-white ml-3' %></li>
 
         <% elsif admin_signed_in? %>
 
           <!--管理者ログイン時-->
-          <li><%= link_to "商品一覧", admin_items_path, class: 'btn btn-outline-light' %></li>
-          <li><%= link_to "会員一覧", admin_customers_path, class: 'btn btn-outline-light ml-3' %></li>
-          <li><%= link_to "注文履歴一覧", admin_orders_path, class: 'btn btn-outline-light ml-3' %></li>
-          <li><%= link_to "ジャンル一覧", admin_genres_path, class: 'btn btn-outline-light ml-3' %></li>
-          <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'btn btn-outline-light ml-3' %></li>
+          <li><%= link_to "会員一覧", admin_customers_path, class: 'btn btn-white ml-3' %></li>
+          <li><%= link_to "投稿一覧", admin_posts_path, class: 'btn btn-white ml-3' %></li>
+          <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'btn btn-white ml-3' %></li>
 
 
         <% else %>
 
           <!--非ログイン時-->
-          <li><%#= link_to "About", about_path, class: 'btn btn-outline-light' %></li>
-          <li><%#= link_to "商品一覧", items_path,class: 'btn btn-outline-light ml-3' %></li>
-          <li><%#= link_to "新規登録", new_customer_registration_path, class: 'btn btn-outline-light ml-3' %></li>
-          <li><%#= link_to "ログイン", new_customer_session_path, class: 'btn btn-outline-light ml-3' %></li>
+          <li><%= link_to "トップメニュー", root_path %></li>
+          <li><%= link_to "アプリについて", about_path,class: 'btn btn-white ml-3' %></li>
+          <li><%= link_to "新規登録", new_customer_registration_path, class: 'btn btn-white ml-3' %></li>
+          <li><%= link_to "ログイン", new_customer_session_path, class: 'btn btn-white ml-3' %></li>
 
         <% end %>
-      </ul>
-      <ul class="navbar-nav ml-auto form-inline", style="text-align: right; font-family: Hannotate SC;">
-        <li class="form-group ml-auto mt-3 mb-1">
-          <%# if customer_signed_in? %>
-
-          <!--会員ログイン時-->
-            <%#= search_form_for(@search, url:items_path) do |f| %>
-          		<%#= f.search_field :name_cont,class:'form-control', placeholder:"商品キーワード" %>
-          		<%#= f.submit "検索", class: 'btn btn-warning' %>
-          	<%# end %>
-          <%# elsif admin_signed_in? %>
-
-          <!--管理者ログイン時-->
-            <%#= search_form_for(@search, url:admin_items_path) do |f| %>
-              <%#= f.search_field :name_cont,class:'form-control', placeholder:"商品キーワード" %>
-              <%#= f.submit "検索", class: 'btn btn-warning' %>
-            <%# end %>
-          <%# else %>
-
-          <!--非ログイン時-->
-            <%#= search_form_for(@search, url:items_path) do |f| %>
-          		<%#= f.search_field :name_cont,class:'form-control', placeholder:"商品キーワード" %>
-          		<%#= f.submit "検索", class: 'btn btn-warning' %>
-          	<%# end %>
-          <%# end %>
-        </li>
       </ul>
     </div>
   </div>

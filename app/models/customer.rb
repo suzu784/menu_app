@@ -14,4 +14,14 @@ class Customer < ApplicationRecord
   has_many :followers, through: :reverse_of_relationships, source: :followed
   
   has_many :favorites, dependent: :destroy
+  
+  has_one_attached :customer_image
+  
+  def get_customer_image(width, height)
+    unless customer_image.attached?
+      file_path = Rails.root.join('app/assets/images/no-image.jpeg')
+      customer_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
+    end
+    customer_image.variant(resize_to_limit:[width, height]).processed
+  end
 end

@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   scope module: :public do
      root 'homes#top'
      get 'about' => 'homes#about'
-     resources :posts, only: [:index, :show, :edit, :update, :destroy] do
+     resources :posts, only: [:new, :index, :show, :edit, :update, :destroy] do
        resource :favorites, only: [:create, :destroy]
        resources :post_comments, only: [:create, :destroy]
      end
@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   }
 
   namespace :admin do
-     root 'posts#index'
+     root 'customers#index'
      resources :customers, only: [:index, :edit, :update, :show]
      resources :posts, only: [:index, :show, :destroy]
      get 'confirm', to: 'posts#confirm'

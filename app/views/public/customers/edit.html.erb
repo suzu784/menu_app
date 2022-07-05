@@ -1,1 +1,29 @@
-<h1>会員</h1>
+<div class="text-center">
+  <h1>会員情報編集ページ</h1>
+    <%= form_with model: @customer, remote: true do |f| %>
+      <div class="field">
+        <%= f.label :画像 %><br />
+        <%= f.file_field :customer_image, autofocus: true %>
+      <div class="field">
+        <%= f.label :苗字 %><br />
+        <%= f.text_field :first_name, autofocus: true %>
+      </div>
+      <div class="field">
+        <%= f.label :名前 %><br />
+        <%= f.text_field :last_name, autofocus: true %>
+      </div>
+      <div class="field">
+        <%= f.label :苗字（カナ） %><br />
+        <%= f.text_field :first_name_kana, autofocus: true %>
+      </div>
+      <div class="field">
+        <%= f.label :名前（カナ） %><br />
+        <%= f.text_field :last_name_kana, autofocus: true %>
+      </div>
+      <div class="field">
+        <%= f.label :得意料理 %><br />
+        <%= f.text_field :special_dish, autofocus: true %>
+      </div>
+        <%= f.submit "変更", class: 'btn btn-success' %>
+      <% end %>
+</div>

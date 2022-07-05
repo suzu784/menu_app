@@ -1,1 +1,17 @@
-<h1>会員詳細ページ</h1>
+<div class="text-center">
+  <h1>会員詳細ページ</h1>
+    <%= image_tag @customer.get_customer_image(400, 300) %>
+    
+    <div class="mb-5">
+        名前：<%= @customer.first_name + @customer.last_name %>
+    </div>
+    <div class="mb-5">
+        得意料理:<%= @customer.special_dish %>
+    </div>
+    <div class="mb-5">
+        フォロー数
+    </div>
+    <div class="mb-5">
+        フォロワー数
+    </div>
+</div>
