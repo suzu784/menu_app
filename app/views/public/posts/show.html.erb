@@ -21,4 +21,5 @@
           </script>
       <h5>感想</h5>
         <%= @post.opinion %></p>
+        <%= link_to "削除", post_path(@post), method: :delete %>
 </div>
