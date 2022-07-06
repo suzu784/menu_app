@@ -1,4 +1,6 @@
 class Public::CustomersController < ApplicationController
+  before_action :authenticate_customer!
+  
   def index
     @customers = Customer.all
   end
@@ -21,9 +23,11 @@ class Public::CustomersController < ApplicationController
   end
   
   def followings
+    
   end
   
   def followers
+    
   end
   
   private

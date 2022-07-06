@@ -12,6 +12,7 @@ Rails.application.routes.draw do
      resources :posts, only: [:new, :index, :show, :edit, :update, :destroy] do
        resource :favorites, only: [:create, :destroy]
        resources :post_comments, only: [:create, :destroy]
+       resources :recipes, except: [:destroy]
      end
     resources :customers, only: [:index, :show, :edit, :update] do
       resource :relationships, only: [:create, :destroy]
@@ -19,7 +20,6 @@ Rails.application.routes.draw do
         get :followers, to: 'customers#followers', as: 'followers'
       end
      resources :categories, only: [:index]
-     resources :recipes, only: [:index, :show, :edit, :update]
    end
 
   # admin側ルーティング

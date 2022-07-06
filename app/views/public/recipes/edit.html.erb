@@ -1,1 +1,11 @@
-<h1>レシピ編集</h1>
+<div class="text-center">
+  <h1>レシピ編集</h1>
+    <%= form_with model: @recipe, url: post_recipe_path(@recipe), remote: true do |f| %>
+      <div class="form-group mt-5 mb-4">
+        <p>材料<br><%= f.text_area :material %></p>
+        <p>作り方<br><%= f.text_area :how_to_make %></p>
+        <p>カテゴリ<br><%= f.select :category, Recipe.categories.keys.map {|k| [I18n.t("enums.recipe.category.#{k}"), k]} %></p>
+        <%= f.submit "変更", class: 'btn btn-success' %>
+      </div>
+    <% end %>
+</div>

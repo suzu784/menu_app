@@ -1,1 +1,16 @@
-<h1>会員一覧</h1>
+<div class="text-center">
+  <h1>会員一覧ページ</h1>
+  <table class="table">
+    <% @customers.each do |customer| %>
+    <tbody>
+      <tr>
+        <th>名前</th>
+        <td><%= customer.first_name + customer.last_name %></td>
+        <th>得意料理</th>
+        <td><%= customer.special_dish %></td>
+        <td><%= image_tag customer.get_customer_image(100, 100) %></td>
+      </tr>
+    </tbody>
+    <% end %>
+  </table>
+</div>
