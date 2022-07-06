@@ -1,38 +1,50 @@
-<div class="text-center">
-  <h1>投稿</h1>
-    <hr>
-      <table>
-        <thead>
-          <tr>
-            <th>料理名</th>
-            <th>難易度</th>
-            <th>感想</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @posts.each do |post| %>
-            <tr>
-              <td><%= post.cook_name %></td>
-              <td>
-              <div id="star">
-                  </div>
-                  <script>
-                    $(document).on('turbolinks:load', function() {
-                      $('#star').empty();
-                      $('#star').raty({
-                        size : 36,
-                        starOff: '<%= asset_path('star-off.png') %>',
-                        starOn : '<%= asset_path('star-on.png') %>',
-                        starHalf: '<%= asset_path('star-half.png') %>',
-                        scoreName: 'item_comment[star]',
-                        half: true,
-                      });
-                    })
-                  </script>
-              </td>
-              <td><%= post.opinion %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+<div class="container">
+  <div class="row">
+    <div class="text-center">
+      <h1>投稿</h1>
+        <hr>
+          <table>
+            <div class="col-md-3">
+                <thead>
+                  <tr>
+                    <th>料理名</th>
+                    <th>難易度</th>
+                    <th>感想</th>
+                  </tr>
+                </thead>
+            </div>
+            <div class="col-md-8">
+              <tbody>
+                <% @posts.each do |post| %>
+                  <tr>
+                    <td><%= post.cook_name %></td>
+                    <td>
+                    <div id="star">
+                        </div>
+                        <script>
+                          $(document).on('turbolinks:load', function() {
+                            $('#star').empty();
+                            $('#star').raty({
+                              size : 36,
+                              starOff: '<%= asset_path('star-off.png') %>',
+                              starOn : '<%= asset_path('star-on.png') %>',
+                              starHalf: '<%= asset_path('star-half.png') %>',
+                              scoreName: 'item_comment[star]',
+                              half: true,
+                            });
+                          })
+                        </script>
+                    </td>
+                    <td>
+                      <%= post.opinion %>
+                      <%= link_to "編集する", edit_post_path(post) %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </div>
+          </table>
+      </div>
+    </div>
+  </div>
 </div>

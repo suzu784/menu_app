@@ -1,7 +1,7 @@
 <div class="text-center">
   <h1>投稿</h1>
     <hr>
-      <%= form_with model: @post, remote: true do |f| %>
+      <%= form_with model: @post, url: post_path(@post), remote: true do |f| %>
         <h4>画像</h4>
           <%= f.file_field :post_image, accept: 'image/*' %>
         <h4>日付</h4>
