@@ -141,6 +141,7 @@ ActiveRecord::Schema.define(version: 2022_07_04_140446) do
     t.string "recipe_title"
     t.integer "category", default: 0, null: false
     t.string "material"
+    t.text "how_to_make"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

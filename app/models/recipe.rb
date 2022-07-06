@@ -1,6 +1,6 @@
 class Recipe < ApplicationRecord
+  belongs_to :customer
   belongs_to :post
-  has_many :how_to_makes, dependent: :destroy
   
   has_one_attached :recipe_image
 
