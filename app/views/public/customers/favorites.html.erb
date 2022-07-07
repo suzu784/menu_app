@@ -1,1 +1,6 @@
-<h1>いいね</h1>
+<div class="text-center">
+  <h1>いいね一覧</h1>
+    <% @favorite_posts.each do |post|%>
+      <%=post.cook_name %>
+    <% end %>
+</div>
