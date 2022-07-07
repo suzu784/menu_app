@@ -1,1 +1,8 @@
-<h1>フォローされている人</h1>
+<h2>フォローされている人</h2>
+<% if @customers.exists? %>
+  <% @customers.each do |customer| %>
+    <p><%= customer.last_name %></p>
+  <% end %>
+<% else %>
+  <p>ユーザーはいません</p>
+<% end %>
