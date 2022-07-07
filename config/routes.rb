@@ -15,6 +15,9 @@ Rails.application.routes.draw do
        resources :recipes, except: [:destroy]
      end
     resources :customers, only: [:index, :show, :edit, :update] do
+      member do
+        get :favorites, to: 'customers#favorites'
+      end
       resource :relationships, only: [:create, :destroy]
         get :followings, to: 'customers#followings', as: 'followings'
         get :followers, to: 'customers#followers', as: 'followers'

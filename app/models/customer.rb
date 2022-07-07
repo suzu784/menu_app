@@ -27,6 +27,7 @@ class Customer < ApplicationRecord
     customer_image.variant(resize_to_limit:[width, height]).processed
   end
   
+  
   def follow(customer)
     relationships.create(followed_id: customer.id)
   end
