@@ -21,8 +21,23 @@
           </script>
       <h5>感想</h5>
         <%= @post.opinion %></p>
-        <%= link_to "削除", post_path(@post), method: :delete %><br>
+        <%= link_to "削除", post_path(@post), method: :delete, class: 'btn btn-danger' %><br>
         <%= link_to "レシピを載せますか?", new_post_recipe_path(@post) %>
       <h5>いいね</h5>
         <%= render 'public/favorites/btn', post: @post %>
+      <div>
+         <p>コメント件数：<%= @post.post_comments.count %></p>
+          <% @post.post_comments.each do |post_comment| %>
+            <%= image_tag post_comment.customer.get_customer_image(50,50) %>
+            <%= post_comment.customer.last_name %>
+              <%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %>
+            <% if post_comment.customer == current_customer %>
+              <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete, class: 'btn btn-danger' %>
+            <% end %>
+          <% end %>
+          <%= form_with model: [@post, @post_comment] do |f| %>
+            <%= f.text_area :comment, rows: '1', placeholder: "コメントをここに" %>
+            <%= f.submit "送信する" %>
+          <% end %>
+      </div>
 </div>
