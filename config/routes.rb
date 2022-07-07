@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   scope module: :public do
      root 'homes#top'
      get 'about' => 'homes#about'
+     get 'events' => 'events#index'
      resources :posts, only: [:new, :index, :show, :edit, :update, :destroy] do
        resource :favorites, only: [:create, :destroy]
        resources :post_comments, only: [:create, :destroy]
