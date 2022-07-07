@@ -1,7 +1,6 @@
-<div class="container">
-  <div class="row">
-    <div class="text-center">
-      <h1>投稿</h1>
+<h1 class="text-center">投稿</h1>
+  <div class="container">
+    <div class="row">
         <hr>
           <table>
             <div class="col-md-3">
@@ -20,24 +19,26 @@
                     <td><%= post.cook_name %></td>
                     <td>
                     <div id="star">
-                        </div>
-                        <script>
-                          $(document).on('turbolinks:load', function() {
-                            $('#star').empty();
-                            $('#star').raty({
-                              size : 36,
-                              starOff: '<%= asset_path('star-off.png') %>',
-                              starOn : '<%= asset_path('star-on.png') %>',
-                              starHalf: '<%= asset_path('star-half.png') %>',
-                              scoreName: 'item_comment[star]',
-                              half: true,
-                            });
-                          })
-                        </script>
+                    </div>
+                      <script>
+                        $(document).on('turbolinks:load', function() {
+                          $('#star').empty();
+                          $('#star').raty({
+                            size : 36,
+                            starOff: '<%= asset_path('star-off.png') %>',
+                            starOn : '<%= asset_path('star-on.png') %>',
+                            starHalf: '<%= asset_path('star-half.png') %>',
+                            scoreName: 'item_comment[star]',
+                            half: true,
+                          });
+                        })
+                      </script>
                     </td>
                     <td>
                       <%= post.opinion %>
-                      <%= link_to "編集する", edit_post_path(post) %>
+                      <% if post.customer == current_customer %>
+                        <%= link_to "編集する", edit_post_path(post) %>
+                      <% end %>
                     </td>
                   </tr>
                 <% end %>
@@ -47,4 +48,3 @@
       </div>
     </div>
   </div>
-</div>
