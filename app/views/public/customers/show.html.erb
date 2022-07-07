@@ -1,6 +1,6 @@
 <div class="text-center">
   <h1>会員詳細ページ</h1>
-    <%= image_tag @customer.get_customer_image(400, 300) %>
+    <%= image_tag @customer.get_customer_image(200, 200) %>
     
     <div class="mb-5">
         名前：<%= @customer.first_name + @customer.last_name %>
@@ -9,9 +9,10 @@
         得意料理:<%= @customer.special_dish %>
     </div>
     <div class="mb-5">
-        フォロー数
-    </div>
+        <%= render "btn", customer: @customer %>
+
     <div class="mb-5">
-        フォロワー数
+        <p>フォロー数<%= link_to "フォロー一覧",  customer_followings_path(@customer) %></p>
+        <p>フォロワー数<%= link_to "フォロワー一覧",  customer_followers_path(@customer) %></p>
     </div>
 </div>
