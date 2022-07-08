@@ -1,8 +1,8 @@
-<nav class="border border-dark navbar navbar-expand-lg", style="background:rgba(255,255,255,1);">
+<nav class="border border-dark navbar navbar-expand-lg bg-transparent", style="background:rgba(255,255,255,1);">
   <div class="container-fluid">
     <div class="navbar-brand" style="padding-bottom: 15px;">
-      <%= link_to root_path do %>
-        <%= image_tag ('/assets/logo.png'), width:"20%", height:"20%" %>
+      <%= link_to "/" do %>
+        <h2 class="text text-dark", style="font-family: cursive;"><i class="fas fa-book-open"></i>Menu Share App</h2>
       <% end %>
     </div>
     <div>
@@ -26,8 +26,8 @@
         <% else %>
 
           <!--非ログイン時-->
-          <li><%= link_to "トップメニュー", root_path %></li>
-          <li><%= link_to "アプリについて", about_path,class: 'btn btn-white ml-3' %></li>
+          <li><%= link_to "トップメニュー", root_path, class: 'btn btn-white ml-3' %></li>
+          <li><%= link_to "アプリについて", about_path, class: 'btn btn-white ml-3' %></li>
           <li><%= link_to "新規登録", new_customer_registration_path, class: 'btn btn-white ml-3' %></li>
           <li><%= link_to "ログイン", new_customer_session_path, class: 'btn btn-white ml-3' %></li>
 
