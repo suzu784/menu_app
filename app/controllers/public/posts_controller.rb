@@ -6,7 +6,9 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
+    @search = Post.ransack(params[:q])
+    @posts = @search.result
+    @posts_all = Post.all
   end
 
   def create
