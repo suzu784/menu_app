@@ -33,32 +33,6 @@
 
         <% end %>
       </ul>
-      <ul class="navbar-nav ml-auto form-inline", style="text-align: right; font-family: Hannotate SC;">
-        <li class="form-group ml-auto mt-3 mb-1">
-          <% if customer_signed_in? %>
-
-          <!--会員ログイン時-->
-            <%= search_form_for(@search, url:posts_path) do |f| %>
-          		<%= f.search_field :cook_name_cont, class:'form-control', placeholder:"商品キーワード" %>
-          		<%= f.submit "検索", class: 'btn btn-warning' %>
-          	<% end %>
-          <% elsif admin_signed_in? %>
-
-          <!--管理者ログイン時-->
-            <%= search_form_for(@search, url:admin_posts_path) do |f| %>
-              <%= f.search_field :cook_name_cont, class:'form-control', placeholder:"商品キーワード" %>
-              <%= f.submit "検索", class: 'btn btn-warning' %>
-            <% end %>
-          <% else %>
-
-          <!--非ログイン時-->
-            <%= search_form_for(@search, url:posts_path) do |f| %>
-          		<%= f.search_field :cook_name_cont, class:'form-control', placeholder:"商品キーワード" %>
-          		<%= f.submit "検索", class: 'btn btn-warning' %>
-          	<% end %>
-          <% end %>
-        </li>
-      </ul>
     </div>
   </div>
 </nav>
