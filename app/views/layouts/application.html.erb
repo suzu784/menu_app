@@ -13,15 +13,10 @@
 
   <body>
     <header>
-      <% if customer_signed_in? %>
-        <%= render 'layouts/header' %>
-      <% elsif admin_signed_in? %>
-        <%= render 'layouts/header' %>
-      <% else %>
-        <%= render 'layouts/header' %>
-      <% end %>
-    </header>
-    <p id="notice"><%= notice %></p>
+      <%= render 'layouts/header' %>
+    <main>
+     <div id="flash-message"><%= render 'layouts/flash' %></div>
+    </main>
     <%= yield %>
     <footer>
       <%= render 'layouts/footer' %>
