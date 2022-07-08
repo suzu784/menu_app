@@ -1,0 +1,27 @@
+<div class="text-center">
+ <h1>投稿</h1>
+  <div class="row">
+    <% @posts.each do |post| %>
+    料理名<%= post.cook_name %>
+    <div id="star">
+    </div>
+   　 <script>
+   　 　難易度$(document).on('turbolinks:load', function() {
+    　　$('#star').empty();
+    　　$('#star').raty({
+    　　size : 36,
+   　　　starOff: '<%= asset_path('star-off.png') %>',
+   　　　starOn : '<%= asset_path('star-on.png') %>',
+　　　  starHalf: '<%= asset_path('star-half.png') %>',
+　   　 scoreName: 'item_comment[star]',
+    　　half: true,
+    　　　});
+    　　})
+    </script>
+    　感想<%= post.opinion %>
+ 　　   <% if post.customer == current_customer %>
+   　　　 <%= link_to "編集する", edit_post_path(post) %>
+    　<% end %>
+　　<% end %>
+　</div>
+</div>

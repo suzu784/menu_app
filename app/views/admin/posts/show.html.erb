@@ -1,0 +1,25 @@
+<div class="text-center">
+  <h1 class="mt-4 mb-4">料理名</h1>
+    <hr>
+      <h5>画像</h5>
+        <%= image_tag @post.get_post_image(500, 500) %>
+      <h5>難易度</h5>
+         <div id="star">
+          </div>
+          <script>
+            $(document).on('turbolinks:load', function() {
+              $('#star').empty();
+              $('#star').raty({
+                size : 36,
+                starOff: '<%= asset_path('star-off.png') %>',
+                starOn : '<%= asset_path('star-on.png') %>',
+                starHalf: '<%= asset_path('star-half.png') %>',
+                scoreName: 'item_comment[star]',
+                half: true,
+              });
+            })
+          </script>
+      <h5>感想</h5>
+        <%= @post.opinion %></p>
+        <%= link_to "削除", admin_post_path(@post), method: :delete, class: 'btn btn-danger' %><br>
+</div>

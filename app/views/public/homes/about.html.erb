@@ -1,10 +1,20 @@
-<div class="container">
-  <div class="row">
-    <div class="text-center col-md-8">
-      <h2>献立共有アプリについて</h2>
+<div class="row">
+  <div class="col p-0">
+    <div class="content">
+      <div class="text-center">
+        <h2 class="title">shunsuke</h2>
+        <p class="large">
+          こんにちは<br>
+          現在、プログラミングスクールにて学習しています
+        </p>
+        <%= link_to "詳細はこちら", class: "btn" %>
+      </div>
+
     </div>
-    <img class="rounded-circle">
-      <%= image_tag "suzu.png", width: 300, height: 200 %>
-    </img>
+  </div>
+  <div class="col p-0">
+    <div class="main-visual_image">
+      <%=image_tag "suzu.png", width:"40%", height:"80%" %>
+    </div>
   </div>
 </div>
