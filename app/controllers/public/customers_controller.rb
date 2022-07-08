@@ -2,7 +2,9 @@ class Public::CustomersController < ApplicationController
   before_action :authenticate_customer!
 
   def index
-    @customers = Customer.all
+    @search = Customer.ransack(params[:q])
+    @customers = @search.result
+    @customers_ = Customer.all
   end
 
   def show
