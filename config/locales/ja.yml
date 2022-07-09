@@ -5,3 +5,11 @@
           japanese_food: "和食"
           western_food: "洋食"
           chinese_food: "中華"
+          
+    views:
+      pagination:
+        first: '最初'
+        last: '最後'
+        previous: '前'
+        next: '次'
+        truncate: '...'

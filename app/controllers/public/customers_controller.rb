@@ -5,7 +5,7 @@ class Public::CustomersController < ApplicationController
   def index
     @search = Customer.ransack(params[:q])
     @customers = @search.result
-    @customers_all = Customer.all
+    @customers_all = Customer.page(params[:page])
   end
 
   def show
