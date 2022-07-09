@@ -17,11 +17,14 @@ class Public::SessionsController < Devise::SessionsController
   # def destroy
   #   super
   # end
+  def guest_sign_in
+    customer = Customer.guest
+    sign_in customer
+    redirect_to customers_path, notice: 'ゲストユーザーでログインしました'
+  end
 
   protected
-  
-  protected
-  
+
   def customer_state
     @customer = Customer.find_by(email: params[:customer][:email])
     return if !@customer
@@ -30,11 +33,11 @@ class Public::SessionsController < Devise::SessionsController
       redirect_to new_customer_registration_path
     end
   end
-  
+
   def after_sign_in_path_for(resource)
     root_path
   end
-  
+
   def after_sign_out_path_for(resource_or_scope)
     new_customer_session_path
   end

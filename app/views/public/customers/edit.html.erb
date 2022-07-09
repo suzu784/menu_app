@@ -24,6 +24,8 @@
         <%= f.label :得意料理 %><br />
         <%= f.text_field :special_dish, autofocus: true %>
       </div>
+      <% if @customer.last_name != "guestuser" %>
         <%= f.submit "変更", class: 'btn btn-success' %>
       <% end %>
+    <% end %>
 </div>

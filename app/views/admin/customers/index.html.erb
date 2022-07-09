@@ -5,7 +5,7 @@
     <tbody>
       <tr>
         <th>名前</th>
-        <td><%= customer.first_name + customer.last_name %></td>
+        <td><%= customer.full_name %></td>
         <th>得意料理</th>
         <td><%= customer.special_dish %></td>
         <td><%= image_tag customer.get_customer_image(100, 100) %></td>

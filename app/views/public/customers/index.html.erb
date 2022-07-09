@@ -2,16 +2,16 @@
   <h1>会員一覧ページ</h1>
      <p>
        <%= search_form_for(@search, url:customers_path) do |f| %>
-  		   <%= f.search_field :last_name_cont, class:'form-control', placeholder:"キーワードを入力してください" %>
+  		   <%= f.search_field :last_name_cont, placeholder:"キーワードを入力してください", size: "50" %>
   		   <%= f.submit "検索", class: 'btn btn-warning' %>
     	 <% end %>
      </p>
     <table class="table">
-      <% @customers.each do |customer| %>
+      <% @customers_all.each do |customer| %>
       <tbody>
         <tr>
           <th>名前</th>
-          <td><%= customer.first_name + customer.last_name %></td>
+          <td><%= customer.full_name %></td>
           <th>得意料理</th>
           <td><%= customer.special_dish %></td>
           <td><%= image_tag customer.get_customer_image(100, 100) %></td>
