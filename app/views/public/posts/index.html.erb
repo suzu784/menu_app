@@ -2,51 +2,47 @@
   <h1 class="text-center">投稿</h1>
      <p>
        <%= search_form_for(@search, url:posts_path) do |f| %>
-  		   <%= f.search_field :cook_name_cont, class:'form-control', placeholder:"キーワードを入力してください" %>
+  		   <%= f.search_field :cook_name_cont, placeholder:"キーワードを入力してください", size: "50" %>
   		   <%= f.submit "検索", class: 'btn btn-warning' %>
   	   <% end %>
      </p>
-    <table>
-      <div class="col-md">
-          <thead>
-            <tr>
-              <th>料理名</th>
-              <th>難易度</th>
-              <th>感想</th>
-            </tr>
-          </thead>
-      </div>
-      <div class="col-md">
-        <tbody>
-          <% @posts.each do |post| %>
-            <tr>
-              <td><%= post.cook_name %></td>
-              <td>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>料理名</th>
+          <th>難易度</th>
+          <th>感想</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @posts.each do |post| %>
+          <tr>
+            <td><%= post.cook_name %></td>
+            <td>
               <div id="star">
               </div>
-                <script>
-                  $(document).on('turbolinks:load', function() {
-                    $('#star').empty();
-                    $('#star').raty({
-                      size : 36,
-                      starOff: '<%= asset_path('star-off.png') %>',
-                      starOn : '<%= asset_path('star-on.png') %>',
-                      starHalf: '<%= asset_path('star-half.png') %>',
-                      scoreName: 'item_comment[star]',
-                      half: true,
-                    });
-                  })
-                </script>
-              </td>
-              <td>
-                <%= post.opinion %>
-                <% if post.customer == current_customer %>
-                  <%= link_to "編集する", edit_post_path(post) %>
-                <% end %>
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
-      </div>
+              <script>
+                $(document).on('turbolinks:load', function() {
+                  $('#star').empty();
+                  $('#star').raty({
+                    size : 36,
+                    starOff: '<%= asset_path('star-off.png') %>',
+                    starOn : '<%= asset_path('star-on.png') %>',
+                    starHalf: '<%= asset_path('star-half.png') %>',
+                    scoreName: 'item_comment[star]',
+                    half: true,
+                  });
+                })
+              </script>
+            </td>
+            <td><%= post.opinion %></td>
+            <td>
+              <% if post.customer == current_customer %>
+                <%= link_to "編集", edit_post_path(post), class: 'btn btn-success' %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
     </table>
 </div>

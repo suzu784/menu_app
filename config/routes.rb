@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  #ゲストログインルーティング
+  devise_scope :customer do
+    post 'guest_sign_in', to: 'public/sessions#guest_sign_in'
+  end
+
   # customer側ルーティング
   devise_for :customers,skip: [:passwords], controllers: {
   registrations: "public/registrations",

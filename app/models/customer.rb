@@ -16,7 +16,7 @@ class Customer < ApplicationRecord
   has_many :followers, through: :reverse_of_relationships, source: :follower
 
   has_many :favorites, dependent: :destroy
-  
+
   has_many :customer_rooms, dependent: :destroy
   has_many :chats, dependent: :destroy
   has_many :rooms, through: :customer_rooms, dependent: :destroy
@@ -45,5 +45,16 @@ class Customer < ApplicationRecord
 
   def following?(customer)
     followings.include?(customer)
+  end
+
+  def self.guest
+  find_or_create_by!(last_name: 'guestuser' ,email: 'guest@example.com') do |customer|
+    customer.password = SecureRandom.urlsafe_base64
+    customer.last_name = "guestuser"
+    end
+  end
+
+  def full_name
+    first_name.to_s + "" + last_name.to_s
   end
 end
