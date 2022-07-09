@@ -16,6 +16,10 @@ class Customer < ApplicationRecord
   has_many :followers, through: :reverse_of_relationships, source: :follower
 
   has_many :favorites, dependent: :destroy
+  
+  has_many :customer_rooms, dependent: :destroy
+  has_many :chats, dependent: :destroy
+  has_many :rooms, through: :customer_rooms, dependent: :destroy
 
   has_one_attached :customer_image
 
