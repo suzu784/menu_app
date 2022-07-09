@@ -24,6 +24,7 @@ Rails.application.routes.draw do
         get :followers, to: 'customers#followers', as: 'followers'
       end
      resources :categories, only: [:index]
+     resources :chats, only: [:show, :create]
    end
 
   # admin側ルーティング
