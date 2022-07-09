@@ -15,7 +15,7 @@ Rails.application.routes.draw do
      root 'homes#top'
      get :about, to: 'homes#about'
      get :events, to: 'events#index'
-     resources :posts, only: [:new, :index, :show, :edit, :update, :destroy] do
+     resources :posts do
        resource :favorites, only: [:create, :destroy]
        resources :post_comments, only: [:create, :destroy]
        resources :recipes, except: [:destroy]
@@ -30,6 +30,7 @@ Rails.application.routes.draw do
       end
      resources :categories, only: [:index]
      resources :chats, only: [:show, :create]
+     resources :youtube, only: [:show]
    end
 
   # admin側ルーティング
