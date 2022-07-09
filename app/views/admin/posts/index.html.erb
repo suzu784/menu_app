@@ -2,9 +2,9 @@
   <h1 class="text-center">投稿</h1>
      <p>
        <%= search_form_for(@search, url:posts_path) do |f| %>
-   		    <%= f.search_field :cook_name_cont, placeholder:"キーワードを入力してください", size: "50" %>
-   		    <%= f.submit "検索", class: 'btn btn-warning' %>
-  	    <% end %>
+ 		     <%= f.search_field :cook_name_cont, placeholder:"キーワードを入力してください", size: "50" %>
+ 		     <%= f.submit "検索", class: 'btn btn-warning' %>
+	     <% end %>
      </p>
     <table class="table">
       <thead>
@@ -15,7 +15,7 @@
         </tr>
       </thead>
       <tbody>
-        <% @posts.each do |post| %>
+        <% @posts_all.each do |post| %>
           <tr>
             <td><%= post.cook_name %></td>
             <td>
@@ -45,4 +45,7 @@
         <% end %>
       </tbody>
     </table>
+  <div class="mt-4 mb-4 justify-content-center d-flex">
+    <%= paginate @posts_all %>
+  
 </div>
