@@ -13,6 +13,7 @@ class Public::PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    @post.customer_id = current_customer.id
     @post.save
     redirect_to posts_path
   end
@@ -42,6 +43,6 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:cook_name, :opinion, :star, :status, :post_image)
+    params.require(:post).permit(:cook_name, :opinion, :star, :status, :post_image, :created_at)
   end
 end

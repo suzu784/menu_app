@@ -19,21 +19,7 @@
           <tr>
             <td><%= post.cook_name %></td>
             <td>
-              <div id="star">
-              </div>
-              <script>
-                $(document).on('turbolinks:load', function() {
-                  $('#star').empty();
-                  $('#star').raty({
-                    size : 36,
-                    starOff: '<%= asset_path('star-off.png') %>',
-                    starOn : '<%= asset_path('star-on.png') %>',
-                    starHalf: '<%= asset_path('star-half.png') %>',
-                    scoreName: 'item_comment[star]',
-                    half: true,
-                  });
-                })
-              </script>
+              <%= render 'static_star', post: post %>
             </td>
             <td><%= post.opinion %></td>
             <td>
