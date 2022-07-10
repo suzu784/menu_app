@@ -35,6 +35,11 @@ Rails.application.routes.draw do
      resources :categories, only: [:index]
      resources :chats, only: [:show, :create]
      resources :youtube, only: [:show]
+     resources :notifications, only: [:index] do
+       collection do
+        delete :destroy_all
+      end
+     end
    end
 
   # admin側ルーティング

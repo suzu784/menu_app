@@ -11,7 +11,9 @@
          <%= render 'static_star', post: @post %>
       <h5>感想</h5>
         <%= @post.opinion %></p>
-        <%= link_to "削除", post_path(@post), method: :delete, class: 'btn btn-danger' %><br>
+        <% if @post.customer == current_customer %>
+          <%= link_to "削除", post_path(@post), method: :delete, class: 'btn btn-danger' %><br>
+        <% end %>
       <p></p>
     </div>
     <div>

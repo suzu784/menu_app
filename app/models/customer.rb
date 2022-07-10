@@ -6,7 +6,6 @@ class Customer < ApplicationRecord
 
   has_many :posts, dependent: :destroy
   has_many :post_comments, dependent: :destroy
-
   has_many :recipes, dependent: :destroy
 
   has_many :relationships, class_name: "Relationship", foreign_key: :follower_id, dependent: :destroy
@@ -14,12 +13,14 @@ class Customer < ApplicationRecord
 
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: :followed_id, dependent: :destroy
   has_many :followers, through: :reverse_of_relationships, source: :follower
-
   has_many :favorites, dependent: :destroy
 
   has_many :customer_rooms, dependent: :destroy
   has_many :chats, dependent: :destroy
   has_many :rooms, through: :customer_rooms, dependent: :destroy
+  
+  has_many :active_notifications, class_name: "Notification", foreign_key: :visiter_id, dependent: :destroy
+  has_many :passive_notifications, class_name: "Notification", foreign_key: :visited_id, dependent: :destroy
 
   has_one_attached :customer_image
 
@@ -45,6 +46,17 @@ class Customer < ApplicationRecord
 
   def following?(customer)
     followings.include?(customer)
+  end
+  
+  def create_notification_follow!(current_customer)
+    temp = Notification.where(["visiter_id = ? and visited_id = ? and action = ?", current_customer.id, id, 'follow'])
+    if temp.blank?
+      notification = current_customer.active_notifications.new(
+        visited_id: id,
+        action: 'follow'
+      )
+      notification.save if notification.valid?
+    end
   end
 
   def self.guest
