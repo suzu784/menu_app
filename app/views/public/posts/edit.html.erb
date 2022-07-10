@@ -1,30 +1,35 @@
 <div class="text-center">
   <h1 class="mb-5">投稿編集画面</h1>
-  
+
     <%= form_with model: @post, remote: true do |f| %>
       <h5>画像</h5>
        <%= f.file_field :post_image %>
-       
+
       <h5>料理名</h5>
         <%= f.text_field :cook_name %>
-        
+
       <h5>難易度</h5>
-        <div id="star">
-          <%= f.hidden_field :star %>
-        </div>
-          <script>
-            $(document).on('turbolinks:load', function() {
-              $('#star').empty();
-              $('#star').raty({
-                size : 36,
-                starOff: '<%= asset_path('star-off.png') %>',
-                starOn : '<%= asset_path('star-on.png') %>',
-                starHalf: '<%= asset_path('star-half.png') %>',
-                scoreName: 'item_comment[star]',
-                half: true,
-              });
-            })
-          </script>
+        <% if @post.id = nil %>
+          <div class="form-group" id="star">
+              <%= f.label :star %>
+              <%= f.hidden_field :star, id: :review_star, class:'form-control' %>
+            </div>
+              <script>
+                $(document).on('turbolinks:load', function() {
+                  $('#star').empty();
+                  $('#star').raty({
+                    size : 36,
+                    starOff: '<%= asset_path('star-off.png') %>',
+                    starOn : '<%= asset_path('star-on.png') %>',
+                    starHalf: '<%= asset_path('star-half.png') %>',
+                    scoreName: 'post[star]',
+                    half: true,
+                  });
+                })
+              </script>
+        <% else %>
+          <%= render 'static_star', post: @post %>
+        <% end %>
       <h5>感想</h5>
         <%= f.text_field :opinion %>
       <h5>参考にした動画</h5>
