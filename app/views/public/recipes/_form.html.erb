@@ -1,0 +1,12 @@
+<%= form_with model: [post, recipe], remote: true do |f| %>
+  <h5>材料</h5>
+    <%= f.text_field :material %>
+  <h5>工程</h5>
+    <%= f.text_area :how_to_make %>
+  <h5>カテゴリ</h5>
+    <%= f.select :category, Recipe.categories.keys.map {|k| [I18n.t("enums.recipe.category.#{k}"), k]}, include_blank: '選択してください' %>
+  <h5>保存</h5>
+     <%= f.select :status, Recipe.statuses.keys.map {|k| [I18n.t("enums.recipe.status.#{k}"), k]}, include_blank: '選択してください' %>
+  <h5>投稿</h5>
+    <%= f.submit "新規作成", class: 'btn btn-primary' %>
+<% end %>

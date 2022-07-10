@@ -3,9 +3,11 @@ class Post < ApplicationRecord
   has_many :post_comments, dependent: :destroy
   has_many :recipes, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  
+
+  validates :star, presence: true
+
   has_one_attached :post_image
-  
+
   def get_post_image(width, height)
     unless post_image.attached?
       file_path = Rails.root.join('app/assets/images/no-image.jpeg')
@@ -13,7 +15,7 @@ class Post < ApplicationRecord
     end
     post_image.variant(resize_to_limit:[width, height]).processed
   end
-  
+
   def favorited_by?(customer)
     favorites.where(customer_id: customer.id).exists?
   end

@@ -6,6 +6,10 @@
           western_food: "洋食"
           chinese_food: "中華"
           
+        status:
+          published: "投稿"
+          draft: "下書き"
+          
     views:
       pagination:
         first: '最初'

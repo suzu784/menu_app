@@ -18,11 +18,15 @@ Rails.application.routes.draw do
      resources :posts do
        resource :favorites, only: [:create, :destroy]
        resources :post_comments, only: [:create, :destroy]
-       resources :recipes, except: [:destroy]
+       resources :recipes, except: [:destroy] do
+        collection do
+          get :confirm
+        end
+      end
      end
     resources :customers, only: [:index, :show, :edit, :update] do
       member do
-        get :favorites, to: 'customers#favorites'
+        get :favorites
       end
       resource :relationships, only: [:create, :destroy]
         get :followings, to: 'customers#followings', as: 'followings'
