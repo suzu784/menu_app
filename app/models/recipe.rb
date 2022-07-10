@@ -5,6 +5,7 @@ class Recipe < ApplicationRecord
   has_one_attached :recipe_image
 
   enum category: { japanese_food: 0, western_food: 1, chinese_food: 2 }
+  enum status: { published: 0, draft: 1 }
   
   def get_recipe_image(width, height)
     unless recipe_image.attached?

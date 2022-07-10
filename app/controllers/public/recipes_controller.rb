@@ -15,7 +15,11 @@ class Public::RecipesController < ApplicationController
     @recipe = current_customer.recipes.new(recipe_params)
     @recipe.post_id = @post.id
     @recipe.save
-    redirect_to post_recipe_path(@post, @recipe)
+    if @recipe.status == "draft"
+      redirect_to confirm_post_recipes_path(@post)
+    else
+      redirect_to post_recipe_path(@post, @recipe)
+    end
   end
 
   def edit
@@ -27,9 +31,14 @@ class Public::RecipesController < ApplicationController
     @recipe.update
   end
 
+  def confirm
+    @post = Post.find(params[:post_id])
+    @recipe = current_customer.recipes.draft.find_by(params[:post_id])
+  end
+
   private
 
   def recipe_params
-    params.require(:recipe).permit(:recipe_title, :category, :material, :how_to_make)
+    params.require(:recipe).permit(:recipe_title, :category, :material, :how_to_make, :status)
   end
 end

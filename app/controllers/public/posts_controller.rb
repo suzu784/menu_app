@@ -1,6 +1,6 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_customer!
-  
+
   def new
     @post = Post.new
   end
@@ -14,8 +14,12 @@ class Public::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.customer_id = current_customer.id
-    @post.save
-    redirect_to posts_path
+    if @post.save
+      redirect_to posts_path
+    else
+      render :new
+      flash[notice] = "難易度を入力してください"
+    end
   end
 
   def show
