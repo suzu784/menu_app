@@ -11,27 +11,23 @@
         <h4>料理名</h4>
         　<%= f.text_field :cook_name %>
         <h4>難易度</h4>
-          <% if @post.id == nil %>
-            <div class="form-group" id="star">
-              <%= f.label :star %>
-              <%= f.hidden_field :star, id: :review_star, class:'form-control' %>
-            </div>
-              <script>
-                $(document).on('turbolinks:load', function() {
-                  $('#star').empty();
-                  $('#star').raty({
-                    size : 36,
-                    starOff: '<%= asset_path('star-off.png') %>',
-                    starOn : '<%= asset_path('star-on.png') %>',
-                    starHalf: '<%= asset_path('star-half.png') %>',
-                    scoreName: 'post[star]',
-                    half: true,
-                  });
-                })
-              </script>
-          <% else %>
-            <%= render 'static_star', post: @post %>
-          <% end %>
+          <div class="form-group" id="star">
+            <%= f.label :star %>
+            <%= f.hidden_field :star, id: :review_star, class:'form-control' %>
+          </div>
+            <script>
+              $(document).on('turbolinks:load', function() {
+                $('#star').empty();
+                $('#star').raty({
+                  size : 36,
+                  starOff: '<%= asset_path('star-off.png') %>',
+                  starOn : '<%= asset_path('star-on.png') %>',
+                  starHalf: '<%= asset_path('star-half.png') %>',
+                  scoreName: 'post[star]',
+                  half: true,
+                });
+              })
+            </script>
         <h4>感想</h4>
           <%= f.text_field :opinion %>
         <h4>動画URL</h4>
