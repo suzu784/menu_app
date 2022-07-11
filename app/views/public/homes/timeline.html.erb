@@ -1,0 +1,31 @@
+<div class="text-center">
+  <h1 class="text-center mt-4">タイムライン</h1>
+    <table class="table mt-4">
+      <thead>
+        <tr>
+          <th>料理名</th>
+          <th>難易度</th>
+          <th>感想</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @posts.each do |post| %>
+          <tr>
+            <td><%= link_to post.cook_name, post_path(post) %></td>
+            <td>
+              <%= render 'public/posts/static_star', post: post %>
+            </td>
+            <td><%= post.opinion %></td>
+            <td>
+              <% if post.customer == current_customer %>
+                <%= link_to "編集", edit_post_path(post), class: 'btn btn-success' %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="mt-4 mb-4 justify-content-center d-flex">
+      <%= paginate @posts %>
+    </div>
+</div>
