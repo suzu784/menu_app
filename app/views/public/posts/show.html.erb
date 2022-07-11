@@ -1,7 +1,7 @@
 <div class="text-center">
   <h1 class="mt-4 mb-4"><%= @post.cook_name %>のレシピ</h1>
     <p><%= link_to "レシピを載せますか?", new_post_recipe_path(@post) %></p>
-    <div class="favorite-btn_<%= @post.id %>">
+    <div class="favorite-btn<%= @post.id %>">
       <%= render 'public/favorites/btn', post: @post %>
     </div>
     <div class="mb-4">
@@ -12,7 +12,7 @@
       <h5>感想</h5>
         <%= @post.opinion %></p>
         <% if @post.customer == current_customer %>
-          <%= link_to "削除", post_path(@post), method: :delete, class: 'btn btn-danger' %><br>
+          <%= link_to "削除", post_path(@post), method: :delete, remote: true, class: 'btn btn-danger' %><br>
         <% end %>
     </div>
     <div class="post-comments">

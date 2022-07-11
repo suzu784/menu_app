@@ -15,12 +15,6 @@
           <th>得意料理</th>
           <td><%= customer.special_dish %></td>
           <td><%= image_tag customer.get_customer_image(100, 100) %></td>
-          <div class="relationship-btn_<%= customer.id %>">
-            <td><%= render 'public/relationships/btn', customer: customer %></td>
-          </div>
-            <% if current_customer != customer && current_customer.following?(customer) && customer.following?(current_customer) %>
-             <td> <%= link_to 'chatを始める', chat_path(customer.id), class: "btn btn-secondary ml-3" %></td>
-            <% end %>
         </tr>
       </tbody>
       <% end %>
