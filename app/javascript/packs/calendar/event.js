@@ -12,7 +12,7 @@ document.addEventListener('turbolinks:load', function() {
     var calendar = new Calendar(calendarEl, {
         plugins: [ monthGridPlugin, interactionPlugin, googleCalendarApi ],
 
-
+        events: '/events.json',
         //細かな表示設定
         locale: 'ja',
         timeZone: 'Asia/Tokyo',
@@ -20,19 +20,51 @@ document.addEventListener('turbolinks:load', function() {
         headerToolbar: {
           start: '',
           center: 'title',
-          end: 'today prev,next' 
+          end: 'today prev,next'
         },
         expandRows: true,
         stickyHeaderDates: true,
         buttonText: {
            today: '今日'
-        }, 
+        },
         allDayText: '終日',
         height: "auto",
 
         dateClick: function(info){
-            //日付をクリックしたときのイベント(詳しくは次回の記事へ)
+             //クリックした日付の情報を取得
+            const year  = info.date.getFullYear();
+            const month = (info.date.getMonth() + 1);
+            const day   = info.date.getDate();
+
+            //ajaxでevents/newを着火させ、htmlを受け取ります
+            $.ajax({
+                type: 'GET',
+                url:  '/events/new',
+            }).done(function (res) {
+                // 成功処理
+                // 受け取ったhtmlをさっき追加したmodalのbodyの中に挿入します
+                $('.modal-body').html(res);
+
+                //フォームの年、月、日を自動入力
+                $('#event_start_1i').val(year);
+                $('#event_start_2i').val(month);
+                $('#event_start_3i').val(day);
+
+                $('#event_end_1i').val(year);
+                $('#event_end_2i').val(month);
+                $('#event_end_3i').val(day);
+
+                //ここのidはevents/newのurlにアクセスするとhtmlがコードとして表示されるので、
+                //開始時間と終了時間のフォームを表しているところのidを確認してもらうことが確実です
+
+                $('#modal').fadeIn();
+
+            }).fail(function (result) {
+                // 失敗処理
+                alert("failed");
+            });
         },
+
         eventClick: function(info){
             //表示されたイベントをクリックしたときのイベント(詳しくは次回の記事へ)
         },
@@ -43,5 +75,7 @@ document.addEventListener('turbolinks:load', function() {
     });
     //カレンダー表示
     calendar.render();
-
+    $(".error").click(function(){
+        calendar.refetchEvents();
+    });
 });
