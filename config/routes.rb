@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   scope module: :public do
      root 'homes#top'
      get :about, to: 'homes#about'
+     get :timeline, to: 'homes#timeline', as: 'timeline'
      get :events, to: 'events#index'
      resources :posts do
        resource :favorites, only: [:create, :destroy]
