@@ -86,9 +86,9 @@ ActiveRecord::Schema.define(version: 2022_07_04_140446) do
   end
 
   create_table "events", force: :cascade do |t|
-    t.string "body"
-    t.datetime "start_date"
-    t.datetime "end_date"
+    t.string "title"
+    t.datetime "start"
+    t.datetime "end"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
