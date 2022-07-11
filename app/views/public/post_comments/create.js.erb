@@ -1,3 +1,3 @@
 $('.comment-textarea').val("");
-$('.post-comments-counter').html("<%= j(render 'public/post_comments/form', post: @post, post_comment: @post_comment) %>");
-$('.post-comments-index').html("<%= j(render 'public/post_comments/form', post: @post, post_comment: @post_comment) %>");
+$('.post-comments-counter').html("<%= j(render 'public/post_comments/counter', post: @post, post_comment: @post_comment) %>");
+$('.post-comments-index').html("<%= j(render 'public/post_comments/index', post: @post, post_comment: @post_comment) %>");
