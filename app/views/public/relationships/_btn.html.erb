@@ -5,6 +5,3 @@
     <%= link_to "フォローする", customer_relationships_path(customer.id), method: :post, remote: true, class: "btn btn-success" %>
   <% end %>
 <% end %>
-<% if current_customer != customer && current_customer.following?(customer) && customer.following?(current_customer) %>
-  <%= link_to 'chatを始める', chat_path(customer), remote: true, class: "btn btn-secondary ml-3" %>
-<% end %>

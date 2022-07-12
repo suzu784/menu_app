@@ -1,38 +1,38 @@
 <div class="text-center">
   <h1>作り方</h1>
-    <%= form_with model: [@post, @recipe], remote: true do |f| %>
-      <div class="recipe-area">
-        <div class="recipe-area_form">
-          <%= f.label :材料 %>
-          <%= f.text_field :material %>
-          <%= f.label :カテゴリ %>
-          <%= f.select :category, Recipe.categories.keys.map {|k| [I18n.t("enums.recipe.category.#{k}"), k]}, include_blank: '選択してください' %>
-          <%= f.label :下書きしますか？ %>
-    　     <%= f.select :status, Recipe.statuses.keys.map {|k| [I18n.t("enums.recipe.status.#{k}"),      k]}, include_blank: '選択してください' %>
-          <%= f.label :工程 %>
-          <%= f.text_area :content %>
-        </div>
-      </div>
-      <div class="tag-area">
-        <%= f.fields_for :tags do |tag| %>
-          <div class="js-file-group"> data: {index: "#{tag.index}"}
-            <div class="tag-area_title">
-              <%= f.label :タグ %>
-            </div>
-            <div class="tag-area_form">
-              <%= tag.text_field :content %>
-             <span class="delete-form-btn">削除する</span>
-             <% if @recipe.persisted? %>
-               <%= tag.check_box :_destroy, data:{ index: tag.index }, class: "hidden-destroy" %>
-             <% end %>
-             <div class="add-form-btn">
-               <%= f.label :追加する %>
-             </div>
-            </div>
+    <%= link_to "下書きはこちら", confirm_post_recipes_path(@post) %>
+      <%= form_with model: [@post, @recipe], remote: true do |f| %>
+        <div class="recipe-area">
+          <div class="recipe-area_form">
+            <%= f.label :画像 %><br>
+            <%= f.file_field :recipe_image %><br>
+            <%= f.label :材料 %><br>
+            <%= f.text_field :material, class: "form-control-md" %><br>
+            <%= f.label :カテゴリ %><br>
+            <%= f.select :category, Recipe.categories.keys.map {|k| [I18n.t("enums.recipe.category.#{k}"), k]}, include_blank: '選択してください' %><br>
+            <%= f.label :工程 %><br>
+            <%= f.text_area :content, class: "form-control-md" %>
           </div>
-      </div>
-        <% end %>
-      <%= f.submit "新規作成", class: 'btn btn-primary' %>
-    <% end %>
-  <%= javascript_pack_tag 'recipe/tag' %>
+        </div>
+        <div class="tag-area">
+          <%= f.fields_for :tags do |tag| %>
+            <div class="js-file-group">
+              <div class="tag-area_form">
+                <%= tag.text_area :content %>
+               <span class="delete-form-btn">削除</span>
+               <% if @recipe.persisted? %>
+                 <%= tag.check_box :_destroy, data:{ index: tag.index }, class: "hidden-destroy" %>
+               <% end %>
+               <div class="add-form-btn">
+                 <%= f.label :追加 %>
+               </div>
+              </div>
+            </div>
+        </div>
+          <% end %>
+        <%= f.label :下書きしますか？ %><br>
+  　     <%= f.select :status, Recipe.statuses.keys.map {|k| [I18n.t("enums.recipe.status.#{k}"), k]} %>
+        <span><%= f.submit "新規作成", class: 'btn btn-primary' %><span>
+      <% end %>
+    <%= javascript_pack_tag 'recipe/tag' %>
 </div>

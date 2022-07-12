@@ -2,20 +2,17 @@
 $(function(){
   function buildField(index) {
     const html = `<div class="js-file-group" data-index="${index}">
-                    <div class="tag-area__title">
-                      タグ
-                    </div>
                     <div class="tag-area__form">
-                      <input type="text" name="post[tags_attributes][${index}][content]" id="post_tags_attributes_${index}_content">
+                      <input type="text" name="recipe[tags_attributes][${index}][content]" id="recipe_tags_attributes_${index}_content">
                       <span class="delete-form-btn">
-                        削除する
+                        削除
                       </span>
                     </div>
                   </div>`;
     return html;
   }
 
-  let fileIndex = [1, 2, 3, 4]
+  let fileIndex = [1, 2, 3]
   var lastIndex = $(".js-file-group:last").data("index");
   fileIndex.splice(0, lastIndex);
   let fileCount = $(".hidden-destroy").length;

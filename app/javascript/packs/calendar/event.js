@@ -1,3 +1,4 @@
+/*global $*/
 //インストールしたファイルたちを呼び出します。
 import { Calendar} from '@fullcalendar/core';
 import interactionPlugin from '@fullcalendar/interaction';

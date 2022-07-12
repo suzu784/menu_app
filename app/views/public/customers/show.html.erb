@@ -10,6 +10,9 @@
     <div class="relationship-btn_<%= @customer.id %>">
       <%= render 'public/relationships/btn', customer: @customer %>
     </div>
+    <div class="chat-btn_<%= @customer.id %>">
+      <%= render 'public/chats/btn', customer: @customer %>
+    </div>
     <div class="mb-5">
         <%= link_to "いいね一覧", favorites_customer_path(@customer) %></p>
         <%= link_to "フォロー一覧",  customer_followings_path(@customer) %></p>

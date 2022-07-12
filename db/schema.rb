@@ -143,7 +143,7 @@ ActiveRecord::Schema.define(version: 2022_07_12_071849) do
     t.integer "category"
     t.string "material"
     t.string "content"
-    t.integer "status"
+    t.integer "status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

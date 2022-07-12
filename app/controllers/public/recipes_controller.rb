@@ -9,17 +9,18 @@ class Public::RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
+    @tags = Tag.where(recipe_id: @recipe.id)
   end
 
   def create
     @post = Post.find(params[:post_id])
     @recipe = current_customer.recipes.new(recipe_params)
     @recipe.post_id = @post.id
-    @recipe.save
-    if @recipe.status == "draft"
-      redirect_to confirm_post_recipes_path(@post)
-    else
+    if @recipe.save
       redirect_to post_recipe_path(@post, @recipe)
+    else
+      flash[notice] = "工程を入力してください"
+      render :new
     end
   end
 
@@ -40,6 +41,6 @@ class Public::RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.require(:recipe).permit(:recipe_title, :category, :material, :status, :content, tags_attributes: [:content, :destroy, :id])
+    params.require(:recipe).permit(:recipe_image, :recipe_title, :category, :material, :status, :content, tags_attributes: [:content])
   end
 end
