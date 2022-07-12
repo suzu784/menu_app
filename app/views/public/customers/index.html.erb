@@ -8,15 +8,17 @@
      </p>
     <table class="table">
       <% @customers_all.each do |customer| %>
-      <tbody>
-        <tr>
-          <th>名前</th>
-          <td><%= customer.full_name %></td>
-          <th>得意料理</th>
-          <td><%= customer.special_dish %></td>
-          <td><%= image_tag customer.get_customer_image(100, 100) %></td>
-        </tr>
-      </tbody>
+        <% if customer.last_name != "guestuser" %>
+        <tbody>
+          <tr>
+            <th>名前</th>
+              <td><%= link_to customer.full_name, customer_path(customer) %></td>
+            <th>得意料理</th>
+            <td><%= customer.special_dish %></td>
+            <td><%= image_tag customer.get_customer_image(100, 100) %></td>
+          </tr>
+        </tbody>
+        <% end %>
       <% end %>
     </table>
   <div class="mt-4 mb-4 justify-content-center d-flex">

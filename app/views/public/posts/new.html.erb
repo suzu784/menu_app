@@ -1,36 +1,47 @@
-<div class="text-center">
-  <h1>投稿</h1>
-    <hr>
-      <%= form_with model: @post, url: posts_path, remote: true, method: :post do |f| %>
-        <h4>画像</h4>
-          <%= f.file_field :post_image, accept: 'image/*' %>
-        <h4>日付</h4>
-          <%= f.datetime_field :created_at %>
-        <h4>登録済み料理</h4>
-          <%= f.select :cook_name, options_from_collection_for_select(Post.all, :id, :cook_name), include_blank: '選択してください' %>
-        <h4>料理名</h4>
-        　<%= f.text_field :cook_name %>
-        <h4>難易度</h4>
-          <div class="form-group" id="star">
-            <%= f.label :star %>
-            <%= f.hidden_field :star, id: :review_star, class:'form-control' %>
-          </div>
-            <script>
-              $(document).on('turbolinks:load', function() {
-                $('#star').empty();
-                $('#star').raty({
-                  size : 36,
-                  starOff: '<%= asset_path('star-off.png') %>',
-                  starOn : '<%= asset_path('star-on.png') %>',
-                  starHalf: '<%= asset_path('star-half.png') %>',
-                  scoreName: 'post[star]',
-                  half: true,
-                });
-              })
-            </script>
-        <h4>感想</h4>
-          <%= f.text_field :opinion %>
-        <h4>動画URL</h4>
-          <%= f.submit "送信", class: 'btn btn-primary' %>
-      <% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 offset-md-2">
+      <div class="text-center">
+        <h1 class="mt-3 pt-3">投稿</h1>
+        <div class="mt-4">
+            <%= form_with model: @post, url: posts_path, remote: true, method: :post do |f| %>
+            <%= render 'layouts/errors', obj: @post %>
+              <div class="form-group">
+                <%= f.label :画像 %>
+                <%= f.file_field :post_image, accept: 'image/*' %>
+                <%= f.label :作った日 %>
+                <%= f.datetime_field :created_at %><br>
+                <%= f.label :料理 %>
+              　<%= f.text_field :cook_name, class: 'form-control' %>
+                <%= f.label :登録済み料理 %><br>
+                <%= f.select :cook_name, options_from_collection_for_select(Post.all, :cook_name, :cook_name), include_blank: '選択してください' %><br>
+                <%= f.label :難易度 %><br>
+                <div class="form-group" id="star">
+                  <%= f.label :star %>
+                  <%= f.hidden_field :star, id: :review_star, class:'form-control' %>
+                </div>
+                  <script>
+                    $(document).on('turbolinks:load', function() {
+                      $('#star').empty();
+                      $('#star').raty({
+                        size : 36,
+                        starOff: '<%= asset_path('star-off.png') %>',
+                        starOn : '<%= asset_path('star-on.png') %>',
+                        starHalf: '<%= asset_path('star-half.png') %>',
+                        scoreName: 'post[star]',
+                        half: true,
+                      });
+                    })
+                  </script>
+                <%= f.label :感想 %><br>
+                <%= f.text_field :opinion, class: 'form-control' %><br>
+                <%= f.label :動画url %><br>
+                <%= f.text_field :media_url, class: 'form-control' %>
+                <%= f.submit "送信", class: 'btn btn-primary' %>
+              </div>
+            <% end %>
+        </div>
+      </div>
     </div>
+  </div>
+</div>

@@ -131,7 +131,7 @@ ActiveRecord::Schema.define(version: 2022_07_04_140446) do
     t.string "cook_name"
     t.text "opinion"
     t.float "star"
-    t.integer "status", default: 0, null: false
+    t.string "media_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

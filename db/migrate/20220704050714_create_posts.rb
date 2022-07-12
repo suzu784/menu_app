@@ -5,7 +5,7 @@ class CreatePosts < ActiveRecord::Migration[6.1]
       t.string :cook_name
       t.text :opinion
       t.float :star
-      t.integer :status, null: false, default: 0
+      t.string :media_url
 
       t.timestamps
     end

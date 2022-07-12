@@ -47,6 +47,6 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:cook_name, :opinion, :star, :status, :post_image, :created_at)
+    params.require(:post).permit(:cook_name, :opinion, :star, :status, :post_image, :created_at, :media_url)
   end
 end
