@@ -11,10 +11,10 @@
                 <%= f.file_field :post_image, accept: 'image/*' %>
                 <%= f.label :作った日 %>
                 <%= f.datetime_field :created_at %><br>
-                <%= f.label :料理 %>
-              　<%= f.text_field :cook_name, class: 'form-control' %>
                 <%= f.label :登録済み料理 %><br>
                 <%= f.select :cook_name, options_from_collection_for_select(Post.all, :cook_name, :cook_name), include_blank: '選択してください' %><br>
+                <%= f.label :料理 %>
+              　<%= f.text_field :cook_name, class: 'form-control' %>
                 <%= f.label :難易度 %><br>
                 <div class="form-group" id="star">
                   <%= f.label :star %>

@@ -1,20 +1,38 @@
 <div class="text-center">
   <h1>作り方</h1>
     <%= form_with model: [@post, @recipe], remote: true do |f| %>
-  <h5>材料</h5>
-    <%= f.text_field :material %>
-  <h5>工程</h5>
-    <%= f.text_area :how_to_make %>
-  <div class="justify-content-center">
-    <h5>カテゴリ</h5>
-    <%= f.select :category, Recipe.categories.keys.map {|k| [I18n.t("enums.recipe.category.#{k}"), k]}, include_blank: '選択してください' %>
-  </div>
-  <div class="form-group">
-    <h5>下書きしますか？</h5>
-　  <%= f.select :status, Recipe.statuses.keys.map {|k| [I18n.t("enums.recipe.status.#{k}"), k]}, include_blank: '選択してください' %>
-  </div>
-  <div class="form-group">
-    <%= f.submit "新規作成", class: 'btn btn-primary' %>
-  </div>
+      <div class="recipe-area">
+        <div class="recipe-area_form">
+          <%= f.label :材料 %>
+          <%= f.text_field :material %>
+          <%= f.label :カテゴリ %>
+          <%= f.select :category, Recipe.categories.keys.map {|k| [I18n.t("enums.recipe.category.#{k}"), k]}, include_blank: '選択してください' %>
+          <%= f.label :下書きしますか？ %>
+    　     <%= f.select :status, Recipe.statuses.keys.map {|k| [I18n.t("enums.recipe.status.#{k}"),      k]}, include_blank: '選択してください' %>
+          <%= f.label :工程 %>
+          <%= f.text_area :content %>
+        </div>
+      </div>
+      <div class="tag-area">
+        <%= f.fields_for :tags do |tag| %>
+          <div class="js-file-group"> data: {index: "#{tag.index}"}
+            <div class="tag-area_title">
+              <%= f.label :タグ %>
+            </div>
+            <div class="tag-area_form">
+              <%= tag.text_field :content %>
+             <span class="delete-form-btn">削除する</span>
+             <% if @recipe.persisted? %>
+               <%= tag.check_box :_destroy, data:{ index: tag.index }, class: "hidden-destroy" %>
+             <% end %>
+             <div class="add-form-btn">
+               <%= f.label :追加する %>
+             </div>
+            </div>
+          </div>
+      </div>
+        <% end %>
+      <%= f.submit "新規作成", class: 'btn btn-primary' %>
     <% end %>
+  <%= javascript_pack_tag 'recipe/tag' %>
 </div>

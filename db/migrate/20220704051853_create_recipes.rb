@@ -6,7 +6,7 @@ class CreateRecipes < ActiveRecord::Migration[6.1]
       t.string :recipe_title
       t.integer :category
       t.string :material
-      t.text :how_to_make
+      t.string :content
       t.integer :status
 
       t.timestamps

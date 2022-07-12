@@ -4,6 +4,7 @@ class Public::RecipesController < ApplicationController
   def new
     @post = Post.find(params[:post_id])
     @recipe = Recipe.new
+    @tag = @recipe.tags.new
   end
 
   def show
@@ -39,6 +40,6 @@ class Public::RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.require(:recipe).permit(:recipe_title, :category, :material, :how_to_make, :status)
+    params.require(:recipe).permit(:recipe_title, :category, :material, :status, :content, tags_attributes: [:content, :destroy, :id])
   end
 end
