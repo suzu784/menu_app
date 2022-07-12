@@ -7,7 +7,7 @@ class CreateRecipes < ActiveRecord::Migration[6.1]
       t.integer :category
       t.string :material
       t.string :content
-      t.integer :status
+      t.integer :status, null: false, default: 0
 
       t.timestamps
     end
