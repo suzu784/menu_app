@@ -1,3 +1,3 @@
 <% if current_customer != customer && current_customer.following?(customer) && customer.following?(current_customer) %>
-  <%= link_to 'chatを始める', chat_path(customer.id), remote: true, method: :get, class: "btn btn-secondary ml-3" %>
+  <%= link_to 'chatを始める', chat_path(customer), class: "btn btn-secondary ml-3" %>
 <% end %>

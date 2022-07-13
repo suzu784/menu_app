@@ -8,8 +8,8 @@ class Public::YoutubeController < ApplicationController
     opt = {
       q: keyword,
       type: 'video',
-      max_results: 2,
-      order: :date,
+      max_results: 1,
+      order: :rating,
       page_token: next_page_token,
       published_after: after.iso8601,
       published_before: before.iso8601
@@ -17,7 +17,7 @@ class Public::YoutubeController < ApplicationController
     service.list_searches(:snippet, opt)
   end
 
-  def show
-     @youtube_data = find_videos('料理研究家リュウジのバズレシピ ')
+  def recommendation
+     @youtube_data = find_videos('おすすめの料理')
   end
 end

@@ -3,7 +3,7 @@ class Public::EventsController < ApplicationController
 
   def new
     @event = events.new
-    render plain: render_to_string(partial: 'form_new', layout: false, lacals: { event: @event })
+    render plain: render_to_string(partial: 'form_new', layout: false, locals: { event: @event })
     #views/eventsディレクトリのなかに_form_new.html.erb というファイルを作り
     #そのファイルの中のhtmlコードを文字として返す
   end
@@ -11,12 +11,12 @@ class Public::EventsController < ApplicationController
   def index
     @events = Event.all
   end
-  
+
   def create
     @event = events.new(params_event)
     if @event.save
       respond_to do |format|
-        format.html { redirect_to root_path } 
+        format.html { redirect_to root_path }
         format.js  #create.js.erbを探してその中の処理を実行する
       end
     else
@@ -28,6 +28,6 @@ class Public::EventsController < ApplicationController
   end
 
   def params_event
-    params.require(:event).permit(:title, :start, :finish)
+    params.require(:event).permit(:title, :start, :end)
   end
 end

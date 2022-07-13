@@ -15,7 +15,7 @@ Rails.application.routes.draw do
      root 'homes#top'
      get :about, to: 'homes#about'
      get :timeline, to: 'homes#timeline', as: 'timeline'
-     get :events, to: 'events#index'
+     resources :events
      resources :posts do
        resource :favorites, only: [:create, :destroy]
        resources :post_comments, only: [:create, :destroy]
@@ -35,7 +35,7 @@ Rails.application.routes.draw do
       end
      resources :categories, only: [:index]
      resources :chats, only: [:show, :create]
-     resources :youtube, only: [:show]
+     get :youtube, to: 'youtube#recommendation', as: 'youtube'
      resources :notifications, only: [:index] do
        collection do
         delete :destroy_all

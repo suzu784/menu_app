@@ -58,8 +58,4 @@ class Post < ApplicationRecord
     end
     notification.save if notification.valid?
   end
-
-  def split_id_from_youtube_url
-    media_url.split('/').last if media_url.present?
-  end
 end
