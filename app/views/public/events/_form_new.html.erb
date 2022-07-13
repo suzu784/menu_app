@@ -1,17 +1,17 @@
 <div class="row">
   <%= form_with(model: @event, url: events_path, remote: true) do |f| %>
-    <%= render 'shared/error_messages', object: f.object %>
+    <%= render 'layouts/errors', obj: f.object %>
 
-    <%= f.label :plan, "内容"%>
-    <%= f.text_field :plan, class:'form-control mb-3', required: true %> 
-    <%# form_with で　required: trueを追加すると空白登録を回避してくれます %> 
+    <%= f.label :title, "内容"%>
+    <%= f.text_field :title, class:'form-control mb-3', required: true %>
+    <%# form_with で　required: trueを追加すると空白登録を回避してくれます %>
 
     <div class="form-inline text-left">
      <%= f.label :start,"開始時刻", {class:'control-label'}%>
      <%= f.datetime_select :start, {default: Date.today + 0.hours + 00.minutes, minute_step: 60}, class: 'form-control' %>
     </div>
      <br>
-    <div class="form-inline text-left"> 
+    <div class="form-inline text-left">
      <%= f.label :end,"終了時刻", {class:'control-label'}%>
      <%= f.datetime_select :end, {default: Date.today + 0.hours + 00.minutes, minute_step: 60}, class: 'form-control' %>
     </div>
@@ -19,4 +19,4 @@
 
     <%= f.submit "登録",   class: "btn btn-primary js-event-create-btn" %>
   <% end %>
-</div>      
+</div>
