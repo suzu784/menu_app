@@ -4,7 +4,7 @@
 
     <%= f.label :title, "内容"%>
     <%= f.text_field :title, class:'form-control mb-3', required: true %>
-    <%# form_with で　required: trueを追加すると空白登録を回避してくれます %>
+    <%# form_with で　required: trueを追加すると空白登録を回避する %>
 
     <div class="form-inline text-left">
      <%= f.label :start,"開始時刻", {class:'control-label'}%>
@@ -15,7 +15,7 @@
      <%= f.label :end,"終了時刻", {class:'control-label'}%>
      <%= f.datetime_select :end, {default: Date.today + 0.hours + 00.minutes, minute_step: 60}, class: 'form-control' %>
     </div>
-     <%# 自動入力をするためにはdatetime_selectにしておく必要があります %>
+     <%# 自動入力をするためにはdatetime_selectにする必要がある %>
 
     <%= f.submit "登録",   class: "btn btn-primary js-event-create-btn" %>
   <% end %>

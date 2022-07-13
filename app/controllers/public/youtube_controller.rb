@@ -18,6 +18,6 @@ class Public::YoutubeController < ApplicationController
   end
 
   def recommendation
-     @youtube_data = find_videos('おすすめの料理')
+    @youtube_data = find_videos('おすすめの料理')
   end
 end

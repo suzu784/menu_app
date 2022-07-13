@@ -1,13 +1,11 @@
 <% @youtube_data.items.each do |item| %>
   <% snippet = item.snippet %>
-  <div class="text-center mt-5 mb-5">
-    <strong><h3><%= snippet.title %></h3></strong>
-    <strong><h5><%= snippet.published_at %><%= snippet.channel_title %></h5></strong>
+  <div class="text-center mt-3 pt-3">
+    <h1><i class="fas fa-book"></i>あなたにおすすめの動画</h1>
   </div>
   <div class="row">
-    <div class="col-md-6 offset-md-3">
+    <div class="col-md-6 offset-md-3 mt-5">
       <iframe width="90%" height="500px" src="https://www.youtube.com/embed/<%= item.id.video_id %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
   </div>
 <% end %>
-
