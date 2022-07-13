@@ -55,8 +55,6 @@ document.addEventListener('turbolinks:load', function() {
                 $('#event_end_2i').val(month);
                 $('#event_end_3i').val(day);
 
-                //ここのidはevents/newのurlにアクセスするとhtmlがコードとして表示されるので、
-                //開始時間と終了時間のフォームを表しているところのidを確認してもらうことが確実です
 
                 $('#modal').fadeIn();
 
@@ -64,13 +62,6 @@ document.addEventListener('turbolinks:load', function() {
                 // 失敗処理
                 alert("failed");
             });
-        },
-
-        eventClick: function(info){
-            //表示されたイベントをクリックしたときのイベント(詳しくは次回の記事へ)
-        },
-        eventClassNames: function(arg){
-            //表示されたイベントにclassをcss用に追加する(詳しくは次回の記事へ)
         }
 
     });

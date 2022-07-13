@@ -1,5 +1,5 @@
 <div class="text-center">
-  <h1>会員一覧ページ</h1>
+  <h1 class="mt-5">会員一覧ページ</h1>
      <p>
        <%= search_form_for(@search, url:customers_path) do |f| %>
   		   <%= f.search_field :last_name_cont, placeholder:"キーワードを入力してください", size: "50" %>
@@ -9,13 +9,15 @@
     <table class="table">
       <% @customers_all.each do |customer| %>
       <tbody>
-        <tr>
-          <th>名前</th>
-          <td><%= customer.full_name %></td>
-          <th>得意料理</th>
-          <td><%= customer.special_dish %></td>
-          <td><%= image_tag customer.get_customer_image(100, 100) %></td>
-        </tr>
+        <% if customer.is_deleted == false %>
+          <tr>
+            <th>名前</th>
+            <td><%= link_to customer.full_name, admin_customer_path(customer) %></td>
+            <th>得意料理</th>
+            <td><%= customer.special_dish %></td>
+            <td><%= image_tag customer.get_customer_image(100, 100) %></td>
+          </tr>
+        <% end %>
       </tbody>
       <% end %>
     </table>

@@ -1,5 +1,5 @@
 <div class="text-center">
-  <h1 class="text-center">投稿</h1>
+  <h1 class="text-center mt-5">投稿</h1>
      <p>
        <%= search_form_for(@search, url:posts_path) do |f| %>
  		     <%= f.search_field :cook_name_cont, placeholder:"キーワードを入力してください", size: "50" %>
@@ -47,5 +47,5 @@
     </table>
   <div class="mt-4 mb-4 justify-content-center d-flex">
     <%= paginate @posts_all %>
-  
+
 </div>

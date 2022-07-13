@@ -1,9 +1,9 @@
 <div class="container">
-  <div class="row-justify-content-center mt-5">
+  <div class="row-justify-content-center mt-5 pt-5">
     <div class="col-12">
       <h1 class="text-center font-weight-bold">本当に退会させますか？</h1>
     </div>
-    <div class="col-12 mt-5">
+    <div class="col-12 mt-5 pt-3">
       <h4 class="text-center">退会すると、会員情報登録や<br>
       これまでのデータがなくなってしまいます。<br>
       退会させる場合は、<strong class="text-danger">「退会させる」</strong>をクリックしてください。
@@ -11,7 +11,7 @@
     </div>
   </div>
   <div class="text-center">
-    <%= link_to "退会を", root_path, class: "btn btn-sm btn-info" %>
+    <%= link_to "退会しない", root_path, class: "btn btn-sm btn-info" %>
     <%= link_to "退会させる", admin_customer_withdraw_path, method: :patch, data: { confirm: "よろしいですか？" }, class: "btn btn-sm btn-danger" %>
   </div>
   </div>
