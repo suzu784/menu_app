@@ -1,46 +1,39 @@
-<nav class="border border-dark navbar navbar-expand-lg bg-transparent", style="background:rgba(255,255,255,1);">
-  <div class="container-fluid">
-    <div class="navbar-brand" style="padding-bottom: 15px;">
-      <%= link_to "/" do %>
-        <h2 class="text text-dark ", style="font-family: cursive;"><i class="fas fa-book-open"></i>Menu Share App</h2>
-      <% end %>
-    </div>
-    <div>
-      <ul class="navbar-nav ml-auto">
-        <% if customer_signed_in? %>
+<nav class="border border-dark navbar navbar-expand-lg p-5 bg-transparent navbar-light", style="background:rgba(255,255,255,1);">
+  <%= link_to "/" do %>
+    <h2 class="text text-dark ", style="font-family: cursive;"><i class="fas fa-book-open"></i>Menu Share App</h2>
+  <% end %>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+   <div class="collapse navbar-collapse" id="navbarNavDropdown">
+     <ul class="navbar-nav mr-auto">
 
-          <!--会員ログイン時-->
-          <li><%= link_to "Menu Share Appとは", about_path, class: 'btn btn-white ml-3' %></li>
-          <% if unchecked_notifications.any? %>
-            <i class="fa fa-circle" style="color: gold;"></i>
-          <% end %>
-          <li><%= link_to "通知一覧", notifications_path, class: 'btn btn-white' %></li>
-          <li><%= link_to "カレンダー", events_path, class: 'btn btn-white' %></li>
-          <li><%= link_to "あなたにおすすめの料理動画", youtube_path, class: 'btn btn-white' %></li>
-          <li><%= link_to "会員一覧", customers_path, class: 'btn btn-white' %></li>
-          <li><%= link_to "タイムライン", timeline_path, class: 'btn btn-white' %></li>
-          <li><%= link_to "新規投稿", new_post_path, class: 'btn btn-white ml-3' %></li>
-          <li><%= link_to "投稿一覧", posts_path, class: 'btn btn-white ml-3' %></li>
-          <li><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'btn btn-white ml-3' %></li>
-
-        <% elsif admin_signed_in? %>
-
-          <!--管理者ログイン時-->
-          <li><%= link_to "会員一覧", admin_customers_path, class: 'btn btn-white ml-3' %></li>
-          <li><%= link_to "投稿一覧", admin_posts_path, class: 'btn btn-white ml-3' %></li>
-          <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'btn btn-white ml-3' %></li>
-
-
-        <% else %>
-
-          <!--非ログイン時-->
-          <li><%= link_to "トップメニュー", root_path, class: 'btn btn-white ml-3' %></li>
-          <li><%= link_to "アプリについて", about_path, class: 'btn btn-white ml-3' %></li>
-          <li><%= link_to "新規登録", new_customer_registration_path, class: 'btn btn-white ml-3' %></li>
-          <li><%= link_to "ログイン", new_customer_session_path, class: 'btn btn-white ml-3' %></li>
-
+      <!--会員ログイン時-->
+      <% if customer_signed_in? %>
+        <li class="nav-item"><%= link_to "Menu Share Appとは", about_path, class: 'btn btn-white ml-3' %></li>
+        <% if unchecked_notifications.any? %>
+          <i class="fa fa-circle" style="color: gold;"></i>
         <% end %>
-      </ul>
-    </div>
-  </div>
+        <li><%= link_to "通知一覧", notifications_path, class: 'btn btn-white' %></li>
+        <li><%= link_to "カレンダー", events_path, class: 'btn btn-white' %></li>
+        <li><%= link_to "あなたにおすすめの料理動画", youtube_path, class: 'btn btn-white' %></li>
+        <li><%= link_to "会員一覧", customers_path, class: 'btn btn-white' %></li>
+        <li><%= link_to "タイムライン", timeline_path, class: 'btn btn-white' %></li>
+        <li><%= link_to "新規投稿", new_post_path, class: 'btn btn-white ml-3' %></li>
+        <li><%= link_to "投稿一覧", posts_path, class: 'btn btn-white ml-3' %></li>
+        <li><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'btn btn-white ml-3' %></li>
+      <!--管理者ログイン時-->
+      <% elsif admin_signed_in? %>
+        <li><%= link_to "会員一覧", admin_customers_path, class: 'btn btn-white ml-3' %></li>
+        <li><%= link_to "投稿一覧", admin_posts_path, class: 'btn btn-white ml-3' %></li>
+        <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'btn btn-white ml-3' %></li>
+      <!--非ログイン時-->
+      <% else %>
+        <li><%= link_to "トップメニュー", root_path, class: 'btn btn-white ml-3' %></li>
+        <li><%= link_to "アプリについて", about_path, class: 'btn btn-white ml-3' %></li>
+        <li><%= link_to "新規登録", new_customer_registration_path, class: 'btn btn-white ml-3' %></li>
+        <li><%= link_to "ログイン", new_customer_session_path, class: 'btn btn-white ml-3' %></li>
+      <% end %>
+     </ul>
+   </div>
 </nav>

@@ -1,9 +1,9 @@
 <% if post.favorited_by?(current_customer) %>
   <%= link_to post_favorites_path(post), method: :delete, class: 'ml-3', remote: true do %>
-   <i class="fas fa-star" aria-hidden="true" style="color: yellow;"><span></span></i>
+   <i class="fas fa-star" aria-hidden="true" style="color: yellow;"></i>
   <% end %>
 <% else %>
   <%= link_to post_favorites_path(post), method: :post, remote: true do %>
-　 <i class="fas fa-star" aria-hidden="true" style="color: blue;" ><span></span></i>
+　 <i class="fas fa-star" aria-hidden="true" style="color: blue;" ></i>
   <% end %>
 <% end %>
