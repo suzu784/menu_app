@@ -5,7 +5,6 @@ class Public::PostCommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     comment = current_customer.post_comments.new(post_comment_params)
     comment.post_id = @post.id
-    
     if comment.save
       @post.create_notification_comment!(current_customer, comment.id)
       render :index
