@@ -25,6 +25,7 @@ class Post < ApplicationRecord
     favorites.where(customer_id: customer.id).exists?
   end
 
+  #いいね通知
   def create_notification_by(current_customer)
     notification = current_customer.active_notifications.new(
       post_id: id,
@@ -33,7 +34,8 @@ class Post < ApplicationRecord
     )
     notification.save if notification.valid?
   end
-
+  
+  #コメント通知
   def create_notification_comment!(current_customer, post_comment_id)
     #自分以外にコメントしている人をすべて取得し、全員に通知を送る
     temp_ids = PostComment.select(:customer_id).where(post_id: id).where.not(customer_id: current_customer.id).distinct

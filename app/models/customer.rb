@@ -48,6 +48,7 @@ class Customer < ApplicationRecord
     followings.include?(customer)
   end
   
+  #フォロー時の
   def create_notification_follow!(current_customer)
     temp = Notification.where(["visiter_id = ? and visited_id = ? and action = ?", current_customer.id, id, 'follow'])
     if temp.blank?
