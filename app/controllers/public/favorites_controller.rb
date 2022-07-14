@@ -5,7 +5,6 @@ class Public::FavoritesController < ApplicationController
     @post = Post.find(params[:post_id])
     @favorite = current_customer.favorites.new(post_id: @post.id)
     @favorite.save
-    
     @post.create_notification_by!(current_customer)
     respond_to do |format|
       format.html {redirect_to request.referrer}
