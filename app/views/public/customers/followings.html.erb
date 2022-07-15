@@ -1,9 +1,19 @@
 <div class="text-center">
-  <h1>フォローしている</h1>
-  <% if @customers.exists? %>
-    <% @customers.each do |customer| %>
-      <p><%= customer.last_name %></p>
-    <% end %>
+  <h1 class="w-50 mt-3 pt-3 offset-sm-3">フォローリスト</h1>
+    <% if @customers.exists? %>
+    <table class="table">
+      <% @customers.each do |customer| %>
+      <tbody>
+        <tr>
+          <th>名前</th>
+          <td><%= link_to customer.full_name, customer_path(customer) %></td>
+          <th>得意料理</th>
+          <td><%= customer.special_dish %></td>
+          <td><%= image_tag customer.get_customer_image(100, 100) %></td>
+        </tr>
+      </tbody>
+      <% end %>
+    </table>
   <% else %>
     <p>ユーザーはいません</p>
   <% end %>

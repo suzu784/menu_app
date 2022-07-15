@@ -1,13 +1,14 @@
 class Post < ApplicationRecord
   belongs_to :customer
+  belongs_to :event
   has_many :post_comments, dependent: :destroy
   has_many :recipes, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :notifications, dependent: :destroy
 
   with_options presence: true do
-    validates :star
-    validates :post_image
+    # validates :star
+    # validates :post_image
     validates :cook_name
   end
 
@@ -34,7 +35,7 @@ class Post < ApplicationRecord
     )
     notification.save if notification.valid?
   end
-  
+
   #コメント通知
   def create_notification_comment!(current_customer, post_comment_id)
     #自分以外にコメントしている人をすべて取得し、全員に通知を送る

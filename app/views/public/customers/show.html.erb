@@ -1,18 +1,26 @@
-<div class="text-center">
-  <h1>会員詳細ページ</h1>
-    <%= image_tag @customer.get_customer_image(200, 200) %>
-    <div class="mb-5">
-      名前：<%= @customer.first_name + @customer.last_name %>
+<div class="row">
+  <h1 class="w-50 mt-4 pt-4 offset-sm-3">会員詳細ページ</h1>
+    <div class="col-md-3 offset-md-3 mt-5">
+      <%= image_tag @customer.get_customer_image(400, 400) %>
     </div>
-    <div class="mb-5">
-      得意料理:<%= @customer.special_dish %>
-    </div>
-    <div class="relationship-btn_<%= @customer.id %>">
-      <%= render 'public/relationships/btn', customer: @customer %>
-    </div>
-    <div class="mb-5">
-        <%= link_to "いいね一覧", favorites_customer_path(@customer) %></p>
+    <div class="col-md-5 offset-md-1 mt-5">
+      <div class="mt-5">
+        名前：<%= @customer.first_name + @customer.last_name %>
+      </div>
+      <div class="mt-5">
+        得意料理:<%= @customer.special_dish %>
+      </div>
+      <div class="relationship-btn_<%= @customer.id %>">
+        <%= render 'public/relationships/btn', customer: @customer %>
+      </div>
+      <div class="mt-5">
+        <%= link_to "いいねされた投稿", favorites_customer_path(@customer) %></p>
+      </div>
+      <div class="mb-2">
         <%= link_to "フォロー一覧",  customer_followings_path(@customer) %></p>
+      </div>
+      <div class="mb-2">
         <%= link_to "フォロワー一覧",  customer_followers_path(@customer) %></p>
+      </div>
     </div>
 </div>

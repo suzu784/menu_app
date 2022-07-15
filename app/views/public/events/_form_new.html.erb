@@ -1,22 +1,25 @@
-<div class="row">
-  <%= form_with(model: @event, url: events_path, remote: true) do |f| %>
-    <%= render 'layouts/errors', obj: f.object %>
-
-    <%= f.label :title, "内容"%>
-    <%= f.text_field :title, class:'form-control mb-3', required: true %>
-    <%# form_with で　required: trueを追加すると空白登録を回避する %>
-
-    <div class="form-inline text-left">
-     <%= f.label :start,"開始時刻", {class:'control-label'}%>
-     <%= f.datetime_select :start, {default: Date.today + 0.hours + 00.minutes, minute_step: 60}, class: 'form-control' %>
+<%= form_with model: @post, url: events_path, remote: true, method: :post do |f| %>
+ <%= render 'layouts/errors', obj: @post %>
+   <div class="form-group mt-2">
+     <%= f.label :作った日 %><br>
+     <%= f.datetime_field :created_at, value: '2022-07-14T00:00:00' %><br>
+   </div>
+   <div class="form-group mt-2">
+     <%= f.label :登録済み料理 %><br>
+     <%= f.select :cook_name, options_from_collection_for_select(Post.all, :cook_name, :cook_name), include_blank: '選択してください' %><br>
+   </div>
+   <div class="form-group mt-2">
+     <%= f.label :料理 %>
+   　<%= f.text_field :cook_name, class: 'form-control' %>
+   </div>
+   <div class="form-group mt-2">
+      <%= f.label :感想 %><br>
+      <%= f.text_field :opinion, class: 'form-control' %><br>
     </div>
-     <br>
-    <div class="form-inline text-left">
-     <%= f.label :end,"終了時刻", {class:'control-label'}%>
-     <%= f.datetime_select :end, {default: Date.today + 0.hours + 00.minutes, minute_step: 60}, class: 'form-control' %>
+    <div class="form-group mt-2">
+      <%= f.label :動画url %><br>
+      <%= f.text_field :media_url, class: 'form-control' %>
     </div>
-     <%# 自動入力をするためにはdatetime_selectにする必要がある %>
-
-    <%= f.submit "登録",   class: "btn btn-primary js-event-create-btn" %>
+      <%= f.submit "送信", class: 'btn btn-primary btn-lg' %>
+    </div>
   <% end %>
-</div>

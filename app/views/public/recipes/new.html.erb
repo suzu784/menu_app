@@ -5,7 +5,7 @@
         <div class="recipe-area">
           <div class="recipe-area_form">
             <%= f.label :画像 %><br>
-            <%= f.file_field :recipe_image %><br>
+            <%= f.file_field :recipe_images, multiple: true %><br>
             <%= f.label :材料 %><br>
             <%= f.text_field :material, class: "form-control-md" %><br>
             <%= f.label :カテゴリ %><br>
