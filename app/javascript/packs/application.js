@@ -10,7 +10,7 @@ import "channels"
 
 import jQuery from "jquery"
 import raty from 'raty-js'
-// import "script"
+import "./calendar/event.js"
 import "popper.js";
 import "bootstrap";
 import "../stylesheets/application"
@@ -22,3 +22,5 @@ ActiveStorage.start()
 
 global.$ = jQuery;
 window.$ = jQuery;
+
+

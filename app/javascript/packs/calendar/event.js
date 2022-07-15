@@ -55,8 +55,7 @@ document.addEventListener('turbolinks:load', function() {
                 $('#event_end_2i').val(month);
                 $('#event_end_3i').val(day);
 
-
-                $('#modal').fadeIn();
+                $('.modal-body').fadeIn();
 
             }).fail(function (result) {
                 // 失敗処理

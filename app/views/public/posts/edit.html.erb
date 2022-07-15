@@ -21,13 +21,13 @@
                     starOff: '<%= asset_path('star-off.png') %>',
                     starOn : '<%= asset_path('star-on.png') %>',
                     starHalf: '<%= asset_path('star-half.png') %>',
-                    score: <%= @post.star %>,
+                    score: '<%= @post.star %>',
                     scoreName: 'post[star]',
                     half: true,
                   });
                 })
               </script>
-        
+
       <h5>感想</h5>
         <%= f.text_field :opinion %>
       <h5>参考にした動画</h5>

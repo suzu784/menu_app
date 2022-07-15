@@ -7,7 +7,7 @@ class Public::PostCommentsController < ApplicationController
     comment.post_id = @post.id
     if comment.save
       @post.create_notification_comment!(current_customer, comment.id)
-      render :index
+    end
   end
 
   def destroy

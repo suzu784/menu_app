@@ -1,4 +1,6 @@
 class Event < ApplicationRecord
+  has_many :posts, dependent: :destroy
+
   default_scope -> { order(start_time: :asc) }
 
   validate :start_end_check

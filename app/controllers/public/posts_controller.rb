@@ -17,8 +17,8 @@ class Public::PostsController < ApplicationController
     if @post.save
       redirect_to posts_path
     else
+      # flash[notice] = "難易度を入力してください"
       render :new
-      flash[notice] = "難易度を入力してください"
     end
   end
 

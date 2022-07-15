@@ -1,47 +1,49 @@
 <div class="text-center">
-  <h1 class="mt-5 mb-4"><%= @post.cook_name %>のレシピ
-  </h1>
+  <h1 class="mt-5 mb-4"><%= @post.cook_name %></h1>
     <p><%= link_to "レシピ作成はこちらから", new_post_recipe_path(@post) %></p>
 </div>
-<div class="row mt-5">
-  <div class="col-lg-3 offset-lg-3">
-    <div class="mb-4">
-      <h5>難易度</h5>
-      <span><%= render 'static_star', post: @post %></span>
-    </div>
-    <div class="mb-4">
-      <h4>感想</h4>
-      <p><%= @post.opinion %></p>
-    </div>
-      <% if @post.customer == current_customer %>
-        <%= link_to "編集", edit_post_path(@post), class: 'btn btn-success' %>
-        <%= link_to "削除", post_path(@post), method: :delete, remote: true, class: 'btn btn-danger' %><br>
-      <% end %>
-
-    <h4>いいね</h4>
-      <div class="favorite-btn<%= @post.id %>">
-        <%= render 'public/favorites/btn', post: @post %>
+  <div class="container">
+    <div class="row mt-5">
+      <div class="content_post col-lg-4 offset-md-1">
+        <div class="mb-4">
+          <h4>難易度</h4>
+          <%= render 'static_star', post: @post %>
+        </div>
+        <div class="mb-4">
+          <h4>感想</h4>
+          <p><%= @post.opinion %></p>
+        </div>
+          <% if @post.customer == current_customer %>
+            <%= link_to "編集", edit_post_path(@post), class: 'btn btn-success' %>
+            <%= link_to "削除", post_path(@post), method: :delete, remote: true, class: 'btn btn-danger' %><br>
+          <% end %>
+        <div class="mb-4">
+          <h4>いいね</h4>
+          <div class="favorite-btn<%= @post.id %>">
+            <%= render 'public/favorites/btn', post: @post %>
+          </div>
+        </div>
+        <div class="mb-4">
+        <h4>動画URL</h4>
+          <div class="text-break">
+            <%= raw Rinku.auto_link(h(@post.media_url)) %>
+          </div>
+        </div>
       </div>
-
-    <h4>動画URL</h4>
-      <div class="text-break">
-        <%= raw Rinku.auto_link(h(@post.media_url)) %>
+      <div class="content_post col-lg-5 ">
+        <%= image_tag @post.get_post_image(400, 400) %>
       </div>
-
-    <div class="post-comments-counter">
-      <%= render 'public/post_comments/counter', post: @post %>
-    </div>
-    <div class="post-comments-index">
-      <%= render 'public/post_comments/index', post: @post %>
-    </div>
-    <div>
-      <%= render 'public/post_comments/form', post: @post, post_comment: @post_comment %>
+      <div class="col-md-2 d-none d-md-block">
+        <h4>コメント欄</h4>
+        <div class="post-comments-counter">
+          <%= render 'public/post_comments/counter', post: @post %>
+        </div>
+        <div class="post-comments-index">
+          <%= render 'public/post_comments/index', post: @post %>
+        </div>
+        <div>
+          <%= render 'public/post_comments/form', post: @post, post_comment: @post_comment %>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="col-lg-2 ">
-    <%= image_tag @post.get_post_image(400, 400) %>
-  </div>
-</div>
-
-
-

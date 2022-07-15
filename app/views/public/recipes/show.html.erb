@@ -1,21 +1,23 @@
-<div class="text-center">
-  <h1>レシピ</h1>
-    <div class="row">
-      <div class="col-md-6">
-        <%= image_tag @recipe.get_recipe_image(400, 400) %>
-      </div>
-      <div class="col-md-6">
-        <p>料理名</p>
-          <%= @recipe.recipe_title %>
-        <p>作り方</p>
-          <% @tags.each do |tag| %>
-            <%= tag.content %>
-          <% end %>
-        <p>必要な材料</p>
-          <%= @recipe.material %>
-        <p>カテゴリ</p>
-          <%= @recipe.category_i18n %>
-      </div>
-      </div>
+<h1 class="text-center mt-3 pt-3"><%= @recipe.post.cook_name %>の作り方</h1>
+  <div class="row mt-3 pt-3">
+    <div class="col-md-3 offset-md-3">
+      <h4>工程</h4>
+        <% @tags.each do |tag| %>
+        <ol>
+          <li><%= @recipe.content %></li>
+          <li><%= tag.content %></li>
+        </ol>
+        <% end %>
+      <h4>必要な材料</h4>
+        <%= @recipe.material %>
+      <h4>カテゴリ</h4>
+        <%= @recipe.category_i18n %>
     </div>
-</div>
+    <div class="col-md-6">
+      <% if @recipe.recipe_images.attached? %>
+        <% @recipe.recipe_images.each do |image| %>
+          <%= image_tag image, width:"350px", height:"350px%" %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>

@@ -1,6 +1,26 @@
-<div class="text-center">
-  <h1>いいね一覧</h1>
+<h1 class="text-center mt-3 pt-3">いいねされた投稿</h1>
+<% if @favorite_posts.count > 0 %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>料理名</th>
+        <th>作った日</th>
+      </tr>
+    </thead>
+    <tbody>
     <% @favorite_posts.each do |post|%>
-      <%=post.cook_name %>
+      <tr>
+        <td><%= image_tag post.get_post_image(100, 100) %></td>
+        <td><%= post.created_at.strftime("%Y/%m/%d") %></td>
+        <td><%= link_to post.cook_name, post_path(post) %></td>
+      </tr>
+    </tbody>
     <% end %>
-</div>
+  </table>
+  <div class="mt-4 mb-4 justify-content-center d-flex">
+    <%= paginate @favorite_posts %>
+  </div>
+<% else %>
+  <h2 class="text-center">いいねされた記事はまだありません</h2>
+<% end %>
