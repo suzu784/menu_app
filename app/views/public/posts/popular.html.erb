@@ -1,5 +1,5 @@
-<h1 class="w-50 mt-3 pt-3 offset-sm-3">いいね一覧</h1>
-<% if @favorite_posts.count > 0 %>
+<h1 class="w-50 mt-3 pt-3 offset-sm-3">人気投稿</h1>
+<% if @popular_posts.count > 0 %>
   <table class="table">
     <thead>
       <tr>
@@ -10,7 +10,7 @@
       </tr>
     </thead>
     <tbody>
-    <% @favorite_posts.each do |post|%>
+    <% @popular_posts.each do |post|%>
       <tr>
         <td><%= image_tag post.get_post_image(100, 100) %></td>
         <td><%= post.created_at.strftime("%Y/%m/%d") %></td>
@@ -20,9 +20,6 @@
     </tbody>
     <% end %>
   </table>
-  <div class="mt-4 mb-4 justify-content-center d-flex">
-    <%= paginate @favorite_posts %>
-  </div>
 <% else %>
   <h2 class="text-center">いいねされた記事はまだありません</h2>
 <% end %>

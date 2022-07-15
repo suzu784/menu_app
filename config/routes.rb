@@ -17,10 +17,13 @@ Rails.application.routes.draw do
      get :timeline, to: 'homes#timeline', as: 'timeline'
      resources :events
      resources :posts do
+       collection do
+         get :popular
+       end
        resource :favorites, only: [:create, :destroy]
        resources :post_comments, only: [:create, :destroy]
        resources :recipes, except: [:destroy] do
-        collection do
+       collection do
           get :confirm
         end
       end
