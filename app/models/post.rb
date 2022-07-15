@@ -4,6 +4,7 @@ class Post < ApplicationRecord
   has_many :post_comments, dependent: :destroy
   has_many :recipes, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :favorited_customers, through: :favorites, source: :customer
   has_many :notifications, dependent: :destroy
 
   with_options presence: true do

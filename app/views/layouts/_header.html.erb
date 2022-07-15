@@ -14,25 +14,26 @@
         <% if unchecked_notifications.any? %>
           <i class="fa fa-circle" style="color: gold;"></i>
         <% end %>
-        <li><%= link_to "通知一覧", notifications_path, class: 'btn btn-white font-weight-bold' %></li>
-        <li><%= link_to "カレンダー", events_path, class: 'btn btn-white font-weight-bold' %></li>
-        <li><%= link_to "あなたにおすすめの料理動画", youtube_path, class: 'btn btn-white font-weight-bold' %></li>
-        <li><%= link_to "会員一覧", customers_path, class: 'btn btn-white font-weight-bold' %></li>
-        <li><%= link_to "タイムライン", timeline_path, class: 'btn btn-white font-weight-bold' %></li>
-        <li><%= link_to "新規投稿", new_post_path, class: 'btn btn-white ml-3 font-weight-bold' %></li>
-        <li><%= link_to "投稿一覧", posts_path, class: 'btn btn-white ml-3 font-weight-bold' %></li>
-        <li><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'btn btn-white ml-3 font-weight-bold' %></li>
+        <li class="nav-item"><%= link_to "通知一覧", notifications_path, class: 'btn btn-white font-weight-bold' %></li>
+        <li class="nav-item"><%= link_to "カレンダー", events_path, class: 'btn btn-white font-weight-bold' %></li>
+        <li class="nav-item"><%= link_to "あなたにおすすめの料理動画", youtube_path, class: 'btn btn-white font-weight-bold' %></li>
+        <li class="nav-item"><%= link_to "会員一覧", customers_path, class: 'btn btn-white font-weight-bold' %></li>
+        <li class="nav-item"><%= link_to "タイムライン", timeline_path, class: 'btn btn-white font-weight-bold' %></li>
+        <li class="nav-item"><%= link_to "新規投稿", new_post_path, class: 'btn btn-white ml-3 font-weight-bold' %></li>
+        <li class="nav-item"><%= link_to "人気投稿", popular_posts_path, class: 'btn btn-white ml-3 font-weight-bold' %></li>
+        <li class="nav-item"><%= link_to "投稿一覧", posts_path, class: 'btn btn-white ml-3 font-weight-bold' %></li>
+        <li class="nav-item"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'btn btn-white ml-3 font-weight-bold' %></li>
       <!--管理者ログイン時-->
       <% elsif admin_signed_in? %>
-        <li><%= link_to "会員一覧", admin_customers_path, class: 'btn btn-white ml-3 font-weight-bold' %></li>
-        <li><%= link_to "投稿一覧", admin_posts_path, class: 'btn btn-white ml-3 font-weight-bold' %></li>
-        <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'btn btn-white ml-3 font-weight-bold' %></li>
+        <li class="nav-item"><%= link_to "会員一覧", admin_customers_path, class: 'btn btn-white ml-3 font-weight-bold' %></li>
+        <li class="nav-item"><%= link_to "投稿一覧", admin_posts_path, class: 'btn btn-white ml-3 font-weight-bold' %></li>
+        <li class="nav-item"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'btn btn-white ml-3 font-weight-bold' %></li>
       <!--非ログイン時-->
       <% else %>
-        <li><%= link_to "トップメニュー", root_path, class: 'btn btn-white ml-3 font-weight-bold' %></li>
-        <li><%= link_to "アプリについて", about_path, class: 'btn btn-white ml-3 font-weight-bold' %></li>
-        <li><%= link_to "新規登録", new_customer_registration_path, class: 'btn btn-white ml-3 font-weight-bold' %></li>
-        <li><%= link_to "ログイン", new_customer_session_path, class: 'btn btn-white ml-3 font-weight-bold' %></li>
+        <li class="nav-item"><%= link_to "トップメニュー", root_path, class: 'btn btn-white ml-3 font-weight-bold' %></li>
+        <li class="nav-item"><%= link_to "アプリについて", about_path, class: 'btn btn-white ml-3 font-weight-bold' %></li>
+        <li class="nav-item"><%= link_to "新規登録", new_customer_registration_path, class: 'btn btn-white ml-3 font-weight-bold' %></li>
+        <li class="nav-item"><%= link_to "ログイン", new_customer_session_path, class: 'btn btn-white ml-3 font-weight-bold' %></li>
       <% end %>
      </ul>
    </div>

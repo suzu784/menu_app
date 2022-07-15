@@ -1,5 +1,5 @@
 <div class="text-center">
-  <h1>作り方</h1>
+  <h1 class="w-50 mt-3 pt-3 offset-sm-3">作り方</h1>
     <%= link_to "下書きはこちら", confirm_post_recipes_path(@post) %>
       <%= form_with model: [@post, @recipe], remote: true do |f| %>
         <div class="recipe-area">

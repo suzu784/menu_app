@@ -26,6 +26,8 @@ class Public::CustomersController < ApplicationController
     favorites= Favorite.where(customer_id: params[:id]).pluck(:post_id)
     @favorite_posts = Post.where(id: favorites).page(params[:page])
   end
+  
+  
 
   def followings
     customer = Customer.find(params[:customer_id])

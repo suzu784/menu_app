@@ -17,7 +17,7 @@ class Public::PostsController < ApplicationController
     if @post.save
       redirect_to posts_path
     else
-      # flash[notice] = "難易度を入力してください"
+      flash[notice] = "難易度を入力してください"
       render :new
     end
   end
@@ -42,6 +42,10 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.destroy
     redirect_to posts_path
+  end
+  
+  def popular
+    @popular_posts = Post.includes(:favorited_customers).sort {|a,b| b.favorited_customers.size <=> a.favorited_customers.size}    
   end
 
   private
