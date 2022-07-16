@@ -43,9 +43,9 @@ class Public::PostsController < ApplicationController
     @post.destroy
     redirect_to posts_path
   end
-  
+
   def popular
-    @popular_posts = Post.includes(:favorited_customers).sort {|a,b| b.favorited_customers.size <=> a.favorited_customers.size}    
+    @popular_posts = Post.includes(:favorited_customers).sort {|a,b| b.favorited_customers.size <=> a.favorited_customers.size}
   end
 
   private

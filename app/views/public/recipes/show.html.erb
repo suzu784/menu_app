@@ -1,23 +1,57 @@
-<h1 class="text-center mt-3 pt-3"><%= @recipe.post.cook_name %>の作り方</h1>
-  <div class="row mt-3 pt-3">
-    <div class="col-md-3 offset-md-3">
-      <h4>工程</h4>
-        <% @tags.each do |tag| %>
-        <ol>
-          <li><%= @recipe.content %></li>
-          <li><%= tag.content %></li>
-        </ol>
+<h1 class="w-50 mt-3 pt-3 offset-sm-3"><%= @recipe.post.cook_name %>の作り方</h1>
+  <p><%= link_to "レシピ編集はこちら", edit_post_recipe_path(@recipe) %></p>
+    <div class="row mt-3 pt-3">
+      <div class="col-md-3 offset-md-3">
+        <div class="container mt-3">
+          <div class="border rounded" style="height:300px">
+            <h4>工程1</h4>
+            <%= @recipe.content %>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="container mt-3">
+          <div class="border rounded" style="height:300px">
+            <h4>工程2</h4>
+            <% @tags.each do |tag| %>
+              <%= tag.content[0] %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <h4>必要な材料</h4>
+          <%= @recipe.material %>
+        <h4>カテゴリ</h4>
+          <%= @recipe.category_i18n %>
+      </div>
+      <div class="col-md-1">
+        <% if @recipe.recipe_images.attached? %>
+          <% @recipe.recipe_images.each do |image| %>
+            <%= image_tag image, width:"100px", height:"100px%" %>
+          <% end %>
         <% end %>
-      <h4>必要な材料</h4>
-        <%= @recipe.material %>
-      <h4>カテゴリ</h4>
-        <%= @recipe.category_i18n %>
+      </div>
     </div>
-    <div class="col-md-6">
-      <% if @recipe.recipe_images.attached? %>
-        <% @recipe.recipe_images.each do |image| %>
-          <%= image_tag image, width:"350px", height:"350px%" %>
-        <% end %>
-      <% end %>
+    <div class="row mt-3 pt-3">
+      <div class="col-md-3 offset-md-3">
+        <div class="container mt-3">
+          <div class="border rounded" style="height:300px">
+            <h4>工程3</h4>
+            <% @tags.each do |tag| %>
+              <%= tag.content[1] %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="container mt-3">
+          <div class="border rounded" style="height:300px">
+            <h4>工程4</h4>
+            <% @tags.each do |tag| %>
+              <%= tag.content[2] %>
+            <% end %>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>

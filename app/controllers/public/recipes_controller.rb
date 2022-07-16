@@ -1,8 +1,9 @@
 class Public::RecipesController < ApplicationController
   before_action :authenticate_customer!
 
-  def new
+  def index
     @post = Post.find(params[:post_id])
+    @recipes = Recipe.all
     @recipe = Recipe.new
     @tag = @recipe.tags.new
   end
@@ -16,12 +17,8 @@ class Public::RecipesController < ApplicationController
     @post = Post.find(params[:post_id])
     @recipe = current_customer.recipes.new(recipe_params)
     @recipe.post_id = @post.id
-    if @recipe.save
-      redirect_to post_recipe_path(@post, @recipe)
-    else
-      flash[notice] = "工程を入力してください"
-      render :new
-    end
+    @recipe.save
+    @recipes = Recipe.all
   end
 
   def edit

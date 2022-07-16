@@ -1,6 +1,9 @@
 <div class="text-center">
-  <h1 class="mt-5 mb-4"><%= @post.cook_name %></h1>
-    <p><%= link_to "レシピ作成はこちらから", new_post_recipe_path(@post) %></p>
+  <h1 class="w-50 mt-3 pt-3 offset-sm-3"><%= @post.cook_name %></h1>
+    <!--レシピが新規作成されていなければ表示するように条件分岐-->
+    <p><%= link_to "レシピ作成はこちら", post_recipes_path(@post) %></p>
+    <!--レシピの詳細があれば表示する条件分岐-->
+    <p><%= link_to "レシピの詳細はこちら", post_recipe_path(@post) %></p>
 </div>
   <div class="container">
     <div class="row mt-5">
