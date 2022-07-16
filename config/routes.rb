@@ -22,7 +22,7 @@ Rails.application.routes.draw do
        end
        resource :favorites, only: [:create, :destroy]
        resources :post_comments, only: [:create, :destroy]
-       resources :recipes, except: [:destroy] do
+       resources :recipes, except: [:new, :destroy] do
        collection do
           get :confirm
         end

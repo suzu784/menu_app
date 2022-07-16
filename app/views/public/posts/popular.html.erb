@@ -4,17 +4,17 @@
     <thead>
       <tr>
         <th></th>
-        <th>作った日</th>
         <th>料理名</th>
+        <th>作った日</th>
         <th>いいね数</th>
       </tr>
     </thead>
     <tbody>
     <% @popular_posts.each do |post|%>
       <tr>
-        <td><%= image_tag post.get_post_image(100, 100) %></td>
+        <td><%= image_tag post.get_post_image(200, 200) %></td>
+        <td><%= link_to post.cook_name, post_path(post), class: "text-dark font-weight-bold" %></td>
         <td><%= post.created_at.strftime("%Y/%m/%d") %></td>
-        <td><%= link_to post.cook_name, post_path(post) %></td>
         <td><%= post.favorites.count %></td>
       </tr>
     </tbody>

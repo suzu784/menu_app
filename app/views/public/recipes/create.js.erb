@@ -1,0 +1,5 @@
+$("select").val("");
+$("textarea").val("");
+$("input").val("");
+$("#exampleModal").modal("hide");
+$(".recipes").html("<%= j(render 'recipes', recipes: @recipes) %>");
