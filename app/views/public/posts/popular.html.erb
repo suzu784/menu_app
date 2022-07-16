@@ -1,25 +1,32 @@
-<h1 class="w-50 mt-3 pt-3 offset-sm-3">人気投稿</h1>
-<% if @popular_posts.count > 0 %>
-  <table class="table">
-    <thead>
-      <tr>
-        <th></th>
-        <th>料理名</th>
-        <th>作った日</th>
-        <th>いいね数</th>
-      </tr>
-    </thead>
-    <tbody>
-    <% @popular_posts.each do |post|%>
-      <tr>
-        <td><%= image_tag post.get_post_image(200, 200) %></td>
-        <td><%= link_to post.cook_name, post_path(post), class: "text-dark font-weight-bold" %></td>
-        <td><%= post.created_at.strftime("%Y/%m/%d") %></td>
-        <td><%= post.favorites.count %></td>
-      </tr>
-    </tbody>
-    <% end %>
-  </table>
-<% else %>
-  <h2 class="text-center">いいねされた記事はまだありません</h2>
-<% end %>
+<div class="text-center">
+  <h1 class="w-50 mt-3 pt-3 offset-sm-3">人気投稿</h1>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+        <% if @popular_posts.count > 0 %>
+          <table class="table">
+            <tbody>
+            <% @popular_posts.each do |post|%>
+              <tr>
+                <th class="align-middle">料理名</th>
+                <td class="align-middle"><%= link_to post.cook_name, post_path(post), class: "text-dark font-weight-bold" %></td><br>
+                <td><%= image_tag post.get_post_image(200, 200) %></td>
+              </tr>
+              <tr>
+                <th>作った日</th>
+                <td class="align-middle"><%= post.created_at.strftime("%Y/%m/%d") %></td>
+              </tr>
+              <tr>
+                <th>いいね数</th>
+                <td class="align-middle"><%= post.favorites.count %></td>
+              </tr>
+            </tbody>
+            <% end %>
+          </table>
+        <% else %>
+          <h2 class="text-center">いいねされた記事はまだありません</h2>
+        <% end %>
+        </div>
+      </div>
+    </div>
+</div>

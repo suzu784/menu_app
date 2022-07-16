@@ -6,29 +6,32 @@
   		   <%= f.submit "検索", class: 'btn btn-warning' %>
   	   <% end %>
      </p>
-    <table class="table">
-      <thead>
-        <tr>
-          <th></th>
-          <th>料理名</th>
-          <th>難易度</th>
-          <th>作った日</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @posts_all.each do |post| %>
-          <tr>
-            <td><%= image_tag post.get_post_image(200, 200) %></td>
-            <td><%= link_to post.cook_name, post_path(post) %></td>
-            <td>
-              <%= render 'static_star', post: post %>
-            </td>
-            <td><%= post.created_at.strftime('%Y/%m/%d') %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-    <div class="mt-4 mb-4 justify-content-center d-flex">
-      <%= paginate @posts_all %>
-    </div>
+     <div class="container">
+       <div class="row">
+         <div class="col">
+          <table class="table">
+            <tbody>
+              <% @posts_all.each do |post| %>
+                <tr>
+                  <th class="align-middle">料理名</th>
+                  <td class="align-middle"><%= link_to post.cook_name, post_path(post) %></td>
+                  <td><%= image_tag post.get_post_image(200, 200) %></td>
+                </tr>
+                <tr>
+                  <th>難易度</th>
+                  <td><%= render 'static_star', post: post %></td>
+                </tr>
+                <tr>
+                  <th>作った日</th>
+                  <td class="align-middle"><%= post.created_at.strftime('%Y/%m/%d') %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+         </div>
+       </div>
+       <div class="mt-4 mb-4 justify-content-center d-flex">
+         <%= paginate @posts_all %>
+       </div>
+     </div>
 </div>
