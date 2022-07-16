@@ -1,14 +1,26 @@
 <div class="text-center">
-  <h2>献立共有アプリへようこそ</h2>
-    <div class="btn-wrapper col-10 mx-auto">
-      <div class="row">
-        <%= link_to 'ゲストログイン（閲覧用）', guest_sign_in_path, class: "btn btn-secondary btn-sm btn-block mb-3 sign_in", method: :post %>
+  <h1 class="w-50 mt-3 pt-3 offset-sm-3" style="font-family: cursive;">~ Welcome to Menu Share App ~</h1>
+    <div class="row">
+      <div class="col-md-4  mt-5 pt-3">
+        <div class="container mt-3">
+          <div class="border rounded" style="height:450px">
+            <%= link_to 'ゲストログイン（閲覧用）', guest_sign_in_path, class: "btn btn-secondary w-75", method: :post %>
+          </div>
+        </div>
       </div>
-      <div class="row">
-        <%= link_to 'ログイン', new_customer_session_path, class: "btn btn-info btn-sm btn-block mb-3 sign_in" %>
+      <div class="col-md-4  mt-5 pt-3">
+        <div class="container mt-3">
+          <div class="border rounded" style="height:450px">
+            <%= link_to 'ログイン', new_customer_session_path, class: "btn btn-info w-75" %>
+          </div>
+        </div>
       </div>
-      <div class="row">
-        <%= link_to '新規登録', new_customer_registration_path, class: "btn btn-success btn-sm btn-block sign_up" %>
+      <div class="col-md-4  mt-5 pt-3">
+        <div class="container mt-3">
+          <div class="border rounded" style="height:450px">
+            <%= link_to '新規登録', new_customer_registration_path, class: "btn btn-success w-75" %>
+          </div>
+        </div>
       </div>
     </div>
 </div>

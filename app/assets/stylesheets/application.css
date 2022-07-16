@@ -25,5 +25,9 @@ h1 {
 }
 
 li.nav-item {
-  font-family: fantasy;
+  font-family: cursive;
+}
+
+footer {
+  font-family: cursive;
 }
