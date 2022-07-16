@@ -9,7 +9,7 @@ class Public::RecipesController < ApplicationController
   end
 
   def show
-    @recipe = Recipe.find(params[:id])
+    @recipe = Recipe.find_by(params[:id])
     @tags = Tag.where(recipe_id: @recipe.id)
   end
 

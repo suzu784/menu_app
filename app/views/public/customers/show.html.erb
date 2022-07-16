@@ -3,24 +3,31 @@
     <div class="col-md-3 offset-md-3 mt-5">
       <%= image_tag @customer.get_customer_image(400, 400) %>
     </div>
-    <div class="col-md-5 offset-md-1 mt-5">
-      <div class="mt-5">
-        名前：<%= @customer.first_name + @customer.last_name %>
-      </div>
-      <div class="mt-5">
-        得意料理:<%= @customer.special_dish %>
-      </div>
+    <div class="col-md-6 mt-5">
+
+      <table class="table w-50">
+        <tbody>
+          <tr>
+            <th>名前</th>
+            <td><%= @customer.first_name + @customer.last_name %></td>
+          </tr>
+          <tr>
+            <th>得意料理</th>
+            <td><%= @customer.special_dish %></td>
+          </tr>
+        </tbody>
+      </table>
       <div class="relationship-btn_<%= @customer.id %>">
         <%= render 'public/relationships/btn', customer: @customer %>
       </div>
-      <div class="mt-5">
-        <%= link_to "いいねされた投稿", favorites_customer_path(@customer) %></p>
+      <div class="mt-5 mb-5">
+        <%= link_to "いいね一覧", favorites_customer_path(@customer) %>
       </div>
-      <div class="mb-2">
-        <%= link_to "フォロー一覧",  customer_followings_path(@customer) %></p>
+      <div class="mb-5">
+        <%= link_to "フォロー一覧",  customer_followings_path(@customer) %>
       </div>
-      <div class="mb-2">
-        <%= link_to "フォロワー一覧",  customer_followers_path(@customer) %></p>
+      <div class="mb-5">
+        <%= link_to "フォロワー一覧",  customer_followers_path(@customer) %>
       </div>
     </div>
 </div>

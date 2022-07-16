@@ -9,6 +9,7 @@
     <table class="table">
       <thead>
         <tr>
+          <th></th>
           <th>料理名</th>
           <th>難易度</th>
           <th>作った日</th>
@@ -17,6 +18,7 @@
       <tbody>
         <% @posts_all.each do |post| %>
           <tr>
+            <td><%= image_tag post.get_post_image(200, 200) %></td>
             <td><%= link_to post.cook_name, post_path(post) %></td>
             <td>
               <%= render 'static_star', post: post %>
