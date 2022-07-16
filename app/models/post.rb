@@ -32,7 +32,7 @@ class Post < ApplicationRecord
     notification = current_customer.active_notifications.new(
       post_id: id,
       visited_id: customer_id,
-      action: "like"
+      action: "favorite"
     )
     notification.save if notification.valid?
   end
