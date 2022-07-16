@@ -11,11 +11,9 @@
         <% if customer.last_name != "guestuser" %>
         <tbody>
           <tr>
-            <th>名前</th>
-              <td><%= link_to customer.full_name, customer_path(customer) %></td>
-            <th>得意料理</th>
-            <td><%= customer.special_dish %></td>
-            <td><%= image_tag customer.get_customer_image(100, 100) %></td>
+            <td><%= image_tag customer.get_customer_image(200, 200) %></td>
+            <td><%= link_to customer.full_name, customer_path(customer), class: 'text-dark' %></td>
+            <td><strong>得意料理</strong>:<%= customer.special_dish %></td>
             <td><%= render 'public/chats/btn', customer: customer %></td>
           </tr>
         </tbody>
