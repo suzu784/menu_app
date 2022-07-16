@@ -5,15 +5,15 @@ module Public::NotificationsHelper
     @comment = nil
     your_post = link_to 'あなたの投稿', customers_path(notification), style:"font-weight: bold;"
     @visiter_comment = notification.post_comment_id
-    #notification.actionがfollowかlikeかcommentか
+    #notification.actionがfollowかfavoriteかcommentか
     case notification.action
       when "follow" then
         tag.a(notification.visiter.full_name, href:customer_path(@visiter), style:"font-weight: bold;")+"があなたをフォローしました"
-      when "like" then
-        tag.a(notification.visiter.full_name, href:customer_path(@visiter), style:"font-weight: bold;")+"が"+tag.a('あなたの投稿', href:customers_post_path(notification.post_id), style:"font-weight: bold;")+"にいいねしました"
+      when "favorite" then
+        tag.a(notification.visiter.full_name, href:customer_path(@visiter), style:"font-weight: bold;")+"が"+tag.a('あなたの投稿', href:post_path(notification.post_id), style:"font-weight: bold;")+"にいいねしました"
       when "comment" then
-      	@comment = PostComment.find_by(id: @visiter_comment)&.content
-      	tag.a(@visiter.full_name, href:customer_path(@visiter), style:"font-weight: bold;")+"が"+tag.a('あなたの投稿', href:customers_post_path(notification.post_id), style:"font-weight: bold;")+"にコメントしました"
+      	@comment = PostComment.find_by(id: @visiter_comment) &.content
+      	tag.a(@visiter.full_name, href:customer_path(@visiter), style:"font-weight: bold;")+"が"+tag.a('あなたの投稿', href:post_path(notification.post_id), style:"font-weight: bold;")+"にコメントしました"
     end
   end
 
