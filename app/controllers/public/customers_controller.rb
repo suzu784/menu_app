@@ -5,7 +5,7 @@ class Public::CustomersController < ApplicationController
   def index
     @search = Customer.ransack(params[:q])
     @customers = @search.result
-    @customers_all = Customer.page(params[:page])
+    @customers_all = Customer.with_attached_customer_image.page(params[:page]).per(3)
   end
 
   def show
@@ -26,8 +26,6 @@ class Public::CustomersController < ApplicationController
     favorites= Favorite.where(customer_id: params[:id]).pluck(:post_id)
     @favorite_posts = Post.where(id: favorites).page(params[:page])
   end
-  
-  
 
   def followings
     customer = Customer.find(params[:customer_id])

@@ -30,7 +30,7 @@ class Customer < ApplicationRecord
       file_path = Rails.root.join('app/assets/images/no-image.jpeg')
       customer_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
-    customer_image.variant(resize_to_limit:[width, height]).processed
+    customer_image.variant(resize_to_limit: [width, height]).processed
   end
 
   def active_for_authentication?
@@ -62,7 +62,7 @@ class Customer < ApplicationRecord
   end
 
   def self.guest
-  find_or_create_by!(last_name: 'guestuser' ,email: 'guest@example.com') do |customer|
+  find_or_create_by!(last_name: 'guestuser', email: 'guest@example.com') do |customer|
     customer.password = SecureRandom.urlsafe_base64
     customer.last_name = "guestuser"
     end

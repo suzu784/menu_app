@@ -1,33 +1,35 @@
-<div class="row">
-  <h1 class="w-50 mt-4 pt-4 offset-sm-3">会員詳細ページ</h1>
-    <div class="col-md-3 offset-md-3 mt-5">
-      <%= image_tag @customer.get_customer_image(400, 400) %>
-    </div>
-    <div class="col-md-6 mt-5">
-
-      <table class="table w-50">
-        <tbody>
-          <tr>
-            <th>名前</th>
-            <td><%= @customer.first_name + @customer.last_name %></td>
-          </tr>
-          <tr>
-            <th>得意料理</th>
-            <td><%= @customer.special_dish %></td>
-          </tr>
-        </tbody>
-      </table>
-      <div class="relationship-btn_<%= @customer.id %>">
-        <%= render 'public/relationships/btn', customer: @customer %>
-      </div>
-      <div class="mt-5 mb-5">
-        <%= link_to "いいね一覧", favorites_customer_path(@customer) %>
-      </div>
-      <div class="mb-5">
-        <%= link_to "フォロー一覧",  customer_followings_path(@customer) %>
-      </div>
-      <div class="mb-5">
-        <%= link_to "フォロワー一覧",  customer_followers_path(@customer) %>
-      </div>
+<div class="text-center">
+  <h1 class="w-50 mt-4 pt-4 offset-sm-3"><strong>会員詳細ページ</strong></h1>
+    <div class="row">
+        <div class="col-md-3 offset-md-3 mt-5">
+          <%= image_tag @customer.get_customer_image(400, 400) %>
+        </div>
+        <div class="col-md-6 mt-5">
+          <table class="table w-50">
+            <tbody>
+              <tr>
+                <th>名前</th>
+                <td><%= @customer.first_name + @customer.last_name %></td>
+              </tr>
+              <tr>
+                <th>得意料理</th>
+                <td><%= @customer.special_dish %></td>
+              </tr>
+              <tr>
+                <th>フォロー</th>
+                <td>
+                  <div class="relationship-btn_<%= @customer.id %>">
+                    <%= render 'public/relationships/btn', customer: @customer %>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><%= link_to "いいね一覧", favorites_customer_path(@customer) %></td>
+                <td><%= link_to "フォロー一覧",  customer_followings_path(@customer) %></td>
+                <td><%= link_to "フォロワー一覧",  customer_followers_path(@customer) %></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
     </div>
 </div>
