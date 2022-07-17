@@ -57,6 +57,10 @@ Rails.application.routes.draw do
       patch :withdraw, to: 'customers#withdraw'
       get :confirm, to: 'customers#confirm'
     end
-     resources :posts, only: [:index, :show, :destroy]
+     resources :posts, only: [:index, :show, :destroy] do
+       collection do
+         get :analysis, to: 'posts#analysis'
+       end
+     end
   end
 end

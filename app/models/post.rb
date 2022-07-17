@@ -7,6 +7,20 @@ class Post < ApplicationRecord
   has_many :favorited_customers, through: :favorites, source: :customer
   has_many :notifications, dependent: :destroy
 
+  # 今週の投稿数の合計を表示させる
+  scope :created_day_ago, -> (number) { where(created_at: number.day.ago.all_day) }
+  scope :created_today, -> { where(created_at: Time.zone.now.all_day) } # 今日
+  scope :created_yesterday, -> { created_day_ago(1) } # 前日
+  scope :created_this_week, -> { where(created_at: 6.day.ago.beginning_of_day..1.week.ago.end_of_day) } # 今週
+  scope :created_last_week, -> { where(created_at: 2.week.ago.beginning_of_day..1.week.ago.end_of_day) } # 先週
+  
+  # 1日毎の投稿数の合計を表示させる
+  scope :created_2day_ago, -> { where(created_at: 2.day.ago.all_day) } # 2日前
+  scope :created_3day_ago, -> { where(created_at: 3.day.ago.all_day) } # 3日前
+  scope :created_4day_ago, -> { where(created_at: 4.day.ago.all_day) } # 4日前
+  scope :created_5day_ago, -> { where(created_at: 5.day.ago.all_day) } # 5日前
+  scope :created_6day_ago, -> { where(created_at: 6.day.ago.all_day) } #日前
+
   with_options presence: true do
     validates :star
     validates :post_image
