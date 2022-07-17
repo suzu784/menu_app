@@ -8,6 +8,7 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
+import Chart from 'chart.js/auto'
 import jQuery from "jquery"
 import raty from 'raty-js'
 import "./calendar/event.js"
@@ -22,5 +23,6 @@ ActiveStorage.start()
 
 global.$ = jQuery;
 window.$ = jQuery;
+global.Chart = Chart;
 
 

@@ -1,5 +1,5 @@
 <div class="text-center">
-  <h1 class="mt-5">会員一覧ページ</h1>
+  <h1 class="w-50 mt-3 pt-3 offset-sm-3"><strong>会員一覧ページ</strong></h1>
      <p>
        <%= search_form_for(@search, url:customers_path) do |f| %>
   		   <%= f.search_field :last_name_cont, placeholder:"キーワードを入力してください", size: "50" %>

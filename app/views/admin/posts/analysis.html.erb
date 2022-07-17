@@ -1,0 +1,129 @@
+<div class="text-center">
+  <h1 class="w-50 mt-3 pt-3 offset-sm-3"><strong>投稿数の前日比・前週比</strong></h1>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="table_width">
+            <table class='table table-bordered'>
+              <thead>
+                <tr>
+                  <th>今日の投稿数</th>
+                  <th>前日の投稿数</th>
+                  <th>前日比</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><%=  @today_posts.count %></td>
+                  <td><%= @yesterday_posts.count %></td>
+                  <td>
+                    <% if @yesterday_posts.count == 0 %>
+                      前日の投稿が0のため計算できません
+                    <% else %>
+                      <% @the_day_before = @today_posts.count / @yesterday_posts.count.to_f  %>
+                      <%= (@the_day_before * 100).round %>%
+                    <% end %>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="table_width">
+            <table class='table table-bordered'>
+              <thead>
+                <tr>
+                  <th>今週の投稿数</th>
+                  <th>前週の投稿数</th>
+                  <th>前週比</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><%= @this_week_posts.count %></td>
+                  <td><%= @last_week_posts.count %></td>
+                  <td>
+                    <% if @last_week_posts.count == 0 %>
+                      前週の投稿が0のため計算できません
+                    <% else %>
+                      <% @the_week_before = @this_week_posts.count / @last_week_posts.count.to_f  %>
+                      <%= (@the_week_before * 100).round %>%
+                    <% end %>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h4>7日間分の投稿数</h4>
+          <table class='table table-bordered'>
+            <thead>
+              <tr>
+                <th>６日前</th>
+                <th>５日前</th>
+                <th>４日前</th>
+                <th>３日前</th>
+                <th>２日前</th>
+                <th>１日前</th>
+                <th>今日</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><%= @posts.created_day_ago(6).count %></td>
+                <td><%= @posts.created_day_ago(5).count %></td>
+                <td><%= @posts.created_day_ago(4).count %></td>
+                <td><%= @posts.created_day_ago(3).count %></td>
+                <td><%= @posts.created_day_ago(2).count %></td>
+                <td><%= @posts.created_yesterday.count %></td>
+                <td><%= @posts.created_today.count %></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    <canvas id="myLineChart"></canvas>
+    </div>
+</div>
+<script>
+  $(document).on('turbolinks:load', function() {
+    var ctx = document.getElementById("myLineChart");
+    var myLineChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['6日前', '5日前', '4日前', '3日前', '2日前', '1日前', '今日'],
+        datasets: [
+          {
+            label: '投稿数',
+            data: [
+              <%= @posts.created_day_ago(6).count %>,
+              <%= @posts.created_day_ago(5).count %>,
+              <%= @posts.created_day_ago(4).count %>,
+              <%= @posts.created_day_ago(3).count %>,
+              <%= @posts.created_day_ago(2).count %>,
+              <%= @posts.created_yesterday.count %>,
+              <%= @posts.created_today.count %>
+              ],
+              borderColor: "rgba(0, 0, 255, 1)",
+              backgroundColor: "rgba(0, 0, 0, 0)",
+              tension: 0.4
+          }
+        ],
+      },
+        options: {
+          title: {
+            display: true,
+            text: '7日間の投稿数の比較'
+          },
+          responsive: true,
+          scales: {
+            y: {
+              suggestedMin: 0,
+              suggestedMax: 10
+            },
+            x: {
+              stacked: true
+            },
+          },
+        }
+    });
+  });
+</script>
