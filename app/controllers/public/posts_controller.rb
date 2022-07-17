@@ -8,7 +8,7 @@ class Public::PostsController < ApplicationController
   def index
     @search = Post.ransack(params[:q])
     @posts = @search.result
-    @posts_all = Post.page(params[:page])
+    @posts_all = Post.with_attached_post_image.page(params[:page]).per(3)
   end
 
   def create
@@ -45,7 +45,8 @@ class Public::PostsController < ApplicationController
   end
 
   def popular
-    @popular_posts = Post.includes(:favorited_customers).sort {|a,b| b.favorited_customers.size <=> a.favorited_customers.size}
+    # @popular_posts = Post.includes(:favorited_customers).sort {|a,b| b.favorited_customers.size <=> a.favorited_customers.size}
+    @popular_posts = Post.with_attached_post_image.sort {|a, b| b.favorited_customers.size <=> a.favorited_customers.size}
   end
 
   private

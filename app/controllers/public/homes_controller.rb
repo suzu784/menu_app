@@ -8,11 +8,11 @@ class Public::HomesController < ApplicationController
   end
 
   def timeline
-     @posts_all = Post.all
+     @posts_all = Post.with_attached_post_image
      @customer = Customer.find(current_customer.id)
-     #フォローしているカスタマーを取得
+     # フォローしているカスタマーを取得
      @follow_customers = @customer.followings
-     #フォローユーザーのツイートを表示
+     # フォローユーザーのツイートを表示
      @posts = @posts_all.where(customer_id: @follow_customers).order("created_at DESC").page(params[:page]).per(10)
   end
 end

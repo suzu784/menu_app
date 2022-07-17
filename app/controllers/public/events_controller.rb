@@ -4,8 +4,8 @@ class Public::EventsController < ApplicationController
   def new
     @post = Post.new
     render plain: render_to_string(partial: 'form_new', layout: false, locals: { post: @post })
-    #views/eventsディレクトリのなかに_form_new.html.erb というファイルを作り
-    #そのファイルの中のhtmlコードを文字として返す
+    # views/eventsディレクトリのなかに_form_new.html.erb というファイルを作り
+    # そのファイルの中のhtmlコードを文字として返す
   end
 
   def index
@@ -17,12 +17,12 @@ class Public::EventsController < ApplicationController
     if @post.save
       respond_to do |format|
         format.html { redirect_to events_path }
-        format.js  #create.js.erbを探してその中の処理を実行する
+        format.js # create.js.erbを探してその中の処理を実行する
       end
     else
       respond_to do |format|
       format.js { render partial: "error" }
-        #登録にエラーが起きたときはerrors.js.erbを実行する
+        # 登録にエラーが起きたときはerrors.js.erbを実行する
       end
     end
   end
