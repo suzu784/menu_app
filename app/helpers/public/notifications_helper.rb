@@ -12,7 +12,7 @@ module Public::NotificationsHelper
       when "favorite" then
         tag.a(notification.visiter.full_name, href:customer_path(@visiter), style: "font-weight: bold;")+"が"+tag.a('あなたの投稿', href: post_path(notification.post_id), style: "font-weight: bold;")+"にいいねしました"
       when "comment" then
-      	@comment = PostComment.find_by(id: @visiter_comment) &.content
+      	@comment = PostComment.find_by(id: @comment) &.content
       	tag.a(@visiter.full_name, href:customer_path(@visiter), style: "font-weight: bold;")+"が"+tag.a('あなたの投稿', href: post_path(notification.post_id), style: "font-weight: bold;")+"にコメントしました"
     end
   end

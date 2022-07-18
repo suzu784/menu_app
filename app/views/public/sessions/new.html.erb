@@ -1,5 +1,5 @@
 <div class="text-center">
-  <h1 class="w-50 mt-3 pt-3 offset-sm-3">ログイン</h1>
+  <h1 class="w-50 mt-3 pt-3 offset-sm-3"><strong>ログイン</strong></h1>
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="field">
@@ -20,9 +20,7 @@
     <% end %>
 
     <div class="actions">
-      <%= f.submit "ログイン" %>
+      <%= f.submit "ログイン", class: 'btn btn-primary' %>
     </div>
   <% end %>
-
-  <%= render "public/shared/links" %>
 </div>

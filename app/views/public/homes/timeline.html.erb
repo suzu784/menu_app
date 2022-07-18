@@ -1,16 +1,15 @@
 <div class="text-center">
   <h1 class="w-50 mt-3 pt-3 offset-sm-3"><strong>タイムライン</strong></h1>
-    <div class="container">
       <div class="row">
-        <div class="col-md-3">
-
+        <div class="col-sm-4 offset-md-1">
+          <div id='calendar'></div>
         </div>
-        <div class="col-md-7 offset-md-2">
+        <div class="col-md-6 offset-md-1">
           <table class="table mt-4">
             <tbody>
               <% @posts.each do |post| %>
                 <tr class="d-flex">
-                  <td><%= link_to image_tag post.get_post_image(200, 200) %></td>
+                  <td><%= link_to image_tag post.get_post_image(150, 150) %></td>
                   <td><%= link_to post.cook_name, post_path(post), class: "text-dark font-weight-bold" %></td>
                   <td>
                     <%= render 'public/posts/static_star', post: post %>
@@ -22,7 +21,6 @@
           </table>
         </div>
       </div>
-    </div>
     <div class="mt-4 mb-4 justify-content-center d-flex">
       <%= paginate @posts %>
     </div>

@@ -1,5 +1,5 @@
 <div class="text-center">
-  <h2>登録フォーム</h2>
+  <h1 class="w-50 mt-3 pt-3 offset-sm-3"><strong>新規登録</strong></h1>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= render "public/shared/error_messages", resource: resource %>
@@ -48,9 +48,7 @@
     </div>
 
     <div class="actions">
-      <%= f.submit "新規登録" %>
+      <%= f.submit "登録", class: 'btn btn-success' %>
     </div>
   <% end %>
-
-  <%= render "public/shared/links" %>
 </div>
