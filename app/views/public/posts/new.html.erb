@@ -2,58 +2,61 @@
   <h1 class="w-50 mt-3 pt-3 offset-sm-3"><strong>新規投稿</strong></h1>
     <div class="container">
       <div class="row">
-        <div class="col-lg-8 offset-md-2">
+        <div class="col">
           <div class="mt-4">
               <%= form_with model: @post, url: posts_path, remote: true, method: :post do |f| %>
               <%= render 'layouts/errors', obj: @post %>
-                <div class="form-group mt-2">
-                  <%= f.label :画像 %>
-                  <%= f.file_field :post_image, accept: 'image/*' %><br>
-                </div>
-                <div class="form-group mt-2">
-                  <%= f.label :作った日 %><br>
-                  <%= f.datetime_field :created_at %><br>
-                </div>
-                <div class="form-group mt-2">
-                  <%= f.label :登録済み料理 %><br>
-                  <%= f.select :cook_name, options_from_collection_for_select(Post.all, :cook_name, :cook_name), include_blank: '選択してください' %><br>
-                </div>
-                <div class="form-group mt-2">
-                  <%= f.label :料理 %>
-                　<%= f.text_field :cook_name, class: 'form-control' %>
-                </div>
-                <div class="form-group mt-2">
-                  <%= f.label :難易度 %><br>
-                  <div class="form-group" id="star">
-                    <%= f.label :star %>
-                    <%= f.hidden_field :star, id: :review_star, class:'form-control' %>
+              <div class="container mt-3">
+                <div class="border rounded border border-dark" style="height:710px">
+                  <div class="form-group mt-2">
+                    <h5>登録済みの料理</h5>
+                    <%= f.select :cook_name, options_from_collection_for_select(Post.all, :cook_name, :cook_name), include_blank: '選択してください' %>
+                    <%= f.datetime_field :created_at %><br>
                   </div>
-                    <script>
-                      $(document).on('turbolinks:load', function() {
-                        $('#star').empty();
-                        $('#star').raty({
-                          size : 36,
-                          starOff: '<%= asset_path('star-off.png') %>',
-                          starOn : '<%= asset_path('star-on.png') %>',
-                          starHalf: '<%= asset_path('star-half.png') %>',
-                          scoreName: 'post[star]',
-                          half: true,
-                        });
-                      })
-                    </script>
+                  <div class="form-group mt-4">
+                    <h5 class="">料理名</h5>
+                  　<%= f.text_area :cook_name, cols: '50', rows: '1' %>
+                  </div>
+                  <div class="form-group mt-3">
+                    <h5>画像</h5>
+                    <%= f.file_field :post_image, accept: 'image/*' %><br>
+                  </div>
+                  <div class="form-group mt-3">
+
+                  </div>
+                  <div class="form-group mt-3">
+                    <h5>難易度</h5>
+                    <div class="form-group" id="star">
+                      <%= f.label :star %>
+                      <%= f.hidden_field :star, id: :review_star, class: 'form-control' %>
+                    </div>
+                      <script>
+                        $(document).on('turbolinks:load', function() {
+                          $('#star').empty();
+                          $('#star').raty({
+                            size : 36,
+                            starOff: '<%= asset_path('star-off.png') %>',
+                            starOn : '<%= asset_path('star-on.png') %>',
+                            starHalf: '<%= asset_path('star-half.png') %>',
+                            scoreName: 'post[star]',
+                            half: true,
+                          });
+                        })
+                      </script>
+                  </div>
+                  <div class="form-group mt-3">
+                    <h5>動画URL</h5>
+                    <%= f.text_area :media_url, cols: '50', rows: '1' %>
+                  </div>
+                  <div class="form-group mt-3">
+                    <h5>感想</h5>
+                    <%= f.text_area :opinion, cols: '50', rows: '6' %><br>
+                    <%= f.submit "送信", class: 'btn btn-primary' %>
+                  </div>
                 </div>
-                <div class="form-group mt-2">
-                  <%= f.label :感想 %><br>
-                  <%= f.text_field :opinion, class: 'form-control' %><br>
-                </div>
-                <div class="form-group mt-2">
-                  <%= f.label :動画url %><br>
-                  <%= f.text_field :media_url, class: 'form-control' %>
-                </div>
-                  <%= f.submit "送信", class: 'btn btn-primary btn-lg' %>
-                </div>
-              <% end %>
-          </div>
-      </div>
+              </div>
+            <% end %>
+        </div>
     </div>
+  </div>
 </div>

@@ -2,7 +2,6 @@
   <h1 class="w-50 mt-3 pt-3 offset-sm-3"><strong>人気投稿</strong></h1>
     <div class="container">
       <div class="row">
-        <div class="col">
         <% if @popular_posts.count > 0 %>
           <table class="table">
             <tbody>
@@ -26,7 +25,6 @@
         <% else %>
           <h2 class="text-center">いいねされた記事はまだありません</h2>
         <% end %>
-        </div>
       </div>
     </div>
 </div>

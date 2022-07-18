@@ -18,7 +18,7 @@ h1 {
   font-weight: 100;
   position: relative;
   padding: 1rem 2rem calc(1rem + 10px);
-  background: #00d0f0;
+  background: #f08800;
 }
 
 h1:before {
@@ -54,3 +54,4 @@ li.nav-item {
 footer {
   font-family: cursive;
 }
+

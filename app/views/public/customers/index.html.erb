@@ -6,21 +6,25 @@
   		   <%= f.submit "検索", class: 'btn btn-warning' %>
     	 <% end %>
      </p>
-    <table class="table">
-      <% @customers_all.each do |customer| %>
-        <% if customer.last_name != "guestuser" %>
-        <tbody>
-          <tr>
-            <td><%= image_tag customer.get_customer_image(200, 200) %></td>
-            <td><%= link_to customer.full_name, customer_path(customer), class: 'text-dark' %></td>
-            <td><strong>得意料理</strong>:<%= customer.special_dish %></td>
-            <td><%= render 'public/chats/btn', customer: customer %></td>
-          </tr>
-        </tbody>
-        <% end %>
-      <% end %>
-    </table>
-  <div class="pb-5 mb-5 justify-content-center d-flex">
-    <%= paginate @customers_all %>
-  </div>
+     <div class="container">
+       <div class="row">
+        <table class="table">
+          <% @customers_all.each do |customer| %>
+            <% if customer.last_name != "guestuser" %>
+            <tbody>
+              <tr>
+                <td><%= image_tag customer.get_customer_image(200, 200) %></td>
+                <td class="align-middle"><%= link_to customer.full_name, customer_path(customer), class: 'text-dark' %></td>
+                <td class="align-middle"><strong>得意料理</strong>:<%= customer.special_dish %></td>
+                <td class="align-middle"><%= render 'public/chats/btn', customer: customer %></td>
+              </tr>
+            </tbody>
+            <% end %>
+          <% end %>
+        </table>
+       </div>
+     </div>
+     <div class="pb-5 mb-5 justify-content-center d-flex">
+       <%= paginate @customers_all %>
+     </div>
 </div>
