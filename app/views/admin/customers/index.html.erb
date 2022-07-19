@@ -1,27 +1,29 @@
 <div class="text-center">
-  <h1 class="w-50 mt-3 pt-3 offset-sm-3"><strong>会員一覧ページ</strong></h1>
+  <h1 class="w-50 mt-3 pt-3 offset-sm-3"><strong>会員一覧</strong></h1>
      <p>
        <%= search_form_for(@search, url:customers_path) do |f| %>
   		   <%= f.search_field :last_name_cont, placeholder:"キーワードを入力してください", size: "50" %>
   		   <%= f.submit "検索", class: 'btn btn-warning' %>
     	 <% end %>
      </p>
-    <table class="table">
-      <% @customers_all.each do |customer| %>
-      <tbody>
-        <% if customer.is_deleted == false %>
-          <tr>
-            <th>名前</th>
-            <td><%= link_to customer.full_name, admin_customer_path(customer) %></td>
-            <th>得意料理</th>
-            <td><%= customer.special_dish %></td>
-            <td><%= image_tag customer.get_customer_image(100, 100) %></td>
-          </tr>
-        <% end %>
-      </tbody>
-      <% end %>
-    </table>
-  <div class="mt-4 mb-4 justify-content-center d-flex">
-    <%= paginate @customers_all %>
-  </div>
+     <div class="container">
+       <div class="row">
+        <table class="table">
+          <% @customers_all.each do |customer| %>
+          <tbody>
+            <% if customer.is_deleted == false %>
+              <tr>
+                <td><%= image_tag customer.get_customer_image(200, 200) %></td>
+                <td class="align-middle"><%= link_to customer.full_name, admin_customer_path(customer) %></td>
+                <td class="align-middle"><strong>得意料理</strong><%= customer.special_dish %></td>
+              </tr>
+            <% end %>
+          </tbody>
+          <% end %>
+        </table>
+       </div>
+     </div>
+    <div class="mt-4 mb-4 justify-content-center d-flex">
+      <%= paginate @customers_all %>
+    </div>
 </div>
