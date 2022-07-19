@@ -1,13 +1,27 @@
 <div class="text-center">
-  <h1 class="w-50 mt-3 pt-3 offset-sm-3"><strong>会員詳細ページ</strong></h1>
-    <%= image_tag @customer.get_customer_image(200, 200) %>
-    <div class="mb-5">
-        名前：<%= @customer.first_name + @customer.last_name %>
+  <h1 class="w-50 mt-4 pt-4 offset-sm-3"><strong>会員詳細ページ</strong></h1>
+    <div class="row">
+        <div class="col-md-3 offset-md-3 mt-5">
+          <%= image_tag @customer.get_customer_image(400, 400) %>
+        </div>
+        <div class="col-md-6 mt-5">
+          <table class="table w-50">
+            <tbody>
+              <tr>
+                <th>名前</th>
+                <td><%= @customer.first_name + @customer.last_name %></td>
+              </tr>
+              <tr>
+                <th>得意料理</th>
+                <td><%= @customer.special_dish %></td>
+              </tr>
+              <% if @customer.is_deleted == false %>
+                <th></th>
+                <td><%= link_to "退会画面", admin_customer_confirm_path(@customer) %></td>
+              <% end %>
+              </tr>
+            </tbody>
+          </table>
+        </div>
     </div>
-    <div class="mb-5">
-        得意料理:<%= @customer.special_dish %>
-    </div>
-    <% if @customer.is_deleted == false %>
-      <%= link_to "退会画面", admin_customer_confirm_path(@customer) %>
-    <% end %>
 </div>

@@ -139,7 +139,6 @@ ActiveRecord::Schema.define(version: 2022_07_12_071849) do
   create_table "recipes", force: :cascade do |t|
     t.integer "customer_id"
     t.integer "post_id"
-    t.string "recipe_title"
     t.integer "category"
     t.string "material"
     t.string "content"

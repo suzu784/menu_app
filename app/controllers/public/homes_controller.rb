@@ -13,6 +13,6 @@ class Public::HomesController < ApplicationController
      # フォローしているカスタマーを取得
      @follow_customers = @customer.followings
      # フォローユーザーのツイートを表示
-     @posts = @posts_all.where(customer_id: @follow_customers).order("created_at DESC").page(params[:page]).per(10)
+     @posts = @posts_all.where(customer_id: @follow_customers).order("created_at DESC").page(params[:page]).per(5)
   end
 end

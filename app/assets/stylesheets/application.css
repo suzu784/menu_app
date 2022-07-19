@@ -19,6 +19,7 @@ h1 {
   position: relative;
   padding: 1rem 2rem calc(1rem + 10px);
   background: #f08800;
+  font-family: "Hannotate SC";
 }
 
 h1:before {
@@ -52,6 +53,6 @@ li.nav-item {
 }
 
 footer {
-  font-family: cursive;
+  font-family: Hannotate SC;
 }
 

@@ -15,14 +15,22 @@
                 <th>得意料理</th>
                 <td><%= @customer.special_dish %></td>
               </tr>
-              <tr>
-                <th>フォロー</th>
-                <td>
-                  <div class="relationship-btn_<%= @customer.id %>">
-                    <%= render 'public/relationships/btn', customer: @customer %>
-                  </div>
-                </td>
-              </tr>
+              <% if @customer != current_customer %>
+                <tr>
+                  <th>フォロー</th>
+                  <td>
+                    <div class="relationship-btn_<%= @customer.id %>">
+                      <%= render 'public/relationships/btn', customer: @customer %>
+                    </div>
+                  </td>
+                </tr>
+              <% end %>
+              <% if @customer == current_customer %>
+                <tr>
+                  <th></th>
+                  <td><%= link_to "編集", edit_customer_path(@customer) %></td>
+                </tr>
+              <% end %>
               <tr>
                 <td><%= link_to "いいね一覧", favorites_customer_path(@customer) %></td>
                 <td><%= link_to "フォロー一覧",  customer_followings_path(@customer) %></td>

@@ -1,10 +1,10 @@
 <div class="text-center">
   <h1 class="w-50 mt-3 pt-3 offset-sm-3"><strong><%= @post.cook_name %></strong></h1>
-    <p><%= link_to "レシピ作成はこちら", post_recipes_path(@post) %></p>
+    <p><%= link_to "レシピはこちら", post_recipes_path(@post) %></p>
 </div>
   <div class="container">
     <div class="row mt-5">
-      <div class="col-lg-4">
+      <div class="col-lg-3 offset-md-1">
         <table class="table w-100">
           <tbody>
             <tr>
@@ -37,10 +37,10 @@
           </tbody>
         </table>
       </div>
-      <div class="col-lg-3">
+      <div class="col-lg-2">
         <%= image_tag @post.get_post_image(400, 400) %>
       </div>
-      <div class="col-md-3 offset-md-2">
+      <div class="col-md-2 offset-md-4">
         <h4>コメント欄</h4>
         <hr class="my-2"></hr>
         <div class="post-comments-counter">
