@@ -9,23 +9,26 @@
               <div class="container mt-3">
                 <div class="border rounded border border-dark" style="height:710px">
                   <div class="form-group mt-2">
-                    <h5>登録済みの料理</h5>
-                    <%= f.select :cook_name, options_from_collection_for_select(Post.all, :cook_name, :cook_name), include_blank: '選択してください' %>
+                    <h6 class="w-50 offset-md-3">料理名</h6>
+                  　<%= f.text_area :cook_name, cols: '58', rows: '1' %>
+                  </div>
+                  <div class="form-group mt-2">
+                    <h6 class="w-50 offset-md-3">登録済みの料理</h6>
+                    <%= f.select :cook_name, options_from_collection_for_select(Post.select(:cook_name).distinct, :cook_name, :cook_name), include_blank: '選択してください' %>
+                  </div>
+                  <div class="form-group mt-2">
+                    <h6 class="w-50 offset-md-3">作った日</h6>
                     <%= f.datetime_field :created_at %><br>
                   </div>
-                  <div class="form-group mt-4">
-                    <h5 class="">料理名</h5>
-                  　<%= f.text_area :cook_name, cols: '50', rows: '1' %>
-                  </div>
                   <div class="form-group mt-3">
-                    <h5>画像</h5>
+                    <h6 class="w-50 offset-md-3">画像</h6>
                     <%= f.file_field :post_image, accept: 'image/*' %><br>
                   </div>
                   <div class="form-group mt-3">
 
                   </div>
                   <div class="form-group mt-3">
-                    <h5>難易度</h5>
+                    <h6 class="w-50 offset-md-3">難易度</h6>
                     <div class="form-group" id="star">
                       <%= f.label :star %>
                       <%= f.hidden_field :star, id: :review_star, class: 'form-control' %>
@@ -45,12 +48,12 @@
                       </script>
                   </div>
                   <div class="form-group mt-3">
-                    <h5>動画URL</h5>
-                    <%= f.text_area :media_url, cols: '50', rows: '1' %>
+                    <h6 class="w-50 offset-md-3">動画URL</h6>
+                    <%= f.text_area :media_url, cols: '58', rows: '1' %>
                   </div>
                   <div class="form-group mt-3">
-                    <h5>感想</h5>
-                    <%= f.text_area :opinion, cols: '50', rows: '6' %><br>
+                    <h6 class="w-50 offset-md-3">感想</h6>
+                    <%= f.text_area :opinion, cols: '58', rows: '3' %><br>
                     <%= f.submit "送信", class: 'btn btn-primary' %>
                   </div>
                 </div>

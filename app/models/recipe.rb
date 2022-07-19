@@ -1,7 +1,7 @@
 class Recipe < ApplicationRecord
   belongs_to :customer
   belongs_to :post
-  belongs_to :event
+  belongs_to :event, optional: true
 
   validates :content, presence: true
 
