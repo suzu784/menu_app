@@ -5,36 +5,41 @@
       <div class="col-md-4  mt-5 pt-3">
         <div class="container mt-3">
           <div class="border rounded" style="height:450px">
-            <h4 class="text-center">ゲストログインはこちら</h4>
-            <h7>出来ること</h7>
-              <ul>
-                <li>投稿一覧の閲覧</li>
+            <%= link_to 'ゲストログインはこちらから', guest_sign_in_path, class: "btn btn-secondary w-100", method: :post %>
+            <h4 class="text-center mt-3">機能一覧</h4>
+              <ul class="list-group">
+                <li class="list-group-item">投稿の閲覧</li>
               </ul>
-            <%= link_to 'ゲストログイン', guest_sign_in_path, class: "btn btn-secondary w-100", method: :post %>
           </div>
         </div>
       </div>
       <div class="col-md-4  mt-5 pt-3">
         <div class="container mt-3">
           <div class="border rounded" style="height:450px">
-            <h4 class="text-center">ログインはこちら</h4>
-            <h7>出来ること</h7>
-              <ul>
-                <li>カレンダー機能</li>
+            <%= link_to 'ログインはこちらから', new_customer_session_path, class: "btn btn-info w-100" %>
+            <h4 class="text-center mt-3">機能一覧</h4>
+              <ul class="list-group">
+                <li class="list-group-item">カレンダー機能</li>
+                <li class="list-group-item">レシピ一覧機能</li>
+                <li class="list-group-item">あなたにおすすめの動画を紹介</li>
+                <li class="list-group-item">タイムライン機能</li>
+                <li class="list-group-item">メッセージ機能</li>
+                <li class="list-group-item">通知機能</li>
               </ul>
-            <%= link_to 'ログイン', new_customer_session_path, class: "btn btn-info w-100" %>
           </div>
         </div>
       </div>
       <div class="col-md-4  mt-5 pt-3">
         <div class="container mt-3">
           <div class="border rounded" style="height:450px">
-            <h4 class="text-center">管理者ログインはこちら</h4>
-            <h7>出来ること</h7>
-              <ul>
-                <li>投稿分析機能</li>
+            <%= link_to '管理者ログインはこちらから', new_admin_session_path, class: "btn btn-success w-100" %>
+            <h4 class="text-center mt-3">機能一覧</h4>
+              <ul class="list-group">
+                <li class="list-group-item">投稿分析機能</li>
+                <li class="list-group-item">会員の退会機能</li>
+                <li class="list-group-item">会員一覧機能</li>
+                <li class="list-group-item">投稿一覧機能</li>
               </ul>
-            <%= link_to '管理者ログイン', new_admin_session_path, class: "btn btn-success w-100" %>
           </div>
         </div>
       </div>

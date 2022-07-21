@@ -13,8 +13,7 @@
             <tbody>
               <% @posts_all.each do |post| %>
                 <tr>
-                  <th class="align-middle">料理名</th>
-                  <td class="align-middle"><%= link_to post.cook_name, post_path(post) %></td>
+                  <td class="align-middle"><%= link_to post.cook_name, post_path(post), class: "text-dark font-weight-bold" %></td>
                   <td><%= image_tag post.get_post_image(200, 200) %></td>
                 </tr>
                 <tr>

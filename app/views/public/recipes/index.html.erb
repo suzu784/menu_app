@@ -23,14 +23,11 @@
       <%= form_with model: [@post, @recipe], local: false do |f| %>
         <div class="modal-body">
           <div class="form-group">
-            <%= f.label :画像 %>
-            <%= f.file_field :recipe_images, multiple: true %><br>
-            <%= f.label :カテゴリ %><br>
-            <%= f.select :category, Recipe.categories.keys.map {|k| [I18n.t("enums.recipe.category.#{k}"), k]}, include_blank: '選択してください' %><br>
+            <%= @post.cook_name %>の作り方<br>
             <%= f.label :材料 %><br>
-            <%= f.text_area :material, class: "form-control" %><br>
+            <%= f.text_area :material, cols: '50', rows: '4' %><br>
             <%= f.label :工程 %><br>
-            <%= f.text_area :content, class: "form-control" %>
+            <%= f.text_area :content, cols: '50', rows: '4' %>
           </div>
           <div class="tag-area">
           <%= f.fields_for :tags do |tag| %>

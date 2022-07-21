@@ -15,6 +15,13 @@ class Public::RecipesController < ApplicationController
     @recipe.post_id = @post.id
     @recipe.save
     @recipes = Recipe.where(post_id: @post.id)
+    @tags = Tag.where(recipe_id: @recipe.id)
+  end
+
+  def destroy
+    @recipe = Recipe.find(params[:id])
+    @recipe.destroy
+    redirect_to post_recipes_path
   end
 
   def confirm
@@ -25,6 +32,6 @@ class Public::RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.require(:recipe).permit(:category, :material, :status, :content, tags_attributes: [:content], recipe_images: [])
+    params.require(:recipe).permit(:category, :material, :status, :content, tags_attributes: [:content])
   end
 end

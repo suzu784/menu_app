@@ -1,10 +1,10 @@
 <div class="text-center">
   <h1 class="w-50 mt-3 pt-3 offset-sm-3"><strong><%= @post.cook_name %></strong></h1>
-    <p><%= link_to "レシピはこちら", post_recipes_path(@post) %></p>
+    <p><%= link_to "レシピはこちら", post_recipes_path(@post), class: 'btn btn-warning' %></p>
 </div>
   <div class="container">
     <div class="row mt-5">
-      <div class="col-lg-3 offset-md-1">
+      <div class="col-lg-7">
         <table class="table w-100">
           <tbody>
             <tr>
@@ -15,32 +15,35 @@
               <th>感想</th>
               <td><%= @post.opinion %></td>
             </tr>
-              <% if @post.customer == current_customer %>
-              <div class="row justify-content-center">
-                <div class="btn-group">
-                  <tr>
-                    <%= link_to "編集", edit_post_path(@post), class: 'btn btn-success' %>
-                    <%= link_to "削除", post_path(@post), method: :delete, remote: true, class: 'btn btn-danger' %>
-                  </tr>
-                </div>
-              </div>
-              <% end %>
-              <% if @post.media_url == true %>
               <tr>
                 <th>動画URL</th>
-                <td><h7 class="text-break"><%= raw Rinku.auto_link(h(@post.media_url)) %></h7></td>
-                <div class="favorite-btn<%= @post.id %>"><br>
-                  <span><%= render 'public/favorites/btn', post: @post %></span>
-                </div>
+                <% if @post.media_url == true %>
+                  <td><h7 class="text-break"><%= raw Rinku.auto_link(h(@post.media_url)) %></h7></td>
+                <% else %>
+                  <td>URLはありません</td>
+                <% end %>
               </tr>
-              <% end %>
+              <tr>
+                <th>作った日</th>
+                <td><%= @post.created_at.strftime('%Y/%m/%d') %></td>
+              </tr>
           </tbody>
         </table>
+        <% if @post.customer == current_customer %>
+          <%= link_to "編集", edit_post_path(@post), class: 'btn btn-success w-25' %>
+          <%= link_to "削除", post_path(@post), method: :delete, remote: true, class: 'btn btn-danger w-25' %>
+        <% end %>
+
       </div>
       <div class="col-lg-2">
         <%= image_tag @post.get_post_image(400, 400) %>
+        <div class="favorite-btn<%= @post.id %>"><br>
+          <span><%= render 'public/favorites/btn', post: @post %></span>
+        </div>
       </div>
-      <div class="col-md-2 offset-md-4">
+    </div>
+    <div class="row mt-5">
+      <div class="col">
         <h4>コメント欄</h4>
         <hr class="my-2"></hr>
         <div class="post-comments-counter">

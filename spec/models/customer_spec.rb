@@ -1,5 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe Customer, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe '投稿のテスト' do
+  context '表示の確認' do
+    it '2' do
+      expect(1 + 1).to eq 2
+    end
+  end
 end

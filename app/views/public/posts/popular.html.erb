@@ -7,17 +7,16 @@
             <tbody>
             <% @popular_posts.each do |post|%>
               <tr>
-                <th class="align-middle">料理名</th>
-                <td class="align-middle"><%= link_to post.cook_name, post_path(post), class: "text-dark font-weight-bold" %></td><br>
+                <td class="align-middle"><h5><%= link_to post.cook_name, post_path(post), class: "text-dark font-weight-bold" %></h5></td><br>
                 <td><%= image_tag post.get_post_image(200, 200) %></td>
               </tr>
               <tr>
-                <th>作った日</th>
+                <th class="bg-light">作った日</th>
                 <td class="align-middle"><%= post.created_at.strftime("%Y/%m/%d") %></td>
               </tr>
               <tr>
                 <th>いいね数</th>
-                <td class="align-middle"><%= post.favorites.count %></td>
+                <td class="align-middle bg-light"><%= post.favorites.count %></td>
               </tr>
             </tbody>
             <% end %>

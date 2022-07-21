@@ -1,20 +1,25 @@
 <div class="text-center">
   <h1 class="w-50 mt-3 pt-3 offset-sm-3"><strong>タイムライン</strong></h1>
       <div class="row">
-        <div class="col-sm-5 offset-md-1">
+        <div class="col-sm-6">
           <div id='calendar'></div>
         </div>
-        <div class="col-md-5 offset-md-1">
+        <div class="col-md-6">
           <table class="table mt-4">
             <tbody>
               <% @posts.each do |post| %>
-                <tr class="d-flex">
-                  <td><%= link_to image_tag post.get_post_image(150, 150) %></td>
-                  <td><%= link_to post.cook_name, post_path(post), class: "text-dark font-weight-bold" %></td>
+                <tr>
                   <td>
+                    <%= image_tag post.customer.get_customer_image(80, 80) %><br>
+                    <%= post.customer.full_name %><br>
+                    <%= post.created_at.strftime('%Y/%m/%d') %>
+                  </td>
+                  <td><%= link_to image_tag post.get_post_image(150, 150) %></td>
+                  <td class="align-middle"><%= link_to post.cook_name, post_path(post), class: "text-dark font-weight-bold" %></td>
+                  <td class="align-middle">
                     <%= render 'public/posts/static_star', post: post %>
                   </td>
-                  <td><%= post.opinion %></td>
+                  <td class="align-middle"><%= post.opinion %></td>
                 </tr>
               <% end %>
             </tbody>

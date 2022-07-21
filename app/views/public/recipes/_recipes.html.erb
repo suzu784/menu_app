@@ -1,8 +1,19 @@
 <% recipes.each do |recipe| %>
   <div class="card mb-1">
     <div class="card-body">
+      <p class="card-text"><%= recipe.post.cook_name %>の作り方</p>
       <p class="card-text"><%= recipe.material %></p>
       <p class="card-text"><small><%= simple_format recipe.content %></small></p>
+      <p class="card-text">
+        <% @tags.each do |tag| %>
+          <%= tag.content %>
+        <% end %>
+      </p>
+      <p class="card-text">
+        <%= link_to  post_recipe_path(@post, recipe), method: :delete do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+      </p>
     </div>
   </div>
 <% end %>
