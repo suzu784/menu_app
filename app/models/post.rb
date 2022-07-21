@@ -23,7 +23,6 @@ class Post < ApplicationRecord
 
   with_options presence: true do
     validates :star
-    validates :post_image
     validates :cook_name
   end
 

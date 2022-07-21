@@ -20,8 +20,11 @@ class Public::RecipesController < ApplicationController
 
   def destroy
     @recipe = Recipe.find(params[:id])
-    @recipe.destroy
-    redirect_to post_recipes_path
+    if @recipe.destroy
+      redirect_to post_recipes_path
+    else
+      render :index
+    end
   end
 
   def confirm

@@ -13,10 +13,14 @@ describe '投稿のテスト' do
       end
     end
   end
-  
-  
-# ログインの処理
 
+  before do
+    visit new_customer_session_path
+    fill_in "customer[email]", with: customer.email
+    fill_in 'customer[password]', with: customer.password
+    click_button 'ログイン'
+    expect(page).to have_current_path timeline_path
+  end
 
   describe '投稿画面(new_post_path)のテスト' do
     before do
@@ -32,10 +36,10 @@ describe '投稿のテスト' do
     end
     context '投稿処理のテスト' do
       it '投稿後のリダイレクト先は正しいか' do
-        fill_in 'post[:cook_name]', with: Faker::Lorem.characters(number:5)
-        fill_in 'post[:opinion]', with: Faker::Lorem.characters(number:20)
+        fill_in 'post[cook_name]', with: post.cook_name
+        fill_in 'post[opinion]', with: post.opinion
         click_button '投稿'
-        expect(page).to have_current_path post_path(Post.last)
+        expect(page).to have_current_path posts_path
       end
     end
   end
@@ -57,15 +61,15 @@ describe '投稿のテスト' do
       visit post_path(post)
     end
     context '表示の確認' do
-      it '削除リンクが表示されているか' do
-        expect(page).to have_link '削除'
-      end
       it '編集リンクが表示されているか' do
-        expect(page).to have_link '編集'
+        expect(page).to have_button '編集'
+      end
+      it '削除リンクが表示されているか' do
+        expect(page).to have_button '削除'
       end
     end
-    context 'post削除のテスト' do
-      it 'postの削除' do
+    context '投稿削除のテスト' do
+      it '投稿の削除' do
         expect{ post.destroy}.to change{ Post.count }.by(-1)
       end
     end
@@ -77,19 +81,19 @@ describe '投稿のテスト' do
     end
     context '表示の確認' do
       it '編集前の料理名と感想がフォームに表示(セット)されているか' do
-        expect(page).to have_field 'post[:cook_name]', with: post.cook_name
-        expect(page).to have_field 'post[:opinion]', with: post.opinion
+        expect(page).to have_field 'post[cook_name]', with: post.cook_name
+        expect(page).to have_field 'post[opinion]', with: post.opinion
       end
       it '保存ボタンが表示される' do
-        expect(page).to have_link '保存'
+        expect(page).to have_button '保存'
       end
     end
     context '更新処理に関するテスト' do
       it '更新後のリダイレクト先は正しいか' do
-        fill_in 'post[:cook_name]', with: Faker::Lorem.characters(number:5)
-        fill_in 'post[:opinion]', with: Faker::Lorem.characters(number:20)
+        fill_in 'post[cook_name]', with: post.cook_name
+        fill_in 'post[opinion]', with: post.opinion
         click_button '保存'
-        expect(page).to have_current_path post_path(post)
+        expect(page).to have_current_path posts_path
       end
     end
   end

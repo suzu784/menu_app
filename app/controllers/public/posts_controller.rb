@@ -17,7 +17,6 @@ class Public::PostsController < ApplicationController
     if @post.save
       redirect_to posts_path
     else
-      flash[notice] = "難易度を入力してください"
       render :new
     end
   end
@@ -40,8 +39,11 @@ class Public::PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
-    @post.destroy
-    redirect_to posts_path
+    if @post.destroy
+      redirect_to posts_path
+    else
+      render :show
+    end
   end
 
   def popular
