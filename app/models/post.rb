@@ -21,10 +21,8 @@ class Post < ApplicationRecord
   scope :created_5day_ago, -> { where(created_at: 5.day.ago.all_day) } # 5日前
   scope :created_6day_ago, -> { where(created_at: 6.day.ago.all_day) } # 6日前
 
-  with_options presence: true do
-    # validates :star
-    validates :cook_name
-  end
+  validates :cook_name, presence: true
+  validates :opinion, length: { maximum: 200 }
 
   has_one_attached :post_image
 

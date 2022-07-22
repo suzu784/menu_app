@@ -25,16 +25,25 @@
                   </td>
                 </tr>
               <% end %>
-              <% if @customer == current_customer %>
                 <tr>
-                  <th></th>
-                  <td><%= link_to "編集", edit_customer_path(@customer) %></td>
+                  <th>編集ページ</th>
+                  <% if @customer == current_customer %>
+                    <td><%= link_to "編集", edit_customer_path(@customer), class: 'btn btn-success' %></td>
+                  <% else %>
+                    <td>編集できません</td>
+                  <% end %>
                 </tr>
-              <% end %>
               <tr>
-                <td><%= link_to "いいね一覧", favorites_customer_path(@customer) %></td>
-                <td><%= link_to "フォロー一覧",  customer_followings_path(@customer) %></td>
-                <td><%= link_to "フォロワー一覧",  customer_followers_path(@customer) %></td>
+                <th>いいねされた投稿<br><%= @customer.favorites.count %>件</th>
+                <td><%= link_to "いいね一覧", favorites_customer_path(@customer), class: 'btn btn-warning font-weight-bold' %></td>
+              </tr>
+              <tr>
+                <th>フォロー数<br><%= @customer.followings.count %>件</th>
+                <td><%= link_to "フォロー一覧",  customer_followings_path(@customer), class: 'btn btn-warning font-weight-bold' %></td>
+              </tr>
+              <tr>
+                <th>フォロワー数<br><%= @customer.followers.count %>件</th>
+                <td><%= link_to "フォロワー一覧",  customer_followers_path(@customer), class: 'btn btn-warning font-weight-bold' %></td>
               </tr>
             </tbody>
           </table>

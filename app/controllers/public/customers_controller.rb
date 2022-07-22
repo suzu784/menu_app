@@ -18,8 +18,13 @@ class Public::CustomersController < ApplicationController
 
   def update
     @customer = current_customer
-    @customer.update(customer_params)
-    redirect_to customer_path(@customer)
+    if @customer.update(customer_params)
+      flash[:notice] = '更新しました'
+      redirect_to customer_path(@customer)
+    else
+      flash.now[:notice] = '更新できませんでした'
+      render :edit
+    end
   end
 
   def favorites
