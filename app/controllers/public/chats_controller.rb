@@ -17,7 +17,7 @@ class Public::ChatsController < ApplicationController
       # @roomに上記customer_roomsのroomを代入
       @room = customer_rooms.room
     else
-      # それ以外は新しくroomを作り、
+      # それ以外は新しくroomを作
       @room = Room.new
       @room.save
       # customer_roomをカレントカスタマー分とチャット相手分を作る

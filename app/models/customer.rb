@@ -22,12 +22,12 @@ class Customer < ApplicationRecord
 
   has_many :active_notifications, class_name: "Notification", foreign_key: :visiter_id, dependent: :destroy
   has_many :passive_notifications, class_name: "Notification", foreign_key: :visited_id, dependent: :destroy
-  
+
   with_options presence: true do
-    validates :first_name
-    validates :last_name
-    validates :first_name_kana
-    validates :last_name_kana
+    validates :first_name, length: { maximum: 20 }
+    validates :last_name, length: { maximum: 20 }
+    validates :first_name_kana, length: { maximum: 20 }
+    validates :last_name_kana, length: { maximum: 20 }
     with_options uniqueness: true do
       validates :email
     end

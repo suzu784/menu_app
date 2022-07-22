@@ -18,7 +18,7 @@ class Public::EventsController < ApplicationController
         format.html { redirect_to events_path }
       end
     else
-      flash[notice] = '※未入力箇所があります'
+      flash.now[:notice] = '※未入力箇所があります'
       render :index
     end
   end
