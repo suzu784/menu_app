@@ -10,3 +10,9 @@ Admin.create!(
    email: 'menu@com',
    password: 'menuapp'
 )
+
+Post.create!(
+   cook_name: 'ハンバーグ',
+   opinion: 'ぜひ作ってみてください',
+   star: 5
+   )
