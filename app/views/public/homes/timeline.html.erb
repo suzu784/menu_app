@@ -5,25 +5,33 @@
           <div id='calendar'></div>
         </div>
         <div class="col-md-6">
-          <table class="table mt-4">
-            <tbody>
-              <% @posts.each do |post| %>
-                <tr>
-                  <td>
-                    <%= image_tag post.customer.get_customer_image(80, 80) %><br>
-                    <%= post.customer.full_name %><br>
-                    <%= post.created_at.strftime('%Y/%m/%d') %>
-                  </td>
-                  <td><%= link_to image_tag post.get_post_image(150, 150) %></td>
-                  <td class="align-middle"><%= link_to post.cook_name, post_path(post), class: "text-dark font-weight-bold" %></td>
-                  <td class="align-middle">
-                    <%= render 'public/posts/static_star', post: post %>
-                  </td>
-                  <td class="align-middle"><%= post.opinion %></td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
+          <% if @posts != nil %>
+            <table class="table mt-4">
+              <tbody>
+                <% @posts.each do |post| %>
+                  <tr>
+                    <td>
+                      <%= image_tag post.customer.get_customer_image(70, 70) %><br>
+                      <%= post.customer.full_name %><br>
+                      <%= post.created_at.strftime('%Y/%m/%d') %>
+                    </td>
+                    <td><%= link_to image_tag post.get_post_image(150, 150) %></td>
+                    <td class="align-middle"><%= link_to post.cook_name, post_path(post), class: "text-dark font-weight-bold" %></td>
+                    <td class="align-middle">
+                      <% if post.star != nil %>
+                        <%= render 'public/posts/static_star', post: post %>
+                      <% else %>
+                        難易度は入力されていません
+                      <% end %>
+                    </td>
+                    <td class="align-middle"><%= post.opinion %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          <% else %>
+            <h5>フォローしているユーザーはいません</h5>
+          <% end %>
           <div class="mt-4 mb-4 justify-content-center d-flex">
             <%= paginate @posts %>
           </div>

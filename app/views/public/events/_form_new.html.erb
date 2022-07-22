@@ -1,7 +1,7 @@
 <%= form_with model: @post, url: events_path, remote: true, method: :post do |f| %>
  <%= render 'layouts/errors', obj: @post %>
    <div class="form-group mt-2">
-     <%= f.label :作った日 %><br>
+     <%= f.label :予定日 %><br>
      <%= f.datetime_field :created_at, value: '2022-07-14T00:00:00' %><br>
    </div>
    <div class="form-group mt-2">
@@ -12,10 +12,6 @@
      <%= f.label :料理 %>
    　<%= f.text_field :cook_name, class: 'form-control' %>
    </div>
-   <div class="form-group mt-2">
-      <%= f.label :感想 %><br>
-      <%= f.text_field :opinion, class: 'form-control' %><br>
-    </div>
     <div class="form-group mt-2">
       <%= f.label :動画url %><br>
       <%= f.text_field :media_url, class: 'form-control' %>
