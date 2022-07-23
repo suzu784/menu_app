@@ -1,0 +1,49 @@
+h1 {
+  font-weight: 100;
+  position: relative;
+  padding: 1rem 2rem calc(1rem + 10px);
+  background: #00e8f0;
+  font-family: "Hannotate SC";
+}
+
+h1:before {
+  position: absolute;
+  top: -7px;
+  left: -7px;
+  width: 100%;
+  height: 100%;
+  content: '';
+  border: 4px solid #000;
+}
+
+h2.instagram {
+  position: relative;
+  padding: 6px;
+  color: #fff;
+  border-radius: 10px;
+  background-image: -webkit-linear-gradient(315deg, #231557 0%, #44107a 29%, #ff1361 67%, #fff800 100%);
+  background-image: linear-gradient(-225deg, #231557 0%, #44107a 29%, #ff1361 67%, #fff800 100%);
+}
+
+h2.instagram span {
+  display: block;
+  padding: 1rem 2rem;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, .2);
+}
+
+h6 {
+  color: #010079;
+  text-shadow: 0 0 5px white;
+  padding: 0.3em 0.5em;
+  background: -webkit-repeating-linear-gradient(-45deg, #cce7ff, #cce7ff 3px,#e9f4ff 3px, #e9f4ff 7px);
+  background: repeating-linear-gradient(-45deg, #cce7ff, #cce7ff 3px,#e9f4ff 3px, #e9f4ff 7px);
+}
+
+li.nav-item {
+  font-family: cursive;
+}
+
+footer {
+  font-family: Hannotate SC;
+}
