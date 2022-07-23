@@ -1,39 +1,46 @@
-<div class="row mt-4 pt-5">
-  <div class="col-lg-3 offset-sm-3" >
-    <h2 class="title text-left instagram"><span>プロフィール</span></h2>
-     <table class="table mt-5">
-       <tbody>
-         <tr>
-           <th>ニックネーム</th>
-           <td>すずしゅん</td>
-         </tr>
-         <tr>
-           <th>出身</th>
-           <td>新潟</td>
-         </tr>
-         <tr>
-           <th>趣味</th>
-           <td>キャンプ、料理</td>
-         </tr>
-         <tr>
-           <th>私を一言で表すと</th>
-           <td>几帳面</td>
-         </tr>
-       </tbody>
-     </table>
-  </div>
-  <div class="col-lg-5">
-    <%=image_tag "suzu.png", width: "50%", height: "85%" %>
-  </div>
+<div class="text-center">
+  <h1 class="w-50 mt-3 pt-3 offset-sm-3" style="font-family: cursive;"><strong>~ Welcome to Menu Share App ~</strong></h1>
 </div>
-<div class="row">
-  <div class="col-lg-3 offset-sm-3" >
-    <h2 class="title text-left instagram"><span>献立シェアアプリとは？</span></h2>
-    <p class="d-flex-auto h5">
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">レシピの投稿ができる</li>
-        <li class="list-group-item">カレンダーで月の献立を管理できる</li>
-      </ul>
-    </p>
-  </div>
-</div>
+    <div class="row">
+      <div class="col-md-4  mt-5 pt-3">
+        <div class="container mt-3">
+          <div class="border rounded" style="height:450px">
+            <%= link_to 'ゲストログインはこちらから', guest_sign_in_path, class: "btn btn-secondary w-100", method: :post %>
+            <h4 class="text-center mt-3">機能一覧</h4>
+              <ul class="list-group">
+                <li class="list-group-item">投稿の閲覧</li>
+              </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4  mt-5 pt-3">
+        <div class="container mt-3">
+          <div class="border rounded" style="height:450px">
+            <%= link_to 'ログインはこちらから', new_customer_session_path, class: "btn btn-info w-100" %>
+            <h4 class="text-center mt-3">機能一覧</h4>
+              <ul class="list-group">
+                <li class="list-group-item">カレンダー機能</li>
+                <li class="list-group-item">レシピ一覧機能</li>
+                <li class="list-group-item">あなたにおすすめの動画を紹介</li>
+                <li class="list-group-item">タイムライン機能</li>
+                <li class="list-group-item">メッセージ機能</li>
+                <li class="list-group-item">通知機能</li>
+              </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4  mt-5 pt-3">
+        <div class="container mt-3">
+          <div class="border rounded" style="height:450px">
+            <%= link_to '管理者ログインはこちらから', new_admin_session_path, class: "btn btn-success w-100" %>
+            <h4 class="text-center mt-3">機能一覧</h4>
+              <ul class="list-group">
+                <li class="list-group-item">投稿分析機能</li>
+                <li class="list-group-item">会員の退会機能</li>
+                <li class="list-group-item">会員一覧機能</li>
+                <li class="list-group-item">投稿一覧機能</li>
+              </ul>
+          </div>
+        </div>
+      </div>
+    </div>

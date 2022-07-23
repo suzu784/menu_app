@@ -1,46 +1,101 @@
-<div class="text-center">
-  <h1 class="w-50 mt-3 pt-3 offset-sm-3" style="font-family: cursive;"><strong>~ Welcome to Menu Share App ~</strong></h1>
-</div>
-    <div class="row">
-      <div class="col-md-4  mt-5 pt-3">
-        <div class="container mt-3">
-          <div class="border rounded" style="height:450px">
-            <%= link_to 'ゲストログインはこちらから', guest_sign_in_path, class: "btn btn-secondary w-100", method: :post %>
-            <h4 class="text-center mt-3">機能一覧</h4>
-              <ul class="list-group">
-                <li class="list-group-item">投稿の閲覧</li>
-              </ul>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4  mt-5 pt-3">
-        <div class="container mt-3">
-          <div class="border rounded" style="height:450px">
-            <%= link_to 'ログインはこちらから', new_customer_session_path, class: "btn btn-info w-100" %>
-            <h4 class="text-center mt-3">機能一覧</h4>
-              <ul class="list-group">
-                <li class="list-group-item">カレンダー機能</li>
-                <li class="list-group-item">レシピ一覧機能</li>
-                <li class="list-group-item">あなたにおすすめの動画を紹介</li>
-                <li class="list-group-item">タイムライン機能</li>
-                <li class="list-group-item">メッセージ機能</li>
-                <li class="list-group-item">通知機能</li>
-              </ul>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4  mt-5 pt-3">
-        <div class="container mt-3">
-          <div class="border rounded" style="height:450px">
-            <%= link_to '管理者ログインはこちらから', new_admin_session_path, class: "btn btn-success w-100" %>
-            <h4 class="text-center mt-3">機能一覧</h4>
-              <ul class="list-group">
-                <li class="list-group-item">投稿分析機能</li>
-                <li class="list-group-item">会員の退会機能</li>
-                <li class="list-group-item">会員一覧機能</li>
-                <li class="list-group-item">投稿一覧機能</li>
-              </ul>
-          </div>
-        </div>
-      </div>
-    </div>
+<!--======== MainVisual ========-->
+
+	<section id="mv">
+		<div class="container">
+			<h2 class="mv-title">献立シェアアプリへようこそ</h2>
+			<p class="mv-text">~Enjoy your eating life~</p>
+		</div>
+	</section>
+
+<!--========= Portfolio ========-->
+
+	<section id="portfolio">
+		<div class="container">
+			<h2 class="heading">Portfolio</h2>
+			<p class="heading-text">
+				It is a long established fact that a reader will be distracted by the readable<br> content of a page when looking at its layout.<br class="sp-none"> The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters
+			</p>
+			<div class="production-group">
+				<div class="production bg-1 sp-none"></div>
+			</div>
+		</div>
+	</section>
+
+<!--======== Feature ========-->
+
+	<section id="feature">
+		<div class="container">
+			<h2 class="heading">Feature</h2>
+			<p class="heading-text">
+				It is a long established fact that a reader will be distracted by the readable<br> content of a page when looking at its layout.<br class="sp-none"> The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters
+			</p>
+			<div class="strength-group">
+				<div class="strength">
+					<i class="fa fa-code" aria-hidden="true"></i>
+					<h3 class="strength-title">Strength1</h3>
+					<p class="strength-text">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur</p>
+				</div>
+				<div class="strength">
+					<i class="fa fa-desktop" aria-hidden="true"></i>
+					<h3 class="strength-title">Strength2</h3>
+					<p class="strength-text">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur</p>
+				</div>
+				<div class="strength">
+					<i class="fa fa-cogs" aria-hidden="true"></i>
+					<h3 class="strength-title">Strength3</h3>
+					<p class="strength-text">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+<!--======== Profile ========-->
+
+	<section id="profile">
+		<div class="container">
+			<h2 class="heading">Profile</h2>
+			<p class="heading-text">It is a long established fact that a reader will be distracted by the readable<br> content of a page when looking at its layout.<br class="sp-none"> The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters</p>
+			<div class="profile-group">
+				<div class="left-content">
+					<div class="my-face"></div>
+				</div>
+				<div class="right-content">
+					<h3 class="description-title">MyName</h3>
+					<p class="description-text">
+						Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur
+					</p>
+					<h3 class="description-title">MySkills</h3>
+					<p class="description-text">HTML/CSS,Rails,JavaScript,JQuery,Git</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+<!--======== Contact ========-->
+
+	<section id="contact">
+		<div class="container">
+			<h2 class="heading">Contact</h2>
+			<p class="heading-text">It is a long established fact that a reader will be distracted by the readable<br> content of a page when looking at its layout.<br class="sp-none"> The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters</p>
+			<div class="contact-group">
+				<div class="left-content">
+					<div class="left-contact-content">
+						<h3 class="description-title">Mail</h3>
+						<a class="description-text link-text" href="mailto:xxx&#64;xxx.com">suzu&#64;.com</a>
+						<h3 class="description-title">Tel</h3>
+						<a class="description-text link-text" href="tel:00000000000">000-0000-0000</a>
+					</div>
+				</div>
+				<div class="right-content">
+					<div class="right-contact-content">
+						<h3 class="description-title">SNS</h3>
+						<i class="fab fa-github-square fa-5x" aria-hidden="true"></i>
+						<i class="fab fa-twitter fa-5x" aria-hidden="true"></i>
+						<i class="fab fa-instagram fa-5x" aria-hidden="true"></i>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

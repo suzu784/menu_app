@@ -1,0 +1,335 @@
+
+/* =====================
+  setting
+===================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a{
+	text-decoration: none;
+}
+
+// .container{
+// 	width: 1024px;
+// 	margin: 0 auto;
+// }
+
+
+/* =====================
+  MainVisual
+===================== */
+
+#mv{
+	width: 100%;
+	height: 650px;
+	text-align: center;
+	color: #FAFAFA;
+	background-image: url("/images/code.png");
+	background-size: cover;
+	background-position: center;
+}
+
+.mv-title{
+	padding-top: 200px;
+	font-family: 'Raleway', sans-serif;
+	font-size: 64px;
+}
+
+.mv-text{
+	padding-top: 10px;
+	font-size: 20px;
+}
+
+/* =====================
+  Portfolio
+===================== */
+
+#portfolio{
+	background-color: #ECEFF1;
+}
+
+.heading{
+	padding-top: 90px;
+	text-align: center;
+	font-family: 'Raleway', sans-serif;
+	font-size: 32px;
+}
+
+.heading::after{
+	content: "";
+	display: block;
+	width: 70px;
+	height: 3px;
+	margin: 8px auto 0 auto;
+	background-color: #EC715F;
+}
+
+.heading-text{
+	padding-top: 30px;
+	text-align: center;
+	font-size: 16px;
+}
+
+.production-group{
+	display: flex;
+	flex-flow: row wrap;
+	width: 920px;
+	padding: 30px 0 90px 0;
+	margin: 0 auto;
+}
+
+.production{
+	width: 300px;
+	height: 400px;
+	margin: 10px 10px 0 0;
+	background-size: cover;
+	background-position: center;
+}
+
+.production:nth-child(-n+3){
+	margin-top: 0;
+}
+
+.production:nth-child(3n){
+	margin-right: 0;
+}
+
+.bg-1{
+	background-image: url(/images/menu_app.png);
+	width: inherit;
+
+}
+
+/* =====================
+  Feature
+===================== */
+
+#feature{
+	background-size: cover;
+	background-position: center;
+}
+
+.strength-group{
+	display: flex;
+	width: 980px;
+	padding: 30px 0 90px 0;
+	margin: 0 auto;
+}
+
+.strength{
+	width: 320px;
+	margin-right: 10px;
+	/*font-awesomeã®ã‚¢ã‚¤ã‚³ãƒ³ã®ãŸã‚ã®ã‚³ãƒ¼ãƒ‰*/
+	text-align: center;
+	font-size: 60px;
+}
+
+.strength:last-child{
+	margin-right: 0;
+}
+
+.strength-title{
+	padding: 10px 0;
+	font-size: 20px;
+}
+
+.strength-text{
+	text-align: left;
+	font-size: 16px;
+}
+
+/* =====================
+  Profile
+===================== */
+
+#profile{
+	background-color: #ECEFF1;
+}
+
+.profile-group{
+	display: flex;
+	padding: 30px 0 90px 0;
+}
+
+.left-content{
+	width: 50%;
+}
+
+.right-content{
+	width: 50%;
+}
+
+.my-face{
+	width: 250px;
+	height: 250px;
+	margin: 0 auto;
+	border-radius: 50%;
+	background-image: url("/images/suzu.png");
+	background-size: cover;
+}
+
+.description-title{
+	margin: 20px 0 5px 0;
+	font-size: 20px;
+}
+
+.description-title:first-child{
+	margin-top: 0;
+}
+
+.description-text{
+	font-size: 16px
+}
+
+/* =====================
+  Contact
+===================== */
+
+.contact-group{
+	display: flex;
+	width: 800px;
+	padding: 30px 0 90px 0;
+	margin: 0 auto;
+}
+
+.left-contact-content{
+	width: 130px;
+	margin: 0 auto;
+}
+
+.link-text{
+	text-decoration: underline;
+	color: #212121;
+}
+
+.right-contact-content{
+	width: 170px;
+	margin: 0 auto;
+}
+
+.right-contact-content .fa {
+	font-size: 50px;
+	margin-right: 20px;
+}
+
+.right-contact-content .fa:last-child {
+	margin-right: 0;
+}
+
+/* ========================================================================
+  Media Queries
+======================================================================== */
+
+@media(max-width: 768px){
+
+	/* =====================
+	  setting
+	===================== */
+
+	.container{
+		width: 90%;
+	}
+
+	.sp-none{
+		display: none;
+	}
+
+	.left-content{
+		width: 100%;
+	}
+
+	.right-content{
+		width: 100%;
+	}
+
+	/* =====================
+	  MainVisual
+	===================== */
+
+	#mv{
+		// background-image: url(../img/code.png);
+	}
+
+	.mv-title{
+		font-size: 40px;
+	}
+
+	.mv-text{
+		font-size: 18px;
+	}
+
+	/* =====================
+	  Portfolio
+	===================== */
+
+	.production-group{
+		width: 300px;
+	}
+
+	.production{
+		margin-right: 0px;
+	}
+
+	/* =====================
+	  Feature
+	===================== */
+
+	#feature{
+		background-size: cover;
+		background-position: center;
+	}
+
+	.strength-group{
+		flex-flow: row wrap;
+		width: 320px;
+	}
+
+	.strength{
+		margin-top: 10px;
+		margin-right: 0px;
+	}
+
+	.strength:first-child{
+		margin-top: 0;
+	}
+
+	/* =====================
+	  Profile
+	===================== */
+
+	.profile-group{
+		flex-flow: row wrap;
+		text-align: center;
+	}
+
+	.profile-group .left-content {
+    margin-bottom: 20px;
+  }
+
+	/* =====================
+	  Contact
+	===================== */
+
+	.contact-group{
+		flex-flow: row wrap;
+		width: 100%;
+		text-align: center;
+	}
+
+	.left-contact-content{
+		width: 100%;
+	}
+
+	.right-contact-content{
+		width: 100%;
+		margin-top: 20px;
+	}
+
+	.right-contact-content .fa {
+		font-size: 50px;
+		margin-right: 8px;
+	}
+}

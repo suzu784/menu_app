@@ -10,30 +10,85 @@
 
       <!--会員ログイン時-->
       <% if customer_signed_in? %>
-        <li class="nav-item"><%= link_to "Menu Share Appとは", about_path, class: 'btn btn-white ml-4 font-weight-bold' %></li>
+        <li class="nav-item"><%= link_to about_path, class: 'btn btn-white font-weight-bold' do %>
+          <i class="fas fa-calendar"></i>献立シェアアプリについて
+        </li>
+        <% end %>
         <% if unchecked_notifications.any? %>
           <i class="fa fa-circle" style="color: gold;"></i>
         <% end %>
-        <li class="nav-item"><%= link_to "タイムライン", timeline_path, class: 'btn btn-white ml-4 font-weight-bold' %></li>
-        <li class="nav-item"><%= link_to "新規投稿", new_post_path, class: 'btn btn-white ml-4 font-weight-bold' %></li>
-        <li class="nav-item"><%= link_to "投稿一覧", posts_path, class: 'btn btn-white ml-4 font-weight-bold' %></li>
-        <li class="nav-item"><%= link_to "人気投稿", popular_posts_path, class: 'btn btn-white ml-4 font-weight-bold' %></li>
-        <li class="nav-item"><%= link_to "カレンダー", events_path, class: 'btn btn-white ml-4 font-weight-bold' %></li>
-        <li class="nav-item"><%= link_to "あなたにおすすめの料理動画", youtube_path, class: 'btn btn-white ml-4 font-weight-bold' %></li>
-        <li class="nav-item"><%= link_to "会員一覧", customers_path, class: 'btn btn-white ml-4 font-weight-bold' %></li>
-        <li class="nav-item"><%= link_to "通知一覧", notifications_path, class: 'btn btn-white ml-4 font-weight-bold' %></li>
-        <li class="nav-item"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'btn btn-white ml-4 font-weight-bold' %></li>
+        <li class="nav-item"><%= link_to timeline_path, class: 'btn btn-white font-weight-bold' do %>
+          <i class="fas fa-heart"></i>タイムライン
+        </li>
+        <% end %>
+        <li class="nav-item"><%= link_to new_post_path, class: 'btn btn-white font-weight-bold' do %>
+          <i class="fas fa-edit"></i>新規投稿
+        </li>
+        <% end %>
+        <li class="nav-item"><%= link_to posts_path, class: 'btn btn-white font-weight-bold' do %>
+          <i class="fas fa-book-open"></i>投稿一覧
+        </li>
+        <% end %>
+        <li class="nav-item"><%= link_to popular_posts_path, class: 'btn btn-white font-weight-bold' do %>
+          <i class="fas fa-crown"></i>人気投稿
+        </li>
+        <% end %>
+        <li class="nav-item"><%= link_to events_path, class: 'btn btn-white font-weight-bold' do %>
+          <i class="fas fa-calendar"></i>カレンダー
+        </li>
+        <% end %>
+        <li class="nav-item"><%= link_to youtube_path, class: 'btn btn-white font-weight-bold' do %>
+          <i class="fas fa-video"></i>あなたにおすすめの料理動画
+        </li>
+        <% end %>
+        <li class="nav-item"><%= link_to customers_path, class: 'btn btn-white font-weight-bold' do %>
+          <i class="fas fa-user"></i>会員一覧
+        </li>
+        <% end %>
+        <li class="nav-item"><%= link_to notifications_path, class: 'btn btn-white font-weight-bold' do %>
+          <i class="fas fa-bell"></i>通知一覧
+        </li>
+        <% end %>
+        <li class="nav-item"><%= link_to destroy_customer_session_path, method: :delete, class: 'btn btn-white font-weight-bold' do %>
+          <i class="fas fa-sign-out-alt"></i>ログアウト
+        </li>
+        <% end %>
       <!--管理者ログイン時-->
       <% elsif admin_signed_in? %>
-        <li class="nav-item"><%= link_to "会員一覧", admin_customers_path, class: 'btn btn-white ml-4 font-weight-bold' %></li>
-        <li class="nav-item"><%= link_to "投稿一覧", admin_posts_path, class: 'btn btn-white ml-4 font-weight-bold' %></li>
-        <li class="nav-item"><%= link_to "分析機能", analysis_admin_posts_path, class: 'btn btn-white ml-4 font-weight-bold' %></li>
-        <li class="nav-item"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'btn btn-white ml-4 font-weight-bold' %></li>
+        <li class="nav-item"><%= link_to analysis_admin_posts_path, class: 'btn btn-white font-weight-bold' do %>
+          <i class="fas fa-chart-line"></i>分析機能
+        </li>
+        <% end %>
+        <li class="nav-item"><%= link_to admin_customers_path, class: 'btn btn-white font-weight-bold' do %>
+          <i class="fas fa-user"></i>会員一覧
+        </li>
+        <% end %>
+        <li class="nav-item"><%= link_to admin_posts_path, class: 'btn btn-white font-weight-bold' do %>
+          <i class="fas fa-book-open"></i>投稿一覧
+        </li>
+        <% end %>
+        <li class="nav-item"><%= link_to destroy_admin_session_path, method: :delete, class: 'btn btn-white font-weight-bold' do %>
+          <i class="fas fa-sign-out-alt"></i>ログアウト
+        </li>
+        <% end %>
       <!--非ログイン時-->
       <% else %>
-        <li class="nav-item"><%= link_to "トップメニュー", root_path, class: 'btn btn-white ml-4 font-weight-bold' %></li>
-        <li class="nav-item"><%= link_to "新規登録", new_customer_registration_path, class: 'btn btn-white ml-4 font-weight-bold' %></li>
-        <li class="nav-item"><%= link_to "Menu Share Appとは", about_path, class: 'btn btn-white ml-4 font-weight-bold' %></li>
+        <li class="nav-item"><%= link_to root_path, class: 'btn btn-white font-weight-bold' do %>
+          <i class="fas fa-desktop"></i>トップメニュー
+        </li>
+        <% end %>
+        <li class="nav-item"><%= link_to about_path, class: 'btn btn-white font-weight-bold' do %>
+          <i class="fas fa-calendar"></i>献立シェアアプリについて
+        </li>
+        <% end %>
+        <li class="nav-item"><%= link_to new_customer_registration_path, class: 'btn btn-white font-weight-bold' do %>
+          <i class="fas fa-user"></i>新規登録
+        </li>
+        <% end %>
+        <li class="nav-item"><%= link_to new_customer_session_path, class: 'btn btn-white font-weight-bold' do %>
+          <i class="fas fa-sign-in-alt"></i>ログイン
+        </li>
+        <% end %>
       <% end %>
      </ul>
    </div>
