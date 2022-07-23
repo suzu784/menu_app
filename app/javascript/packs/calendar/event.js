@@ -6,8 +6,12 @@ import monthGridPlugin from '@fullcalendar/daygrid'
 import googleCalendarApi from '@fullcalendar/google-calendar'
 
 //<div id='calendar'></div>のidからオブジェクトを定義してカレンダーを作成
+
 document.addEventListener('turbolinks:load', function() {
     var calendarEl = document.getElementById('calendar');
+    if(!calendarEl) {
+      return;
+    };
 
     //カレンダーの中身を設定(月表示、クリックアクションを起こす、googleCalendar使用)
     var calendar = new Calendar(calendarEl, {

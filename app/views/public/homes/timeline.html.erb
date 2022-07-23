@@ -18,11 +18,7 @@
                     <td><%= link_to image_tag post.get_post_image(150, 150) %></td>
                     <td class="align-middle"><%= link_to post.cook_name, post_path(post), class: "text-dark font-weight-bold" %></td>
                     <td class="align-middle">
-                      <% if post.star != nil %>
-                        <%= render 'public/posts/static_star', post: post %>
-                      <% else %>
-                        難易度は入力されていません
-                      <% end %>
+                      <%= render 'public/posts/static_star', post: post %>
                     </td>
                     <td class="align-middle"><%= post.opinion %></td>
                   </tr>
