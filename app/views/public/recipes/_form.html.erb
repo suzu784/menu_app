@@ -1,8 +1,9 @@
-<%= form_with model: [post, recipe], remote: true do |f| %>
+<%= form_with model: [post, recipe], url: post_recipes_path, method: :post, remote: true do |f| %>
+  <%= f.hidden_field :id, value: recipe.id %>
   <h5>材料</h5>
     <%= f.text_field :material %>
   <h5>工程</h5>
-    <%= f.text_area :how_to_make %>
+    <%= f.text_area :content %>
   <h5>カテゴリ</h5>
     <%= f.select :category, Recipe.categories.keys.map {|k| [I18n.t("enums.recipe.category.#{k}"), k]}, include_blank: '選択してください' %>
   <h5>保存</h5>

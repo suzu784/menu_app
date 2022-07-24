@@ -4,6 +4,9 @@
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
         レシピ作成
       </button>
+      <% if @recipes.draft != nil %>
+        <%= link_to '下書き', confirm_post_recipes_path, class: 'btn btn-success' %>
+      <% end %>
     </div>
     <div class="col-9 recipes">
       <%= render 'recipes', recipes: @recipes %>
@@ -25,22 +28,20 @@
           <div class="form-group">
             <%= @post.cook_name %>の作り方<br>
             <%= f.label :材料 %><br>
-            <%= f.text_area :material, cols: '50', rows: '4' %><br>
+            <%= f.text_area :material, class: 'form-control', placeholder: '・ジャガイモ' %><br>
             <%= f.label :工程 %><br>
-            <%= f.text_area :content, cols: '50', rows: '4' %>
+            <%= f.text_field :content, class: 'form-control' %>
+            <div class="add-form-btn">
+              <%= f.label :工程を追加 %>
+            </div>
           </div>
           <div class="tag-area">
           <%= f.fields_for :tags do |tag| %>
             <div class="js-file-group">
               <div class="tag-area_form">
-                <%= tag.text_area :content, class: "form-control" %>
-               <span class="delete-form-btn">削除</span>
-               <% if @recipe.persisted? %>
+             　　<% if @recipe.persisted? %>
                  <%= tag.check_box :_destroy, data:{ index: tag.index }, class: "hidden-destroy" %>
-               <% end %>
-               <div class="add-form-btn">
-                 <%= f.label :追加 %>
-               </div>
+         　　　　　  <% end %>
               </div>
             </div>
           <% end %>
@@ -50,7 +51,7 @@
           <%= f.label :下書きしますか？ %><br>
        　　<%= f.select :status, Recipe.statuses.keys.map {|k| [I18n.t("enums.recipe.status.#{k}"), k]} %>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
-          <%= f.submit "新規作成", class: 'btn btn-primary' %>
+          <%= f.submit "レシピ作成", class: 'btn btn-primary' %>
         </div>
       <% end %>
     </div>
@@ -61,8 +62,8 @@
   function buildField(index) {
     const html = `<div class="js-file-group" data-index="${index}">
                     <div class="tag-area_form">
-                      <input type="text" name="recipe[tags_attributes][${index}][content]" id="recipe_tags_attributes_${index}_content" class='form-control'>
-                      <span class="delete-form-btn">
+                      <input class='form-control' type="text" name="recipe[tags_attributes][${index}][content]" id="recipe_tags_attributes_${index}_content">
+                     <span class="delete-form-btn">
                         削除
                       </span>
                     </div>

@@ -1,9 +1,10 @@
-<div class="cover-index">
-  <div class="container">
-    <div class="row justify-content-center">
-      <h1 class="font-weight-normal mt-3">下書き一覧</h1>
+<div class="text-center">
+  <h1 class="w-50 mt-3 pt-3 offset-sm-3"><strong>下書き一覧</strong></h1>
+    <div class="container">
+    <% if @recipe != nil %>
       <%= render 'form', post: @post, recipe: @recipe %>
+    <% else %>
+      <h3>下書きはありません</h3>
+    <% end %>
     </div>
-  </div>
-  </div>
 </div>

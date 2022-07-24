@@ -3,7 +3,7 @@ class Public::RecipesController < ApplicationController
 
   def index
     @post = Post.find(params[:post_id])
-    @recipes = Recipe.where(post_id: @post.id)
+    @recipes = Recipe.published.where(post_id: @post.id)
     @recipe = Recipe.new
     @tag = @recipe.tags.new
     @tags = Tag.where(recipe_id: @recipe.id)
@@ -11,11 +11,20 @@ class Public::RecipesController < ApplicationController
 
   def create
     @post = Post.find(params[:post_id])
-    @recipe = current_customer.recipes.new(recipe_params)
-    @recipe.post_id = @post.id
-    @recipe.save
+    if params[:recipe][:id] != nil
+      @recipe = Recipe.find(params[:recipe][:id])
+      @recipe.update(update_recipe_params)
+    else
+      @recipe = current_customer.recipes.new(recipe_params)
+      @recipe.post_id = @post.id
+      @recipe.save
+    end
     @recipes = Recipe.where(post_id: @post.id)
     @tags = Tag.where(recipe_id: @recipe.id)
+    respond_to do |format|
+      format.html { redirect_to post_recipes_path }
+      format.js {}
+    end
   end
 
   def destroy
@@ -36,5 +45,8 @@ class Public::RecipesController < ApplicationController
 
   def recipe_params
     params.require(:recipe).permit(:category, :material, :status, :content, tags_attributes: [:content])
+  end
+  def update_recipe_params
+    params.require(:recipe).permit(:id, :category, :material, :status, :content, tags_attributes: [:content])
   end
 end
