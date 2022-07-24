@@ -1,12 +1,21 @@
 <div class="text-center">
   <h1 class="w-50 mt-3 pt-3 offset-sm-3"><strong>タイムライン</strong></h1>
       <div class="row">
-        <div class="col-sm-6">
+        <div class="col-md-5 offset-md-1 mt-3">
           <div id='calendar'></div>
         </div>
-        <div class="col-md-6">
-          <% if @posts != nil %>
+        <div class="col-md-5 mt-3">
+            <h5>新しい投稿</h5>
             <table class="table mt-4">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>名前</th>
+                  <th>作った日</th>
+                  <th>難易度</th>
+                  <th>感想</th>
+                </tr>
+              </thead>
               <tbody>
                 <% @posts.each do |post| %>
                   <tr>
@@ -25,9 +34,6 @@
                 <% end %>
               </tbody>
             </table>
-          <% else %>
-            <h5>フォローしているユーザーはいません</h5>
-          <% end %>
           <div class="mt-4 mb-4 justify-content-center d-flex">
             <%= paginate @posts %>
           </div>
