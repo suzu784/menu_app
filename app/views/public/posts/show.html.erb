@@ -1,12 +1,12 @@
 <div class="text-center">
   <h1 class="w-50 mt-3 pt-3 offset-sm-3"><strong><%= @post.cook_name %></strong></h1>
     <span>
-        <p>
-          <%= link_to "レシピ詳細", post_recipes_path(@post), class: 'btn btn-warning font-weight-bold' %>
-          <% if @post.customer == current_customer %>
-            <%= link_to "編集", edit_post_path(@post), class: 'btn btn-success' %>
-            <%= link_to "削除", post_path(@post), method: :delete, remote: true, class: 'btn btn-danger' %>
-        </p>
+      <p>
+        <%= link_to "レシピ詳細", post_recipes_path(@post), class: 'btn btn-warning font-weight-bold mr-3' %>
+        <% if @post.customer == current_customer %>
+          <%= link_to "編集", edit_post_path(@post), class: 'btn btn-success font-weight-bold mr-3' %>
+          <%= link_to "削除", post_path(@post), method: :delete, remote: true, class: 'btn btn-danger font-weight-bold' %>
+      </p>
       </span>
     <% end %>
 </div>
@@ -45,11 +45,9 @@
                 </tr>
           </tbody>
         </table>
-
       </div>
       <div class="col-lg-2">
         <%= image_tag @post.get_post_image(400, 400) %>
-
       </div>
     </div>
     <div class="row">
