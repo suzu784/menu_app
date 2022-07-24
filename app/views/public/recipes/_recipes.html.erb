@@ -3,11 +3,11 @@
     <div class="card-body">
       <h3 class="card-text"><%= recipe.post.cook_name %>の作り方</h3>
       <p class="card-text mt-3">材料</p>
-      <li class="card-text"><%= recipe.material %></li>
+      <p class="card-text"><%= recipe.material %></p>
       <p class="card-text mt-3">工程</p>
-      <li class="card-text"><small><%= recipe.content %></small></li>
+      <p class="card-text"><small><%= recipe.content %></small></p>
       <% @tags.each do |tag| %>
-        <li class="card-text"><%= tag.content %></li>
+        <p class="card-text"><%= tag.content %></p>
       <% end %>
       <p class="card-text">
         <%= link_to  post_recipe_path(@post, recipe), method: :delete do %>
