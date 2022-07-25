@@ -4,7 +4,7 @@
         <div class="col-md-3 offset-md-3 mt-5">
           <%= image_tag @customer.get_customer_image(400, 400) %>
         </div>
-        <div class="col-md-6 mt-5">
+        <div class="col-md-6 mt-5 pt-4">
           <table class="table w-50">
             <tbody>
               <tr>
@@ -12,18 +12,36 @@
                 <td><%= @customer.first_name + @customer.last_name %></td>
               </tr>
               <tr>
+              </tr>
                 <th>得意料理</th>
                 <td><%= @customer.special_dish %></td>
               </tr>
+                <th>フォロー</th>
+                <td>
+                  <%= link_to @customer.followings.count, customer_followings_path(@customer), class: 'font-weight-bold' %>
+                </td>
+              </tr>
+              <tr>
+                <th>フォロワー</th>
+                <td>
+                  <%= link_to @customer.followers.count, customer_followers_path(@customer), class: 'font-weight-bold' %>
+                </td>
               <% if @customer != current_customer %>
-                <tr>
-                  <th>フォロー</th>
-                  <td>
-                    <div class="relationship-btn_<%= @customer.id %>">
-                      <%= render 'public/relationships/btn', customer: @customer %>
-                    </div>
-                  </td>
-                </tr>
+              <tr>
+                <th>いいねされた投稿</th>
+                <td>
+                  <%= link_to @customer.favorites.count, favorites_customer_path(@customer), class: 'font-weight-bold' %>
+                </td>
+              </tr>
+              <tr>
+              <tr>
+                <th>フォロー</th>
+                <td>
+                  <div class="relationship-btn_<%= @customer.id %>">
+                    <%= render 'public/relationships/btn', customer: @customer %>
+                  </div>
+                </td>
+              </tr>
               <% end %>
                 <tr>
                   <th>編集ページ</th>
@@ -33,18 +51,6 @@
                     <td>編集できません</td>
                   <% end %>
                 </tr>
-              <tr>
-                <th>いいねされた投稿<br><%= @customer.favorites.count %>件</th>
-                <td><%= link_to "いいね一覧", favorites_customer_path(@customer), class: 'btn btn-warning font-weight-bold' %></td>
-              </tr>
-              <tr>
-                <th>フォロー数<br><%= @customer.followings.count %>件</th>
-                <td><%= link_to "フォロー一覧",  customer_followings_path(@customer), class: 'btn btn-warning font-weight-bold' %></td>
-              </tr>
-              <tr>
-                <th>フォロワー数<br><%= @customer.followers.count %>件</th>
-                <td><%= link_to "フォロワー一覧",  customer_followers_path(@customer), class: 'btn btn-warning font-weight-bold' %></td>
-              </tr>
             </tbody>
           </table>
         </div>

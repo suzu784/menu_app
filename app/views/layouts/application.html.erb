@@ -11,12 +11,15 @@
   </head>
 
   <body>
-    <header>
-      <%= render 'layouts/header' %>
-    <main>
-     <div id="flash-message"><%= render 'layouts/flash' %></div>
-    </main>
-    <%= yield %>
+    <div id="wrapper">
+      <header>
+        <%= render 'layouts/header' %>
+      </header>
+      <main>
+       <div id="flash-message"><%= render 'layouts/flash' %></div>
+      </main>
+      <%= yield %>
+    </div>
     <footer>
       <%= render 'layouts/footer' %>
     </footer>

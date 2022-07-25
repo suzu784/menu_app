@@ -1,0 +1,33 @@
+.content {
+  max-width: 980px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.card-listImage {
+  height: 15vh;
+}
+
+.card-list {
+  max-width: 300px;
+  margin-bottom: 50px;
+}
+
+.card-listTitle {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 30px 0;
+  text-align: center;
+}
+
+.card-listText {
+  line-height: 1.6;
+  font-weight: bold;
+  text-align: center;
+}

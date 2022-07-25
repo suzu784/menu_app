@@ -4,12 +4,14 @@ class Public::YoutubeController < ApplicationController
     service = Google::Apis::YoutubeV3::YouTubeService.new
     service.key = ENV['SECRET_KEY']
 
+    keyword = params[:search]
+
     next_page_token = nil
     opt = {
       q: keyword,
       type: 'video',
-      max_results: 1,
-      order: :rating,
+      max_results: 4,
+      order: :date,
       page_token: next_page_token,
       published_after: after.iso8601,
       published_before: before.iso8601
@@ -18,6 +20,6 @@ class Public::YoutubeController < ApplicationController
   end
 
   def recommendation
-    @youtube_data = find_videos('おすすめの料理')
+    @youtube_data = find_videos(@keyword)
   end
 end
