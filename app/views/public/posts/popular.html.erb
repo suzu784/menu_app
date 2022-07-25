@@ -1,30 +1,22 @@
 <div class="text-center">
-  <h1 class="w-50 mt-3 pt-3 offset-sm-3"><strong>人気投稿</strong></h1>
-    <div class="container">
-      <div class="row">
-        <% if @popular_posts.count > 0 %>
-          <table class="table">
-            <tbody>
-            <% @popular_posts.each do |post|%>
-              <tr>
-                <td class="align-middle">
-                  <h5><%= link_to post.cook_name, post_path(post), class: "text-dark font-weight-bold" %></h5>
-                  <p>いいね数:<%= post.favorites.count %></p>
-                </td>
-                <td><%= image_tag post.get_post_image(200, 200) %></td>
-              </tr>
-              <tr>
-                <th class="bg-light">作った日</th>
-                <td class="align-middle bg-light"><%= post.created_at.strftime("%Y/%m/%d") %></td>
-              </tr>
-              <tr>
-              </tr>
-            </tbody>
-            <% end %>
-          </table>
-        <% else %>
-          <h3 class="text-center">いいねされた記事はまだありません</h3>
-        <% end %>
-      </div>
-    </div>
+  <h1 class="w-50 mt-3 pt-3 offset-sm-3"><strong>人気投稿一覧</strong></h1>
 </div>
+<% if @popular_posts.count > 0 %>
+  <div class="content">
+    <div class="card-wrap">
+      <% @popular_posts.each do |post| %>
+      <div class="card-list">
+        <p><%= image_tag post.get_post_image(250, 250), class: 'card-listImage' %></p>
+        <h2 class="card-listTitle"><%= link_to post.cook_name, post_path(post) %> <%= render 'static_star', post: post %></h2>
+        <p class="card-listText">
+          いいね数:<%= post.favorites.count %><br>
+          投稿者:<%= post.customer.full_name %><br>
+          作った日:<%= post.created_at.strftime('%Y/%m/%d') %>
+        </p>
+      </div>
+      <% end %>
+    </div>
+  </div>
+<% else %>
+  <h3 class="text-center">いいねされた記事はまだありません</h3>
+<% end %>

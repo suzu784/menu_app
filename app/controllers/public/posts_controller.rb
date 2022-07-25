@@ -8,7 +8,7 @@ class Public::PostsController < ApplicationController
   def index
     @search = Post.ransack(params[:q])
     @posts = @search.result
-    @posts_all = Post.with_attached_post_image.page(params[:page]).per(3)
+    @posts_all = Post.with_attached_post_image.page(params[:page]).per(6)
   end
 
   def create

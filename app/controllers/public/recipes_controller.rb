@@ -39,6 +39,7 @@ class Public::RecipesController < ApplicationController
   def confirm
     @post = Post.find(params[:post_id])
     @recipe = current_customer.recipes.draft.find_by(params[:post_id])
+    @tags = Tag.where(recipe_id: @recipe_id)
   end
 
   private
