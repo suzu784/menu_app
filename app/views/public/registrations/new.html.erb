@@ -5,6 +5,10 @@
     <%= render "public/shared/error_messages", resource: resource %>
 
     <div class="field">
+      <%= f.label :画像 %><br />
+      <%= f.file_field :customer_image, autofocus: true %>
+    </div>
+    <div class="field">
       <%= f.label :苗字 %><br />
       <%= f.text_field :first_name, autofocus: true %>
     </div>
@@ -23,6 +27,7 @@
       <%= f.label :名前（カナ） %><br />
       <%= f.text_field :last_name_kana, autofocus: true %>
     </div>
+
 
     <div class="field">
       <%= f.label :得意料理 %><br />

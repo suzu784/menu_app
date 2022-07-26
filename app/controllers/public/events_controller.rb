@@ -2,18 +2,17 @@ class Public::EventsController < ApplicationController
   before_action :authenticate_customer!
 
   def new
-    @post = Post.new
-    render plain: render_to_string(partial: 'form_new', layout: false, locals: { post: @post })
+    @event = Event.new
+    render plain: render_to_string(partial: 'form_new', layout: false, locals: { event: @event })
   end
 
   def index
-    @posts = Post.all
+    @events = Event.all
   end
 
   def create
-    @post = Post.new(post_params)
-    @post.customer_id = current_customer.id
-    if @post.save
+    @event = Event.new(event_params)
+    if @event.save
       respond_to do |format|
         format.html { redirect_to events_path }
       end
@@ -23,7 +22,7 @@ class Public::EventsController < ApplicationController
     end
   end
 
-  def post_params
-    params.require(:post).permit(:cook_name, :opinion, :created_at, :media_url)
+  def event_params
+    params.require(:event).permit(:start, :end, :title)
   end
 end

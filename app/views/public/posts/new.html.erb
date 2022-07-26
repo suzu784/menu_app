@@ -7,22 +7,22 @@
               <%= form_with model: @post, url: posts_path, remote: true, method: :post do |f| %>
               <%= render 'layouts/errors', obj: @post %>
               <div class="container mt-3">
-                <div class="border rounded border border-dark" style="height:710px">
+                <div class="border rounded border border-dark" style="height:710px;" id="border-group">
                   <div class="form-group mt-2">
-                  <div class="form-group mt-3">
-                    <h6 class="w-50 offset-md-3">画像</h6>
-                    <%= f.file_field :post_image, accept: 'image/*' %><br>
-                  </div>
-                    <h6 class="w-50 offset-md-3">登録済みの料理</h6>
-                    <%= f.select :cook_name, options_from_collection_for_select(Post.select(:cook_name).distinct, :cook_name, :cook_name), include_blank: '選択してください' %>
+                    <h6 class="w-50 offset-md-3">作った日</h6>
+                    <%= f.datetime_select :cooked_day, {default: Date.today} %>
                   </div>
                   <div class="form-group mt-2">
                     <h6 class="w-50 offset-md-3">料理名</h6>
                   　<%= f.text_area :cook_name, cols: '58', rows: '1', placeholder: '例:ハンバーグ' %>
                   </div>
                   <div class="form-group mt-2">
-                    <h6 class="w-50 offset-md-3">作った日</h6>
-                    <%= f.datetime_field :created_at %><br>
+                    <h6 class="w-50 offset-md-3">画像</h6>
+                    <%= f.file_field :post_image, accept: 'image/*' %><br>
+                  </div>
+                  <div class="form-group mt-3">
+                    <h6 class="w-50 offset-md-3">登録済みの料理</h6>
+                    <%= f.select :cook_name, options_from_collection_for_select(Post.select(:cook_name).distinct, :cook_name, :cook_name), include_blank: '選択してください' %>
                   </div>
                   <div class="form-group mt-3">
                     <h6 class="w-50 offset-md-3">難易度</h6>
