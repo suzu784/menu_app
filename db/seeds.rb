@@ -6,14 +6,20 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Admin.create!(
+admin_data = Admin.find_by(email: 'menu@com')
+if admin_data.nil?
+   Admin.create!(
    email: 'menu@com',
    password: 'menuapp'
-)
-
-Post.create!(
-   cook_name: 'ハンバーグ',
-   opinion: 'ぜひ作ってみてください',
-   star: 5,
-   customer_id: 1
    )
+end
+
+post = Post.create!(
+                  cook_name: '豚汁',
+                  opinion: 'ぜひ作ってみてください',
+                  star: 5,
+                  customer_id: 1,
+                  cooked_day: "2022/07/26"
+                  )
+post.post_image.attach(io: File.open(Rails.root.join('app/assets/images/misosoup.JPG')),
+                  filename: 'misosoup.JPG')

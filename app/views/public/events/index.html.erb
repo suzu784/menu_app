@@ -9,7 +9,7 @@
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <h5 class="modal-title" id="exampleModalLabel">レシピ登録</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
@@ -29,9 +29,6 @@ $(document).ready(function() {
           $('.fc-daygrid-day-number').click(function() {
             // 付随しているaria-labelを取得
             const label = $(this).attr('aria-label')
-
-            // モーダルのタイトルに設定
-            $('.modal-title').html(label)
 
             // 日付のフォーマットをYYYY-MM-DDにする(年, 月は「-」にして日は空文字に変換)
             const replace_date = label.replace(/年|月/g, '-').replace(/日/g, '')

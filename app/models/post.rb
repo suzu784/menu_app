@@ -1,6 +1,5 @@
 class Post < ApplicationRecord
   belongs_to :customer
-  belongs_to :event, optional: true
   has_many :post_comments, dependent: :destroy
   has_many :recipes, dependent: :destroy
   has_many :favorites, dependent: :destroy
@@ -21,8 +20,13 @@ class Post < ApplicationRecord
   scope :created_5day_ago, -> { where(created_at: 5.day.ago.all_day) } # 5日前
   scope :created_6day_ago, -> { where(created_at: 6.day.ago.all_day) } # 6日前
 
-  validates :cook_name, presence: true
-  validates :opinion, length: { maximum: 200 }
+  with_options presence: true do
+    validates :cook_name
+    validates :cooked_day
+    with_options length: { maximum: 200 } do
+      validates :opinion
+    end
+  end
 
   has_one_attached :post_image
 
