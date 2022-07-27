@@ -19,7 +19,7 @@ class Public::RecipesController < ApplicationController
       @recipe.post_id = @post.id
       @recipe.save
     end
-    @recipes = Recipe.where(post_id: @post.id)
+    @recipes = Recipe.where(post_id: @post.id ,status: 0)
     @tags = Tag.where(recipe_id: @recipe.id)
     respond_to do |format|
       format.html { redirect_to post_recipes_path }
