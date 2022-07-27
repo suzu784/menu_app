@@ -8,7 +8,7 @@ class Public::HomesController < ApplicationController
   end
 
   def timeline
-     @posts_all = Post.with_attached_post_image
+     @posts_all = Post.includes(:customer)
      @customer = Customer.find(current_customer.id)
      # フォローしているカスタマーを取得
      @follow_customers = @customer.followings

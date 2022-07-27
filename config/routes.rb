@@ -38,7 +38,7 @@ Rails.application.routes.draw do
       end
      resources :categories, only: [:index]
      resources :chats, only: [:show, :create]
-     get :youtube, to: 'youtube#recommendation', as: 'youtube'
+     resources :youtube, only: [:index], as: 'youtube'
      resources :notifications, only: [:index] do
        collection do
         delete :destroy_all

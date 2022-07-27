@@ -19,7 +19,7 @@ class Public::YoutubeController < ApplicationController
     service.list_searches(:snippet, opt)
   end
 
-  def recommendation
-    @youtube_data = find_videos(@keyword)
+  def index
+    @youtube_data = find_videos(@keyword) if params[:search].present?
   end
 end
