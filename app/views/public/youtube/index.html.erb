@@ -1,0 +1,30 @@
+<div class="text-center">
+  <h1 class="w-50 mt-3 pt-3 offset-sm-3"><strong>レシピ検索</strong></h1>
+    <div class="search-form">
+      <%= form_tag(youtube_index_path, method: :get) do %>
+        <%= text_field_tag :search, "", placeholder: "料理名を入力してください", size: "50" %>
+        <%= submit_tag '検索', class: 'btn btn-warning' %>
+      <% end %>
+    </div>
+    <div class="row row-cols-4">
+      <% if @youtube_data.present? %>
+        <% @youtube_data.items.each do |item| %>
+          <div class="card-box">
+            <div class="card border-dark mb-3">
+              <div class="bd-placeholder-img card-img-top">
+                <% @snippet = item.snippet %>
+                <% @video_id = item.id.video_id %>
+                <div class="embed-responsive embed-responsive-16by9">
+                  <div><iframe src="https://www.youtube.com/embed/<%= @video_id %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+                </div>
+                <div class="card-body" style="min-height: 370px;">
+                  <h4>タイトル：<%= @snippet.title %></h4>
+                  <p>チャンネル名：<%= @snippet.channel_title %></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+</div>
