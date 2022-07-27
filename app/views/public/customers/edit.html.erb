@@ -1,31 +1,36 @@
 <div class="text-center">
-  <h1 class="w-50 mt-4 pt-4 offset-sm-3"><strong>会員情報編集ページ</strong></h1>
-    <%= form_with model: @customer, remote: true do |f| %>
-      <div class="field">
-        <%= f.label :画像 %><br />
-        <%= f.file_field :customer_image, autofocus: true %>
-      <div class="field">
-        <%= f.label :苗字 %><br />
-        <%= f.text_field :first_name, autofocus: true %>
-      </div>
-      <div class="field">
-        <%= f.label :名前 %><br />
-        <%= f.text_field :last_name, autofocus: true %>
-      </div>
-      <div class="field">
-        <%= f.label :苗字（カナ） %><br />
-        <%= f.text_field :first_name_kana, autofocus: true %>
-      </div>
-      <div class="field">
-        <%= f.label :名前（カナ） %><br />
-        <%= f.text_field :last_name_kana, autofocus: true %>
-      </div>
-      <div class="field">
-        <%= f.label :得意料理 %><br />
-        <%= f.text_field :special_dish, autofocus: true %>
-      </div>
-      <% if @customer.last_name != "guestuser" %>
-        <%= f.submit "変更", class: 'btn btn-success' %>
-      <% end %>
-    <% end %>
+  <div class="row">
+    <div class="col">
+      <h1 class="w-50 mt-4 pt-4 offset-sm-3"><strong>会員情報編集ページ</strong></h1>
+        <%= form_with model: @customer, remote: true do |f| %>
+          <div class="field">
+            <%= f.label :画像 %><br />
+            <%= f.file_field :customer_image, autofocus: true %>
+          </div>
+          <div class="field">
+            <%= f.label :苗字 %><br />
+            <%= f.text_field :first_name, autofocus: true %>
+          </div>
+          <div class="field">
+            <%= f.label :名前 %><br />
+            <%= f.text_field :last_name, autofocus: true %>
+          </div>
+          <div class="field">
+            <%= f.label :苗字（カナ） %><br />
+            <%= f.text_field :first_name_kana, autofocus: true %>
+          </div>
+          <div class="field">
+            <%= f.label :名前（カナ） %><br />
+            <%= f.text_field :last_name_kana, autofocus: true %>
+          </div>
+          <div class="field">
+            <%= f.label :得意料理 %><br />
+            <%= f.text_field :special_dish, autofocus: true %>
+          </div>
+          <% if @customer.last_name != "guestuser" %>
+            <%= f.submit "変更", class: 'btn btn-success' %>
+          <% end %>
+        <% end %>
+    </div>
+  </div>
 </div>
