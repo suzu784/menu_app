@@ -11,7 +11,7 @@
          <div class="col">
           <table class="table">
             <tbody>
-              <% @posts_all.each do |post| %>
+              <% @posts.each do |post| %>
                 <tr>
                   <th class="align-middle">料理名</th>
                   <td class="align-middle"><%= link_to post.cook_name, admin_post_path(post) %></td>
