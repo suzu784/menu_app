@@ -25,7 +25,7 @@
             </tr>
               <tr>
                 <th>動画URL</th>
-                <% if @post.media_url != nil %>
+                <% if @post.media_url.present? %>
                   <td><h7 class="text-break"><%= raw Rinku.auto_link(h(@post.media_url)) %></h7></td>
                 <% else %>
                   <td>URLはありません</td>
