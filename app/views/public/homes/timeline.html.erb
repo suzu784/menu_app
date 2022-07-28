@@ -6,7 +6,11 @@
       <h3 class="my-profile"><strong>プロフィール</strong></h3>
       <div class="content">
         <div class="wrap" style="display: flex;">
-          <%= image_tag @customer.get_customer_image(250, 250), class: 'rounded-circle' %><br>
+          <% if @customer.last_name == "guestuser" %>
+            <%= image_tag 'no-image.jpeg' %>
+          <% else %>
+            <%= image_tag @customer.get_customer_image(250, 250), class: 'rounded-circle' %><br>
+          <% end %>
           <table class="table w-50 mt-5">
             <tbody>
               <tr>
