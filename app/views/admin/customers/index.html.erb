@@ -17,7 +17,7 @@
               <th>ステータス</th>
             </tr>
           </thead>
-          <% @customers_all.each do |customer| %>
+          <% @customers.each do |customer| %>
           <tbody>
             <tr>
               <td><%= image_tag customer.get_customer_image(200, 200) %></td>
