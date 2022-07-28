@@ -15,8 +15,7 @@
                 <th>得意料理</th>
                 <td><%= @customer.special_dish %></td>
               </tr>
-              <% if @customer.is_deleted == false %>
-                <th></th>
+              <% if @customer.is_deleted == false && @customer.last_name != "guestuser" %>
                 <td><%= link_to "退会画面", admin_customer_confirm_path(@customer) %></td>
               <% end %>
               </tr>
