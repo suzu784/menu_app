@@ -37,9 +37,8 @@
               <tr>
                 <th>フォロー</th>
                 <td>
-                  <div class="relationship-btn_<%= @customer.id %>">
-                    <%= render 'public/relationships/btn', customer: @customer %>
-                  </div>
+                  <%= render 'public/relationships/btn', customer: @customer %>
+                  <%= render 'public/chats/btn', customer: @customer %>
                 </td>
               </tr>
               <% end %>
