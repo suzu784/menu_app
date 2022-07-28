@@ -22,6 +22,8 @@ class Customer < ApplicationRecord
 
   has_many :active_notifications, class_name: "Notification", foreign_key: :visiter_id, dependent: :destroy
   has_many :passive_notifications, class_name: "Notification", foreign_key: :visited_id, dependent: :destroy
+  
+  has_many :events, dependent: :destroy
 
   with_options presence: true do
     validates :first_name, length: { maximum: 20 }

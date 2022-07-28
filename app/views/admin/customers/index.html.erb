@@ -9,15 +9,26 @@
      <div class="container">
        <div class="row">
         <table class="table">
+          <thead>
+            <tr>
+              <th></th>
+              <th>名前</th>
+              <th>得意料理</th>
+              <th>ステータス</th>
+            </tr>
+          </thead>
           <% @customers_all.each do |customer| %>
           <tbody>
-            <% if customer.is_deleted == false %>
-              <tr>
-                <td><%= image_tag customer.get_customer_image(200, 200) %></td>
-                <td class="align-middle"><%= link_to customer.full_name, admin_customer_path(customer) %></td>
-                <td class="align-middle"><strong>得意料理</strong><%= customer.special_dish %></td>
-              </tr>
-            <% end %>
+            <tr>
+              <td><%= image_tag customer.get_customer_image(200, 200) %></td>
+              <td class="align-middle"><%= link_to customer.full_name, admin_customer_path(customer) %></td>
+              <td class="align-middle"><%= customer.special_dish %></td>
+              <% if customer.is_deleted == true %>
+                <td class="align-middle">退会済み</td>
+              <% else %>
+                <td class="align-middle">有効会員</td>
+              <% end %>
+            </tr>
           </tbody>
           <% end %>
         </table>
