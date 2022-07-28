@@ -7,7 +7,7 @@
       <div class="content">
         <div class="wrap" style="display: flex;">
           <% if @customer.last_name == "guestuser" %>
-            <%= image_tag 'no-image.jpeg' %>
+            <img src="/images/no-image.jpeg"></img>
           <% else %>
             <%= image_tag @customer.get_customer_image(250, 250), class: 'rounded-circle' %><br>
           <% end %>
@@ -74,4 +74,3 @@
         <%= paginate @posts %>
       </div>
   </div>
-
