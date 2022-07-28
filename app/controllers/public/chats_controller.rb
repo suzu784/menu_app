@@ -31,6 +31,7 @@ class Public::ChatsController < ApplicationController
   def create
     @chat = current_customer.chats.new(chat_params)
     render :validater unless @chat.save
+    redirect_to request.referer
   end
 
   private
