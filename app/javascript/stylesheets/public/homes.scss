@@ -219,6 +219,21 @@ a{
 	margin-right: 0;
 }
 
+/* =====================
+  Back
+===================== */
+
+#back {
+	display: flex;
+	justify-content: flex-end;
+	right: 20px;
+	bottom: 20px;
+}
+
+#back img {
+	width: 50px;
+}
+
 /* ========================================================================
   Media Queries
 ======================================================================== */
@@ -332,4 +347,20 @@ a{
 		font-size: 50px;
 		margin-right: 8px;
 	}
+	
+	/* =====================
+  Back
+	===================== */
+
+	#back {
+		display: flex;
+		justify-content: flex-end;
+		right: 20px;
+		bottom: 20px;
+	}
+	
+	#back img {
+		width: 50px;
+	}
+
 }
