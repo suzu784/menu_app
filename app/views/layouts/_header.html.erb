@@ -1,95 +1,100 @@
-<nav class="border border-dark navbar navbar-expand-lg p-5 bg-transparent navbar-light", style="background:rgba(255,255,255,1);">
+<nav class="border border-dark navbar p-5 bg-transparent navbar-light", style="background:rgba(255,255,255,1);" id="navi">
   <%= link_to "/" do %>
     <h2 class="text text-dark ", style="font-family: Hannotate SC;"><i class="fas fa-calendar"></i>献立シェアアプリ</h2>
   <% end %>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-   <div class="collapse navbar-collapse" id="navbarNavDropdown">
-     <ul class="navbar-nav ml-auto">
-
-      <!--会員ログイン時-->
+<div id="sp-menu">
+  <h2>MENU</h2>
+  <ul>
+    <!--会員ログイン時-->
       <% if customer_signed_in? %>
-        <li class="nav-item"><%= link_to about_path, class: 'btn btn-white font-weight-bold' do %>
+        <li><%= link_to about_path do %>
           <i class="fas fa-calendar"></i>献立シェアアプリについて
-        </li>
         <% end %>
+        </li>
         <% if unchecked_notifications.any? %>
           <i class="fa fa-circle" style="color: gold;"></i>
         <% end %>
-        <li class="nav-item"><%= link_to timeline_path, class: 'btn btn-white font-weight-bold' do %>
+        <li><%= link_to timeline_path do %>
           <i class="fas fa-bookmark"></i>タイムライン
-        </li>
         <% end %>
-        <li class="nav-item"><%= link_to new_post_path, class: 'btn btn-white font-weight-bold' do %>
+        </li>
+        <li><%= link_to new_post_path do %>
           <i class="fas fa-edit"></i>新規投稿
-        </li>
         <% end %>
-        <li class="nav-item"><%= link_to posts_path, class: 'btn btn-white font-weight-bold' do %>
+        </li>
+        <li><%= link_to posts_path do %>
           <i class="fas fa-book-open"></i>投稿一覧
-        </li>
         <% end %>
-        <li class="nav-item"><%= link_to popular_posts_path, class: 'btn btn-white font-weight-bold' do %>
+        </li>
+        <li><%= link_to popular_posts_path do %>
           <i class="fas fa-crown"></i>人気投稿
-        </li>
         <% end %>
-        <li class="nav-item"><%= link_to events_path, class: 'btn btn-white font-weight-bold' do %>
+        </li>
+        <li><%= link_to events_path do %>
           <i class="fas fa-calendar"></i>カレンダー
-        </li>
         <% end %>
-        <li class="nav-item"><%= link_to youtube_index_path, class: 'btn btn-white font-weight-bold' do %>
+        </li>
+        <li><%= link_to youtube_index_path do %>
           <i class="fas fa-video"></i>レシピ検索
-        </li>
         <% end %>
-        <li class="nav-item"><%= link_to customers_path, class: 'btn btn-white font-weight-bold' do %>
+        </li>
+        <li><%= link_to customers_path do %>
           <i class="fas fa-user"></i>会員一覧
-        </li>
         <% end %>
-        <li class="nav-item"><%= link_to notifications_path, class: 'btn btn-white font-weight-bold' do %>
+        </li>
+        <li><%= link_to notifications_path do %>
           <i class="fas fa-bell"></i>通知一覧
-        </li>
         <% end %>
-        <li class="nav-item"><%= link_to destroy_customer_session_path, method: :delete, class: 'btn btn-white font-weight-bold' do %>
+        </li>
+        <li><%= link_to destroy_customer_session_path, method: :delete do %>
           <i class="fas fa-sign-out-alt"></i>ログアウト
-        </li>
         <% end %>
+        </li>
       <!--管理者ログイン時-->
       <% elsif admin_signed_in? %>
-        <li class="nav-item"><%= link_to analysis_admin_posts_path, class: 'btn btn-white font-weight-bold' do %>
+        <li><%= link_to analysis_admin_posts_path do %>
           <i class="fas fa-chart-line"></i>分析機能
-        </li>
         <% end %>
-        <li class="nav-item"><%= link_to admin_customers_path, class: 'btn btn-white font-weight-bold' do %>
+        </li>
+        <li><%= link_to admin_customers_path do %>
           <i class="fas fa-user"></i>会員一覧
-        </li>
         <% end %>
-        <li class="nav-item"><%= link_to admin_posts_path, class: 'btn btn-white font-weight-bold' do %>
+        </li>
+        <li><%= link_to admin_posts_path do %>
           <i class="fas fa-book-open"></i>投稿一覧
-        </li>
         <% end %>
-        <li class="nav-item"><%= link_to destroy_admin_session_path, method: :delete, class: 'btn btn-white font-weight-bold' do %>
+        </li>
+        <li><%= link_to destroy_admin_session_path, method: :delete do %>
           <i class="fas fa-sign-out-alt"></i>ログアウト
-        </li>
         <% end %>
+        </li>
       <!--非ログイン時-->
       <% else %>
-        <li class="nav-item"><%= link_to root_path, class: 'btn btn-white font-weight-bold' do %>
+        <li><%= link_to root_path do %>
           <i class="fas fa-desktop"></i>トップメニュー
-        </li>
         <% end %>
-        <li class="nav-item"><%= link_to about_path, class: 'btn btn-white font-weight-bold' do %>
+        </li>
+        <li><%= link_to about_path do %>
           <i class="fas fa-calendar"></i>献立シェアアプリについて
-        </li>
         <% end %>
-        <li class="nav-item"><%= link_to new_customer_registration_path, class: 'btn btn-white font-weight-bold' do %>
+        </li>
+        <li><%= link_to new_customer_registration_path do %>
           <i class="fas fa-user"></i>新規登録
-        </li>
         <% end %>
-        <li class="nav-item"><%= link_to new_customer_session_path, class: 'btn btn-white font-weight-bold' do %>
+        </li>
+        <li><%= link_to new_customer_session_path do %>
           <i class="fas fa-sign-in-alt"></i>ログイン
-        </li>
         <% end %>
+        </li>
       <% end %>
-     </ul>
-   </div>
+  </ul>
+</div>
+
+<div id="hm-icon">
+  <a class="menu-trigger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </a>
+</div>
 </nav>

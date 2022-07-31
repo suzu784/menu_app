@@ -11,6 +11,9 @@ import "channels"
 import Chart from 'chart.js/auto'
 import jQuery from "jquery"
 import raty from 'raty-js'
+import "./header/nav.js"
+import "./homes/arrow.js"
+import "./posts/index.js"
 import "./calendar/event.js"
 import "popper.js";
 import "bootstrap";
