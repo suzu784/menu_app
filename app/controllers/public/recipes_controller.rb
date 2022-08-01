@@ -45,9 +45,9 @@ class Public::RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.require(:recipe).permit(:category, :material, :status, :content, tags_attributes: [:content])
+    params.require(:recipe).permit(:recipe_image, :status, :content, tags_attributes: [:content])
   end
   def update_recipe_params
-    params.require(:recipe).permit(:id, :category, :material, :status, :content, tags_attributes: [:content])
+    params.require(:recipe).permit(:id, :recipe_image, :status, :content, tags_attributes: [:content])
   end
 end

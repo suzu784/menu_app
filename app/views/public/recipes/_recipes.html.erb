@@ -1,19 +1,21 @@
 <% recipes.each do |recipe| %>
-  <div class="card mb-1">
-    <div class="card-body">
-      <h3 class="card-text"><%= recipe.post.cook_name %>の作り方</h3>
-      <p class="card-text mt-3">材料</p>
-      <p class="card-text"><%= recipe.material %></p>
-      <p class="card-text mt-3">工程</p>
-      <p class="card-text"><%= recipe.content %></p>
-      <% @tags.each do |tag| %>
-        <p class="card-text"><%= tag.content %></p>
-      <% end %>
-      <p class="card-text">
-        <%= link_to  post_recipe_path(@post, recipe), method: :delete do %>
-          <i class="fas fa-trash-alt"></i>
-        <% end %>
-      </p>
+  <div class="card mb-3">
+    <div class="row no-gutters">
+      <div class="col-md-4">
+        <p><%= image_tag recipe.get_recipe_image(400, 400) %></p>
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title"><%= recipe.content %></h5>
+          <p class="card-text"><%= recipe.content %></p>
+          <p class="card-text"><small class="text-muted"><%= recipe.created_at.strftime('%Y/%m/%d') %></small></p>
+          <p class="card-text">
+            <%= link_to  post_recipe_path(@post, recipe), method: :delete do %>
+              <i class="fas fa-trash-alt"></i>
+            <% end %>
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 <% end %>
