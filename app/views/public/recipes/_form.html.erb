@@ -1,12 +1,9 @@
 <%= form_with model: [post, recipe], url: post_recipes_path, method: :post, remote: true do |f| %>
   <%= f.hidden_field :id, value: recipe.id %>
-  <h6 class="mt-5">材料</h6>
-    <%= f.text_area :material, class: 'form-control' %><br>
-  <h6>工程</h6>
-    <%= f.text_field :content, class: 'form-control' %>
-    <% @tags.each do |tag| %>
-      <%= f.text_field :content, class: 'form-control mt-5' %>
-    <% end %>
+  <h6 class="mt-5">画像</h6>
+    <%= f.file_field :recipe_image, autofocus: true %>
+  <h6 class="mt-5">工程</h6>
+    <%= f.text_area :content, rows: '8', class: 'form-control' %>
     <%= f.submit "レシピ作成", class: 'btn btn-primary' %>
-    <%= f.select :status, Recipe.statuses.keys.map {|k| [I18n.t("enums.recipe.status.#{k}"), k]}, include_blank: '選択してください' %>
+    <%= f.hidden_field :status, { value: 'published' } %>
 <% end %>
