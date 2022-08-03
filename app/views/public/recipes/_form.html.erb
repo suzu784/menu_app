@@ -1,9 +1,15 @@
 <%= form_with model: [post, recipe], url: post_recipes_path, method: :post, remote: true do |f| %>
   <%= f.hidden_field :id, value: recipe.id %>
-  <h6 class="mt-5">画像</h6>
-    <%= f.file_field :recipe_image, autofocus: true %>
-  <h6 class="mt-5">工程</h6>
-    <%= f.text_area :content, rows: '8', class: 'form-control' %>
-    <%= f.submit "レシピ作成", class: 'btn btn-primary' %>
-    <%= f.hidden_field :status, { value: 'published' } %>
+  <div class="form-group mt-5">
+    <div class="form-group-item">
+      <%= f.label :画像 %><br>
+      <%= f.file_field :recipe_image, autofocus: true %>
+    </div>
+    <div class="form-group-item mt-5">
+      <%= f.label :工程 %><br>
+      <%= f.text_area :content, rows: '5', class: 'form-control' %>
+      <%= f.submit "送信", class: 'btn btn-primary' %>
+      <%= f.hidden_field :status, { value: :published } %>
+    </div>
+  </div>
 <% end %>

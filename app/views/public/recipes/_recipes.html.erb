@@ -10,8 +10,10 @@
           <p class="card-text"><%= recipe.content %></p>
           <p class="card-text"><small class="text-muted"><%= recipe.created_at.strftime('%Y/%m/%d') %></small></p>
           <p class="card-text">
-            <%= link_to  post_recipe_path(@post, recipe), method: :delete do %>
-              <i class="fas fa-trash-alt"></i>
+            <% if recipe.customer == current_customer %>
+              <%= link_to  post_recipe_path(@post, recipe), method: :delete do %>
+                <i class="fas fa-trash-alt"></i>
+              <% end %>
             <% end %>
           </p>
         </div>
