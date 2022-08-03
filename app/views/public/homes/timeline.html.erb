@@ -15,11 +15,19 @@
             <tbody>
               <tr>
                 <th class="text-center">名前</th>
-                <th><%= @customer.full_name %></th>
+                <td><%= @customer.full_name %></td>
               </tr>
               <tr>
                 <th class="text-center">得意料理</th>
-                <th><%= @customer.special_dish %></th>
+                <td><%= @customer.special_dish %></td>
+              </tr>
+              <tr>
+                <th class="text-center">following</th>
+                <td><%= link_to @customer.followings.count, customer_followings_path(@customer) %></td>
+              </tr>
+              <tr>
+                 <th class="text-center">follower</th>
+                 <td><%= link_to @customer.followers.count, customer_followers_path(@customer) %></td>
               </tr>
             </tbody>
           </table>
@@ -50,12 +58,12 @@
                   <% @posts.each do |post| %>
                     <tr>
                       <td>
-                        <%= image_tag post.customer.get_customer_image(55, 100), class: 'rounded-circle' %><br>
+                        <%= image_tag post.customer.get_customer_image(50, 100), class: 'rounded-circle' %><br>
                         <%= post.customer.full_name %><br>
                         <%= post.created_at.strftime('%Y/%m/%d') %>
                       </td>
                       <td><%= link_to image_tag post.get_post_image(150, 150) %></td>
-                      <td class="align-middle"><%= link_to post.cook_name, post_path(post), class: "text-dark font-weight-bold" %></td>
+                      <td class="align-middle"><%= link_to post.cook_name, post_path(post), class: "font-weight-bold" %></td>
                       <td class="align-middle">
                         <%= render 'public/posts/static_star', post: post %>
                       </td>
