@@ -29,23 +29,14 @@
             <%= f.label :工程 %><br>
             <%= f.text_area :content, rows: '8', class: 'form-control' %>
           </div>
-          <div class="tag-area">
-          <%= f.fields_for :tags do |tag| %>
-            <div class="js-file-group">
-              <div class="tag-area_form">
-             　　<% if @recipe.persisted? %>
-                 <%= tag.check_box :_destroy, data:{ index: tag.index }, class: "hidden-destroy" %>
-         　　　　　  <% end %>
-              </div>
-            </div>
-          <% end %>
-          </div>
         </div>
         <div class="modal-footer">
-          <%= f.label :下書きしますか？ %><br>
-       　　<%= f.select :status, Recipe.statuses.keys.map {|k| [I18n.t("enums.recipe.status.#{k}"), k]} %>
+          <% if Recipe.draft.empty? %>
+            <%= f.label :下書きしますか？ %><br>
+         　　<%= f.select :status, Recipe.statuses.keys.map {|k| [I18n.t("enums.recipe.status.#{k}"), k]} %>
+       　　<% end %>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
-          <%= f.submit "レシピ作成", class: 'btn btn-primary' %>
+          <%= f.submit "送信", class: 'btn btn-primary' %>
         </div>
       <% end %>
     </div>
