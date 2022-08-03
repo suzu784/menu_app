@@ -5,6 +5,8 @@ class Post < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :favorited_customers, through: :favorites, source: :customer
   has_many :notifications, dependent: :destroy
+  has_many :post_tag_relations, dependent: :destroy
+  has_many :tags, through: :post_tag_relations, dependent: :destroy
 
   # 今週の投稿数の合計を表示させる
   scope :created_day_ago, -> (number) { where(created_at: number.day.ago.all_day) }
