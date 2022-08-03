@@ -5,8 +5,6 @@ class Public::RecipesController < ApplicationController
     @post = Post.find(params[:post_id])
     @recipes = Recipe.published.where(post_id: @post.id)
     @recipe = Recipe.new
-    @tag = @recipe.tags.new
-    @tags = Tag.where(recipe_id: @recipe.id)
   end
 
   def create
@@ -20,7 +18,6 @@ class Public::RecipesController < ApplicationController
       @recipe.save
     end
     @recipes = Recipe.where(post_id: @post.id ,status: 0)
-    @tags = Tag.where(recipe_id: @recipe.id)
     respond_to do |format|
       format.html { redirect_to post_recipes_path }
       format.js {}
@@ -38,16 +35,15 @@ class Public::RecipesController < ApplicationController
 
   def confirm
     @post = Post.find(params[:post_id])
-    @recipe = current_customer.recipes.draft.find_by(params[:post_id])
-    @tags = Tag.where(recipe_id: @recipe_id)
+    @recipe = @post.recipes.find_by(status: :draft)
   end
 
   private
 
   def recipe_params
-    params.require(:recipe).permit(:recipe_image, :status, :content, tags_attributes: [:content])
+    params.require(:recipe).permit(:recipe_image, :status, :content)
   end
   def update_recipe_params
-    params.require(:recipe).permit(:id, :recipe_image, :status, :content, tags_attributes: [:content])
+    params.require(:recipe).permit(:id, :recipe_image, :status, :content)
   end
 end

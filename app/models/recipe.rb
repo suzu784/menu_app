@@ -1,10 +1,6 @@
 class Recipe < ApplicationRecord
   belongs_to :customer
   belongs_to :post
-  belongs_to :event, optional: true
-
-  has_many :tags, dependent: :destroy
-  accepts_nested_attributes_for :tags, allow_destroy: true
 
   has_one_attached :recipe_image
 
