@@ -23,3 +23,9 @@ post = Post.create!(
                   )
 post.post_image.attach(io: File.open(Rails.root.join('app/assets/images/misosoup.JPG')),
                   filename: 'misosoup.JPG')
+                  
+Tag.create([
+  { name: '栄養満点' },
+  { name: 'ヘルシー' },
+  { name: 'スタミナ'}
+  ])

@@ -35,14 +35,20 @@
                 <th>作った日</th>
                 <td><%= @post.cooked_day.strftime('%Y/%m/%d') %></td>
               </tr>
-                <tr>
-                  <th>いいね</th>
-                  <td>
-                  <div class="favorite-btn<%= @post.id %>">
-                    <span><%= render 'public/favorites/btn', post: @post %></span>
-                  </div>
-                  </td>
-                </tr>
+              <tr>
+                <th>いいね</th>
+                <td>
+                <div class="favorite-btn<%= @post.id %>">
+                  <span><%= render 'public/favorites/btn', post: @post %></span>
+                </div>
+                </td>
+              </tr>
+              <tr>
+                <th>タグ</th>
+                <% @post.tags.each do |tag| %>
+                  <td class="d-inline-flex"><%= tag.name %></td>
+                <% end %>
+              </tr>
           </tbody>
         </table>
       </div>
