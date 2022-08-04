@@ -1,6 +1,5 @@
 <div class="nested-fields">
-  <%= f.label :食材 %><br>
-  <%= f.collection_select(:ingredient_id, {}, :id, :name, {}) %>
+  <%= f.text_field :name, class: 'form-control w-50' %>
   <%= f.number_field :quantity %>個
   <%= link_to_remove_association '削除', f, class: 'btn btn-danger' %>
 </div>

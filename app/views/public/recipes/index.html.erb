@@ -34,8 +34,11 @@
               <%= f.file_field :recipe_image, autofocus: true %><br>
             </div>
             <div class="form-group-item mt-3">
-              <!--食材入力フィールド-->
+              <%= f.label :食材 %>
               <%= f.fields_for :recipe_ingredients do |t| %>
+            </div>
+            <div class="form-group-item mt-1">
+              <!--食材入力フィールド-->
                 <%= render 'recipe_ingredient_fields', f: t %>
               <% end %>
               <!--食材追加ボタン-->
