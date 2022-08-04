@@ -7,19 +7,20 @@
     <div class="col-md-6">
       <%= form_with model: @post, url: posts_path, remote: true, method: :post do |f| %>
       <div class="form-group">
-        <div class="form-group-ite mt-4">
-          <%= f.label :画像, class: 'h5' %><br>
-          <%= f.file_field :post_image, accept: 'image/*' %>
+        <div class="form-group-item mt-4" id="picture">
+          <label>
+            <i class="fas fa-camera fa-2x"></i>
+            <%= f.file_field :post_image, accept: 'image/*' %>
+          </label>
         </div>
         <div class="form-group-item mt-3">
-          <%= f.label :作った日, class: 'h5' %><br>
           <%= f.date_select :cooked_day, {default: Date.today} %>
         </div>
         <div class="form-group-item mt-3">
           <%= f.label :料理名, class: 'h5' %>
         　<%= f.text_area :cook_name, cols: '58', rows: '1', placeholder: '例:ハンバーグ', class: 'form-control' %>
         </div>
-        <div class="form-group">
+        <div class="form-group mt-2">
           <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
             <div class="form-check">
               <%= tag.label class: 'form-check-label' do %>
@@ -50,7 +51,6 @@
             </script>
         </div>
         <div class="form-group-item mt-3">
-          <%= f.label :動画url, class: 'h5' %>
           <%= f.text_area :media_url, cols: '58', rows: '1', placeholder: '動画URLを入力してください', class: "form-control" %>
         </div>
         <div class="form-group-item mt-3">

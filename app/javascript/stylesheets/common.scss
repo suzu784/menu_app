@@ -115,12 +115,8 @@ h1:before {
   border-left: solid 5px #ffaf58;/*左線（実線 太さ 色）*/
 }
 
-h6 {
-  color: #010079;
-  text-shadow: 0 0 5px white;
-  padding: 0.3em 0.5em;
-  background: -webkit-repeating-linear-gradient(-45deg, #cce7ff, #cce7ff 3px,#e9f4ff 3px, #e9f4ff 7px);
-  background: repeating-linear-gradient(-45deg, #cce7ff, #cce7ff 3px,#e9f4ff 3px, #e9f4ff 7px);
+#picture input {
+  display: none;
 }
 
 #border-group {

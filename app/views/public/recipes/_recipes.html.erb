@@ -6,7 +6,10 @@
       </div>
       <div class="col-md-8">
         <div class="card-body">
-          <h5 class="card-title"><%= recipe.content %></h5>
+          <h4 class="card-title">レシピ</h4>
+          <% @recipe_ingredients_all.each do |recipe_ingredient| %>
+            <p class="card-text">材料<br><%= recipe_ingredient.quantity %></p>
+          <% end %>
           <p class="card-text"><%= recipe.content %></p>
           <p class="card-text"><small class="text-muted"><%= recipe.created_at.strftime('%Y/%m/%d') %></small></p>
           <p class="card-text">
