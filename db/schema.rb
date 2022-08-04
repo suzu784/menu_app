@@ -140,7 +140,7 @@ ActiveRecord::Schema.define(version: 2022_08_04_015937) do
 
   create_table "recipe_ingredients", force: :cascade do |t|
     t.integer "recipe_id"
-    t.integer "ingredient_id"
+    t.string "name"
     t.integer "quantity"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -151,6 +151,7 @@ ActiveRecord::Schema.define(version: 2022_08_04_015937) do
     t.integer "post_id"
     t.string "content"
     t.integer "status", default: 0, null: false
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
