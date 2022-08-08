@@ -24,14 +24,16 @@ class Public::EventsController < ApplicationController
     end
   end
 
-  def edit
-  end
-
   def update
     starttime = params[:start]
     endtime = params[:end]
     event = Event.find(params[:id])
     event.update(start: starttime, end: endtime)
+  end
+
+  def destroy
+    event = Event.find(params[:id])
+    event.destroy
   end
 
   def event_params
