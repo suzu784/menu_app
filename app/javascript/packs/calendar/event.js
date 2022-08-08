@@ -34,8 +34,19 @@ document.addEventListener('turbolinks:load', function() {
         },
         allDayText: '終日',
         height: "auto",
+        editable: true,
 
-        dateClick: function(info){
+        eventDrop: function(info) {
+            $.ajax({
+                type: 'PATCH',
+                url: '/events/' + info.event.id,
+                data: {start: info.event.start,
+                       end: info.event.end
+                },
+            })
+        },
+
+        dateClick: function(info) {
              //クリックした日付の情報を取得
             const year  = info.date.getFullYear();
             const month = (info.date.getMonth() + 1);
