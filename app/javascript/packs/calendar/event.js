@@ -2,8 +2,8 @@
 // インストールしたファイルたちを呼び出します。
 import { Calendar} from '@fullcalendar/core';
 import interactionPlugin from '@fullcalendar/interaction';
-import monthGridPlugin from '@fullcalendar/daygrid'
-import googleCalendarApi from '@fullcalendar/google-calendar'
+import monthGridPlugin from '@fullcalendar/daygrid';
+import googleCalendarApi from '@fullcalendar/google-calendar';
 
 //<div id='calendar'></div>のidからオブジェクトを定義してカレンダーを作成
 
@@ -11,14 +11,13 @@ document.addEventListener('turbolinks:load', function() {
     var calendarEl = document.getElementById('calendar');
     if(!calendarEl) {
       return;
-    };
+    }
 
     //カレンダーの中身を設定(月表示、クリックアクションを起こす、googleCalendar使用)
     var calendar = new Calendar(calendarEl, {
         plugins: [ monthGridPlugin, interactionPlugin, googleCalendarApi ],
 
         events: '/events.json',
-        //細かな表示設定
         locale: 'ja',
         timeZone: 'Asia/Tokyo',
         firstDay: 1,
@@ -27,8 +26,6 @@ document.addEventListener('turbolinks:load', function() {
           center: 'title',
           end: 'today prev,next'
         },
-        expandRows: true,
-        stickyHeaderDates: true,
         buttonText: {
            today: '今日'
         },
@@ -40,10 +37,23 @@ document.addEventListener('turbolinks:load', function() {
             $.ajax({
                 type: 'PATCH',
                 url: '/events/' + info.event.id,
-                data: {start: info.event.start,
-                       end: info.event.end
+                data: { start: info.event.start,
+                        end: info.event.end
                 },
-            })
+            });
+        },
+
+        eventClick: function(info) {
+          if(confirm('削除しますか？'))  {
+              info.event.remove();
+          }
+          $.ajax({
+              type: 'DELETE',
+              url: '/events/' + info.event.id,
+            //   data: { start: info.event.start,
+            //           end: info.event.end
+            //   },
+          });
         },
 
         dateClick: function(info) {
@@ -52,13 +62,13 @@ document.addEventListener('turbolinks:load', function() {
             const month = (info.date.getMonth() + 1);
             const day   = info.date.getDate();
 
-            //ajaxでevents/newを着火させ、htmlを受け取ります
+            //ajaxでevents/newを着火させ、htmlを受け取る
             $.ajax({
                 type: 'GET',
                 url:  '/events/new',
             }).done(function (res) {
                 // 成功処理
-                // 受け取ったhtmlをさっき追加したmodalのbodyの中に挿入します
+                // 受け取ったhtmlをさっき追加したmodalのbodyの中に挿入する
                 $('.modal-body').html(res);
 
                 //フォームの年、月、日を自動入力
@@ -81,7 +91,4 @@ document.addEventListener('turbolinks:load', function() {
     });
     //カレンダー表示
     calendar.render();
-    $(".error").click(function(){
-        calendar.refetchEvents();
-    });
 });
