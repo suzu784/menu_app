@@ -101,6 +101,9 @@ ActiveRecord::Schema.define(version: 2022_08_04_015937) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "how_to_makes", force: :cascade do |t|
+  end
+
   create_table "notifications", force: :cascade do |t|
     t.integer "post_id"
     t.integer "visiter_id"
