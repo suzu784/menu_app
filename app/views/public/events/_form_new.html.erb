@@ -11,10 +11,6 @@
     </div>
     <br>
    <div class="form-group mt-2">
-     <%= f.label :登録済み料理 %><br>
-     <%= f.select :title, options_from_collection_for_select(Event.select(:title).distinct, :title, :title), include_blank: '選択してください' %><br>
-   </div>
-   <div class="form-group mt-2">
      <%= f.label :料理名 %>
    　<%= f.text_field :title, class: 'form-control' %>
    </div>
