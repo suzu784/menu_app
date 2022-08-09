@@ -14,6 +14,10 @@
         <% if unchecked_notifications.any? %>
           <i class="fa fa-circle" style="color: gold;"></i>
         <% end %>
+        <li><%= link_to events_path do %>
+          <i class="fas fa-home"></i>マイページ
+        <% end %>
+        </li>
         <li><%= link_to timeline_path do %>
           <i class="fas fa-bookmark"></i>タイムライン
         <% end %>
@@ -28,10 +32,6 @@
         </li>
         <li><%= link_to popular_posts_path do %>
           <i class="fas fa-crown"></i>人気投稿
-        <% end %>
-        </li>
-        <li><%= link_to events_path do %>
-          <i class="fas fa-calendar"></i>カレンダー
         <% end %>
         </li>
         <li><%= link_to youtube_index_path do %>

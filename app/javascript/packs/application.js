@@ -13,7 +13,6 @@ import jQuery from "jquery";
 import raty from 'raty-js';
 import "./header/nav.js";
 import "./homes/arrow.js";
-import "./posts/index.js";
 import "./calendar/event.js";
 import "cocoon";
 import "popper.js";
