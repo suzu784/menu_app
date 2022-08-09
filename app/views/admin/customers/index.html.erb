@@ -13,7 +13,7 @@
             <tr>
               <th></th>
               <th>名前</th>
-              <th>得意料理</th>
+              <th>自己紹介</th>
               <th>ステータス</th>
             </tr>
           </thead>
@@ -22,7 +22,7 @@
             <tr>
               <td><%= image_tag customer.get_customer_image(200, 200) %></td>
               <td class="align-middle"><%= link_to customer.full_name, admin_customer_path(customer) %></td>
-              <td class="align-middle"><%= customer.special_dish %></td>
+              <td class="align-middle"><%= customer.introduction %></td>
               <% if customer.is_deleted == true %>
                 <td class="align-middle">退会済み</td>
               <% else %>

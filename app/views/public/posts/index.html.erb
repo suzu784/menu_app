@@ -10,13 +10,15 @@
 <div class="content">
   <div class="card-wrap">
     <% @posts.each do |post| %>
-    <div class="card-list">
-      <p><%= image_tag post.get_post_image(250, 250), class: 'card-listImage' %></p>
-      <h2 class="card-listTitle"><%= link_to post.cook_name, post_path(post) %> <%= render 'static_star', post: post %></h2>
-      <p class="card-listText">
-        投稿者:<%= post.customer.full_name %><br>
-        作った日:<%= post.cooked_day.strftime('%Y/%m/%d') %>
-      </p>
+    <div class="card mt-5">
+      <div class="card-image">
+        <p><%= image_tag post.get_post_image(250, 250), class: 'card-listImage' %></p>
+        <h2 class="card-listTitle"><%= link_to post.cook_name, post_path(post) %> <%= render 'static_star', post: post %></h2>
+        <p class="card-listText">
+          投稿者:<%= post.customer.full_name %><br>
+          作った日:<%= post.cooked_day.strftime('%Y/%m/%d') %>
+        </p>
+      </div>
     </div>
     <% end %>
   </div>

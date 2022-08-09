@@ -1,8 +1,50 @@
 <div class="text-center">
-  <h1 class="w-50 mt-3 pt-3 offset-sm-3"><strong>月間カレンダー</strong></h1>
+  <h1 class="w-50 mt-3 pt-3 offset-sm-3"><strong>マイページ</strong></h1>
 </div>
     <div class="container">
-      <div id="calendar"></div>
+      <div class="row">
+        <div class="content">
+          <div class="wrap" style="display: flex;">
+            <% if @customer.last_name == "guestuser" %>
+              <img src="/images/no-image.jpeg"></img>
+            <% else %>
+             <figure>
+              <%= image_tag @customer.get_customer_image(350, 300), class: 'rounded-circle mr-5 pr-5' %><br>
+             </figure>
+            <% end %>
+            <table class="table mt-5 mb-5 ml-5">
+              <tbody>
+                <tr>
+                  <th class="text-center">名前</th>
+                  <td>
+                  <td><%= @customer.full_name %></td>
+                </tr>
+                <tr>
+                  <th class="text-center">自己紹介</th>
+                  <td>
+                  <td><%= @customer.int %></td>
+                </tr>
+                <tr>
+                  <th class="text-center">フォロー</th>
+                  <td>
+                  <td><%= link_to @customer.followings.count, customer_followings_path(@customer) %></td>
+                </tr>
+                <tr>
+                   <th class="text-center">フォロワー</th>
+                   <td>
+                   <td><%= link_to @customer.followers.count, customer_followers_path(@customer) %></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+      <%= link_to edit_customer_path(@customer), class: "btn btn-outline-secondary edit_customer_#{@customer.id}" do %>
+        <i class="fas fa-user-cog"></i>
+      <% end %>
+        </div>
+      </div>
+      <div class="row">
+        <div id="calendar"></div>
+      </div>
 
         <!-- Modal -->
         <div id="calModal" class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
