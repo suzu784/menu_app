@@ -23,9 +23,8 @@ post = Post.create!(
                   )
 post.post_image.attach(io: File.open(Rails.root.join('app/assets/images/misosoup.JPG')),
                   filename: 'misosoup.JPG')
-                  
-Tag.create([
-  { name: '栄養満点' },
-  { name: 'ヘルシー' },
-  { name: 'スタミナ'}
-  ])
+
+tags = %w(栄養満点 ヘルシー スタミナ 時短 甘い 辛い)
+tags.each do |tag|
+  Tag.find_or_create_by(name: tag)
+end
