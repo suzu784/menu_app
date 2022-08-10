@@ -9,6 +9,15 @@ class Public::PostsController < ApplicationController
     @search = Post.ransack(params[:q])
     @posts = @search.result
     @posts_all = Post.page(params[:page]).per(8)
+    if params[:tag_ids]
+      @posts = []
+      params[:tag_ids].each do |key, value|
+        if value == "1"
+          tag_posts = Tag.find_by(name: key).posts
+          @posts = @posts.empty? ? tag_posts : @posts & tag_posts
+        end
+      end
+    end
   end
 
   def create
