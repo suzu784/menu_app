@@ -7,8 +7,7 @@ class Public::PostsController < ApplicationController
 
   def index
     @search = Post.ransack(params[:q])
-    @posts = @search.result
-    @posts_all = Post.page(params[:page]).per(8)
+    @posts = @search.result.includes(:customer).page(params[:page]).per(8)
     if params[:tag_ids]
       @posts = []
       params[:tag_ids].each do |key, value|
