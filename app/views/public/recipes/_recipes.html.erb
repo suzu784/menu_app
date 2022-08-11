@@ -1,10 +1,10 @@
 <% recipes.each do |recipe| %>
   <div class="card mb-3">
     <div class="row no-gutters">
-      <div class="col-md-4">
-        <p><%= image_tag recipe.get_recipe_image(400, 400) %></p>
+      <div class="col-md-6">
+        <p><%= image_tag recipe.get_recipe_image(100, 100), class: 'w-100 h-100' %></p>
       </div>
-      <div class="col-md-8">
+      <div class="col-md-6">
         <div class="card-body">
           <h3 class="card-title">レシピ</h3>
           <% @recipe_ingredients_all.each do |recipe_ingredient| %>

@@ -15,9 +15,7 @@ class Public::EventsController < ApplicationController
     @event = Event.new(event_params)
     @event.customer_id = current_customer.id
     if @event.save
-      respond_to do |format|
-        format.html { redirect_to events_path }
-      end
+      redirect_to events_path
     else
       flash.now[:notice] = '※未入力箇所があります'
       render :index
