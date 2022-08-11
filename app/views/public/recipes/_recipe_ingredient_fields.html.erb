@@ -1,5 +1,7 @@
 <div class="nested-fields">
-  <%= f.text_field :name, class: 'form-control w-50' %>
-  <%= f.number_field :quantity %>個
-  <%= link_to_remove_association '削除', f, class: 'btn btn-danger' %>
+  <%= f.text_field :name, class: 'form-control w-75' %>
+  <%= f.number_field :quantity, class: 'w-25 mt-2', placeholder: '小さじ1' %>
+  <%= link_to_remove_association f do %>
+    <i class="fas fa-trash fa-2x" style="color: black;"></i>
+  <% end %>
 </div>
