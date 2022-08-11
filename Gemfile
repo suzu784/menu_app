@@ -71,6 +71,7 @@ gem 'dotenv-rails'
 gem 'rinku'
 gem 'bullet'
 gem 'cocoon'
+gem 'gretel'
 
 group :production do
   gem 'mysql2'

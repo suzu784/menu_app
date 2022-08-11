@@ -90,6 +90,14 @@ body {
   text-decoration: underline;
 }
 
+.breadcrumbs {
+    list-style: none;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 0;
+    margin: 20px 20px;
+}
+
 h1 {
   font-weight: 100;
   position: relative;
