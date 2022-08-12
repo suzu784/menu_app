@@ -4,7 +4,7 @@
         status:
           published: "投稿"
           draft: "下書き"
-          
+
     views:
       pagination:
         first: '最初'
@@ -12,3 +12,13 @@
         previous: '前'
         next: '次'
         truncate: '...'
+
+    activerecord:
+      attributes:
+        customer:
+          first_name: '苗字'
+          last_name: '名前'
+          first_name_kana: '苗字(カナ)'
+          last_name_kana: '名前(カナ)'
+          email: 'メールアドレス'
+          password: 'パスワード'
