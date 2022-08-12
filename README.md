@@ -1,4 +1,4 @@
-# <献立シェアアプリ>
+# 献立シェアアプリ
 
 ![スクリーンショット 2022-07-24 10 34 36](https://user-images.githubusercontent.com/85116099/180628569-1a5c8d90-aeac-4e3e-9f91-47fcac46e7fb.png)
 
