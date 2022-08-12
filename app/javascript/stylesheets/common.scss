@@ -90,6 +90,11 @@ body {
   text-decoration: underline;
 }
 
+img.registration_image {
+  max-height: 80vh;
+  min-width: 80vh;
+}
+
 .breadcrumbs {
     list-style: none;
     text-decoration: none;
