@@ -32,7 +32,6 @@ document.addEventListener('turbolinks:load', function() {
         allDayText: '終日',
         height: "auto",
         editable: true,
-        displayEventTime: false,
 
         eventDrop: function(info) {
             $.ajax({
