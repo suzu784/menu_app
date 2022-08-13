@@ -4,86 +4,93 @@
   <% end %>
 <div id="sp-menu">
   <h2>MENU</h2>
-  <ul>
-    <!--会員ログイン時-->
-      <% if customer_signed_in? %>
-        <li><%= link_to about_path do %>
-          <i class="fas fa-calendar"></i>献立シェアアプリについて
-        <% end %>
-        </li>
-        <% if unchecked_notifications.any? %>
-          <i class="fa fa-circle" style="color: gold;"></i>
-        <% end %>
-        <li><%= link_to events_path do %>
-          <i class="fas fa-home"></i>マイページ
-        <% end %>
-        </li>
-        <li><%= link_to new_post_path do %>
-          <i class="fas fa-edit"></i>新規投稿
-        <% end %>
-        </li>
-        <li><%= link_to posts_path do %>
-          <i class="fas fa-book-open"></i>投稿一覧
-        <% end %>
-        </li>
-        <li><%= link_to popular_posts_path do %>
-          <i class="fas fa-crown"></i>人気投稿
-        <% end %>
-        </li>
-        <li><%= link_to youtube_index_path do %>
-          <i class="fas fa-video"></i>レシピ検索
-        <% end %>
-        </li>
-        <li><%= link_to customers_path do %>
-          <i class="fas fa-user"></i>会員一覧
-        <% end %>
-        </li>
-        <li><%= link_to notifications_path do %>
-          <i class="fas fa-bell"></i>通知一覧
-        <% end %>
-        </li>
-        <li><%= link_to destroy_customer_session_path, method: :delete do %>
-          <i class="fas fa-sign-out-alt"></i>ログアウト
-        <% end %>
-        </li>
-      <!--管理者ログイン時-->
-      <% elsif admin_signed_in? %>
-        <li><%= link_to analysis_admin_posts_path do %>
-          <i class="fas fa-chart-line"></i>分析機能
-        <% end %>
-        </li>
-        <li><%= link_to admin_customers_path do %>
-          <i class="fas fa-user"></i>会員一覧
-        <% end %>
-        </li>
-        <li><%= link_to admin_posts_path do %>
-          <i class="fas fa-book-open"></i>投稿一覧
-        <% end %>
-        </li>
-        <li><%= link_to destroy_admin_session_path, method: :delete do %>
-          <i class="fas fa-sign-out-alt"></i>ログアウト
-        <% end %>
-        </li>
-      <!--非ログイン時-->
-      <% else %>
-        <li><%= link_to root_path do %>
-          <i class="fas fa-desktop"></i>トップメニュー
-        <% end %>
-        </li>
-        <li><%= link_to about_path do %>
-          <i class="fas fa-calendar"></i>献立シェアアプリについて
-        <% end %>
-        </li>
-        <li><%= link_to new_customer_registration_path do %>
-          <i class="fas fa-user"></i>新規登録
-        <% end %>
-        </li>
-        <li><%= link_to new_customer_session_path do %>
-          <i class="fas fa-sign-in-alt"></i>ログイン
-        <% end %>
-        </li>
-      <% end %>
-  </ul>
+  <div class="row">
+    <div class="col-md-6">
+      <%= image_tag 'logo.png' %>
+    </div>
+    <div class="col-md-6">
+      <ul>
+        <!--会員ログイン時-->
+          <% if customer_signed_in? %>
+            <li><%= link_to about_path do %>
+              <i class="fas fa-calendar"></i>献立シェアアプリについて
+            <% end %>
+            </li>
+            <% if unchecked_notifications.any? %>
+              <i class="fa fa-circle" style="color: gold;"></i>
+            <% end %>
+            <li><%= link_to events_path do %>
+              <i class="fas fa-home"></i>マイページ
+            <% end %>
+            </li>
+            <li><%= link_to new_post_path do %>
+              <i class="fas fa-edit"></i>新規投稿
+            <% end %>
+            </li>
+            <li><%= link_to posts_path do %>
+              <i class="fas fa-book-open"></i>投稿一覧
+            <% end %>
+            </li>
+            <li><%= link_to popular_posts_path do %>
+              <i class="fas fa-crown"></i>人気投稿
+            <% end %>
+            </li>
+            <li><%= link_to youtube_index_path do %>
+              <i class="fas fa-video"></i>レシピ検索
+            <% end %>
+            </li>
+            <li><%= link_to customers_path do %>
+              <i class="fas fa-user"></i>会員一覧
+            <% end %>
+            </li>
+            <li><%= link_to notifications_path do %>
+              <i class="fas fa-bell"></i>通知一覧
+            <% end %>
+            </li>
+            <li><%= link_to destroy_customer_session_path, method: :delete do %>
+              <i class="fas fa-sign-out-alt"></i>ログアウト
+            <% end %>
+            </li>
+          <!--管理者ログイン時-->
+          <% elsif admin_signed_in? %>
+            <li><%= link_to analysis_admin_posts_path do %>
+              <i class="fas fa-chart-line"></i>分析機能
+            <% end %>
+            </li>
+            <li><%= link_to admin_customers_path do %>
+              <i class="fas fa-user"></i>会員一覧
+            <% end %>
+            </li>
+            <li><%= link_to admin_posts_path do %>
+              <i class="fas fa-book-open"></i>投稿一覧
+            <% end %>
+            </li>
+            <li><%= link_to destroy_admin_session_path, method: :delete do %>
+              <i class="fas fa-sign-out-alt"></i>ログアウト
+            <% end %>
+            </li>
+          <!--非ログイン時-->
+          <% else %>
+            <li><%= link_to root_path do %>
+              <i class="fas fa-desktop"></i>トップメニュー
+            <% end %>
+            </li>
+            <li><%= link_to about_path do %>
+              <i class="fas fa-calendar"></i>献立シェアアプリについて
+            <% end %>
+            </li>
+            <li><%= link_to new_customer_registration_path do %>
+              <i class="fas fa-user"></i>新規登録
+            <% end %>
+            </li>
+            <li><%= link_to new_customer_session_path do %>
+              <i class="fas fa-sign-in-alt"></i>ログイン
+            <% end %>
+            </li>
+          <% end %>
+      </ul>
+    </div>
+  </div>
 </div>
 
 <div id="hm-icon">
