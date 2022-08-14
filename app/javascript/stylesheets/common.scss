@@ -47,7 +47,7 @@ body {
 .menu-trigger.active span:nth-child(1) {
   -webkit-transform: translateY(20px) rotate(-45deg);
   transform: translateY(20px) rotate(-45deg);
-  background-color: #fff;
+  background-color: #000;
 }
 .menu-trigger.active span:nth-child(2) {
   opacity: 0;
@@ -55,7 +55,7 @@ body {
 .menu-trigger.active span:nth-child(3) {
   -webkit-transform: translateY(-20px) rotate(45deg);
   transform: translateY(-20px) rotate(45deg);
-  background-color: #fff;
+  background-color: #000;
 }
 /* ------------------------ */
 /* ------ spメニュー ------ */
@@ -63,18 +63,23 @@ body {
 #sp-menu {
   position: fixed;
   top: 0;
-  left: 0;
+  right: -100%;
   background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
   color: #fff;
   width: 100%;
   min-height: 100%;
-  display: none;
+  display: block;
+  transition: right 0.7s;
   z-index: 9;
+  background-size: 200px;
+}
+#sp-menu.sp-open {
+  right: 0;
 }
 #sp-menu h2 {
   text-align: center;
   color: #000;
-  font-size: 50px;
+  font-size: 70px;
   padding: 40px 40px;
 }
 #sp-menu li {
@@ -85,7 +90,7 @@ body {
   color: #000;
   text-decoration: none;
   font-weight: bold;
-  font-size: 25px;
+  font-size: 30px;
   font-family: "Hannotate SC";
   text-decoration: underline;
 }
