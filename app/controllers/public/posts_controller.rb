@@ -41,8 +41,12 @@ class Public::PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    @post.update(post_params)
-    redirect_to post_path(@post)
+    if @post.update(post_params)
+      sleep(3) #S3への画像反映のタイムラグを考慮して3秒待機
+      redirect_to post_path(@post)
+    else
+      render :edit
+    end
   end
 
   def destroy
