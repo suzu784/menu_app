@@ -24,6 +24,21 @@
 - 食事前
 - 金欠で自炊したいときなど
 
+## gem
+- devise
+- kaminari
+- rubocop-airbnb
+- enum-help
+- rails-i18n
+- ransack
+- google-api-client
+- dotenv-rails
+- rinku
+- bullet
+- cocoon
+- gretel
+- aws-sdk-s3
+
 ## 機能一覧
 
 ### 設計書

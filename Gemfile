@@ -72,6 +72,7 @@ gem 'rinku'
 gem 'bullet'
 gem 'cocoon'
 gem 'gretel'
+gem "aws-sdk-s3", require: false
 
 group :production do
   gem 'mysql2'
