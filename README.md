@@ -1,5 +1,7 @@
 # 献立シェアアプリ
 
+[menushareapp.com](https://menushareapp.com)
+
 ![スクリーンショット 2022-07-24 10 34 36](https://user-images.githubusercontent.com/85116099/180628569-1a5c8d90-aeac-4e3e-9f91-47fcac46e7fb.png)
 
 ## サイト概要
@@ -21,8 +23,8 @@
 - 動画などを見ながら料理する人
 
 ### 主な利用シーン
-- 食事前
-- 金欠で自炊したいときなど
+- 料理前や料理中
+- 金欠で自炊したいとき
 
 ## gem
 - devise
