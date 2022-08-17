@@ -6,7 +6,11 @@ class Public::RecipesController < ApplicationController
     @recipes = Recipe.published.where(post_id: @post.id)
     @recipe = Recipe.new
     @recipe_ingredients = @recipe.recipe_ingredients.build
-    @recipe_ingredients_all = RecipeIngredient.all
+  end
+
+  def show
+    @recipe = Recipe.find(params[:id])
+    @recipe_ingredients_all = RecipeIngredient.where(recipe_id: @recipe.id)
   end
 
   def create
@@ -43,9 +47,9 @@ class Public::RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.require(:recipe).permit(:recipe_image, :status, :content, recipe_ingredients_attributes: [:id, :name, :quantity, :_destroy])
+    params.require(:recipe).permit(:status, :content, recipe_ingredients_attributes: [:id, :name, :quantity, :_destroy])
   end
   def update_recipe_params
-    params.require(:recipe).permit(:id, :recipe_image, :status, :content, recipe_ingredients_attributes: [:id, :name, :quantity, :_destroy])
+    params.require(:recipe).permit(:id, :status, :content, recipe_ingredients_attributes: [:id, :name, :quantity, :_destroy])
   end
 end

@@ -24,14 +24,6 @@
               <td><%= @post.opinion %></td>
             </tr>
               <tr>
-                <th>動画URL</th>
-                <% if @post.media_url.empty? %>
-                  <td>URLはありません</td>
-                <% else %>
-                  <td><h7 class="text-break"><%= raw Rinku.auto_link(h(@post.media_url)) %></h7></td>
-                <% end %>
-              </tr>
-              <tr>
                 <th>作った日</th>
                 <td><%= @post.cooked_day.strftime('%Y/%m/%d') %></td>
               </tr>

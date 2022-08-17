@@ -1,15 +1,32 @@
-<%= form_with model: [post, recipe], url: post_recipes_path, method: :post, remote: true do |f| %>
-  <%= f.hidden_field :id, value: recipe.id %>
-  <div class="form-group mt-5">
-    <div class="form-group-item">
-      <%= f.label :画像 %><br>
-      <%= f.file_field :recipe_image, autofocus: true %>
-    </div>
-    <div class="form-group-item">
-      <%= f.label :工程 %><br>
-      <%= f.text_area :content, rows: '5', class: 'form-control' %>
-      <%= f.submit "送信", class: 'btn btn-primary' %>
-      <%= f.hidden_field :status, { value: :published } %>
+<%= form_with model: [post, recipe], remote: true do |f| %>
+  <div class="modal-body">
+    <div class="form-group">
+      <div class="form-group-list">
+        <%= f.label :食材 %>
+        <%= f.fields_for :recipe_ingredients do |t| %>
+      </div>
+      <div class="form-group-list">
+        <!--食材入力フィールド-->
+        <%= render 'recipe_ingredient_fields', f: t %>
+        <% end %>
+      </div>
+      <div class="form-group-list">
+        <!--食材追加ボタン-->
+        <%= link_to_add_association '追加', f, :recipe_ingredients, class: 'btn btn-primary' %>
+      </div>
+      <div class="form-group-list mt-3">
+        <%= f.label :工程 %><br>
+        <%= f.text_area :content, rows: '10', class: 'form-control' %>
+      </div>
     </div>
   </div>
+  <div class="modal-footer">
+    <% if post.recipes.where(customer_id: current_customer.id, status: :draft).empty? %>
+      <%= f.label :下書きしますか？ %><br>
+   　　<%= f.select :status, Recipe.statuses.keys.map {|k| [I18n.t("enums.recipe.status.#{k}"), k]} %>
+ 　　<% end %>
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+    <%= f.submit "送信", class: 'btn btn-primary' %>
+  </div>
+</div>
 <% end %>

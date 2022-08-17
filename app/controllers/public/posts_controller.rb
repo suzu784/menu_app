@@ -23,7 +23,7 @@ class Public::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.customer_id = current_customer.id
     if @post.save
-      redirect_to posts_path
+      redirect_to post_path(@post)
     else
       render :new
     end
@@ -67,6 +67,6 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:cook_name, :opinion, :star, :status, :post_image, :cooked_day, :media_url, tag_ids: [])
+    params.require(:post).permit(:cook_name, :opinion, :star, :status, :post_image, :cooked_day, tag_ids: [])
   end
 end
