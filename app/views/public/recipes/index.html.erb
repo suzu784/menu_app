@@ -18,7 +18,7 @@
 </div>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-xl" role="document">
+  <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">レシピ</h5>
@@ -27,56 +27,8 @@
         </button>
       </div>
       <div class="row">
-        <div class="col-md-6">
-          <%= form_with model: [@post, @recipe], local: false do |f| %>
-            <div class="modal-body">
-              <div class="form-group">
-                <div class="form-group-list">
-                  <%= f.label :食材 %>
-                  <%= f.fields_for :recipe_ingredients do |t| %>
-                </div>
-                <div class="form-group-list">
-                  <!--食材入力フィールド-->
-                  <%= render 'recipe_ingredient_fields', f: t %>
-                  <% end %>
-                </div>
-                <div class="form-group-list">
-                  <!--食材追加ボタン-->
-                  <%= link_to_add_association '追加', f, :recipe_ingredients, class: 'btn btn-primary' %>
-                </div>
-                <div class="form-group-list mt-3">
-                  <%= f.label :工程 %><br>
-                  <%= f.text_area :content, rows: '10', class: 'form-control' %>
-                </div>
-              </div>
-            </div>
-            <div class="modal-footer">
-              <% if @post.recipes.where(customer_id: current_customer.id, status: :draft).empty? %>
-                <%= f.label :下書きしますか？ %><br>
-             　　<%= f.select :status, Recipe.statuses.keys.map {|k| [I18n.t("enums.recipe.status.#{k}"), k]} %>
-           　　<% end %>
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
-              <%= f.submit "送信", class: 'btn btn-primary' %>
-            </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group-list mt-4" id="picture">
-            <label>
-              <i class="fas fa-camera fa-2x"></i>
-              <%= f.file_field :recipe_image, accept: 'image/*' %>
-            </label>
-            <% end %>
-          </div>
-          <img id="preview" style="width: 90%; height: 80%; background-image: url('/images/no-image.jpeg');">
-            <script>
-            $('#recipe_recipe_image').on('change', function (e) {
-              var reader = new FileReader();
-              reader.onload = function (e) {
-                  $("#preview").attr('src', e.target.result);
-              }
-              reader.readAsDataURL(e.target.files[0]);
-            });
-            </script>
+        <div class="col-md">
+          <%= render 'form', post: @post, recipe: @recipe %>
         </div>
       </div>
     </div>

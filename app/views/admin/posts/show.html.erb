@@ -20,12 +20,6 @@
                 </div>
               </div>
               <% end %>
-              <% if @post.media_url == true %>
-              <tr>
-                <th>動画URL</th>
-                <td><h7 class="text-break"><%= raw Rinku.auto_link(h(@post.media_url)) %></h7></td>
-              </tr>
-              <% end %>
           </tbody>
         </table>
       </div>
