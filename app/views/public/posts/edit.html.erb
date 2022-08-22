@@ -9,20 +9,16 @@
               <div class="container mt-3">
                 <div class="border rounded border border-dark" style="height:710px">
                   <div class="form-group mt-2">
-                    <h6 class="w-50 offset-md-3">登録済みの料理</h6>
-                    <%= f.select :cook_name, options_from_collection_for_select(Post.select(:cook_name).distinct, :cook_name, :cook_name), include_blank: '選択してください' %>
-                  </div>
-                  <div class="form-group mt-2">
-                    <h6 class="w-50 offset-md-3">料理名</h6>
-                  　<%= f.text_area :cook_name, cols: '58', rows: '1' %>
-                  </div>
-                  <div class="form-group mt-2">
                     <h6 class="w-50 offset-md-3">作った日</h6>
-                    <%= f.datetime_field :cooked_day %><br>
+                    <%= f.date_select :cooked_day, {default: Date.today} %><br>
                   </div>
                   <div class="form-group mt-3">
-                    <h6 class="w-50 offset-md-3">画像</h6>
+                    <h6>画像</h6>
                     <%= f.file_field :post_image, accept: 'image/*' %><br>
+                  </div>
+                  <div class="form-group">
+                    <h6>料理名</h6>
+                  　<%= f.text_field :cook_name, class: 'w-50 ' %>
                   </div>
                   <div class="form-group mt-3">
 
@@ -43,17 +39,14 @@
                             starHalf: '<%= asset_path('star-half.png') %>',
                             scoreName: 'post[star]',
                             half: true,
+                            score: <%= @post.star || 0 %>,
                           });
                         })
                       </script>
                   </div>
                   <div class="form-group mt-3">
-                    <h6 class="w-50 offset-md-3">動画URL</h6>
-                    <%= f.text_area :media_url, cols: '58', rows: '1' %>
-                  </div>
-                  <div class="form-group mt-3">
                     <h6 class="w-50 offset-md-3">感想</h6>
-                    <%= f.text_area :opinion, cols: '58', rows: '3' %><br>
+                    <%= f.text_area :opinion, rows: "9", class: 'w-50' %><br>
                     <%= f.submit "保存", class: 'btn btn-success' %>
                   </div>
                 </div>

@@ -1,19 +1,11 @@
 <% recipes.each do |recipe| %>
   <div class="card mb-3">
     <div class="row no-gutters">
-      <div class="col-md-6">
-        <p><%= image_tag recipe.get_recipe_image(100, 100), class: 'w-100 h-100' %></p>
+      <div class="col-md-3">
       </div>
       <div class="col-md-6">
         <div class="card-body">
-          <h3 class="card-title">レシピ</h3>
-          <% @recipe_ingredients_all.each do |recipe_ingredient| %>
-            <p class="card-text">
-              <%= recipe_ingredient.name %>
-              <%= recipe_ingredient.quantity %>個
-            </p>
-          <% end %>
-          <p class="card-text mt-5"><%= recipe.content %></p>
+          <%= link_to "レシピ", post_recipe_path(@post, recipe), class: 'card-title h2' %>
           <p class="card-text"><small class="text-muted"><%= recipe.created_at.strftime('%Y/%m/%d') %></small></p>
           <p class="card-text">
             <% if recipe.customer == current_customer %>
