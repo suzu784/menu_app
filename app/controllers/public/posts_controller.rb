@@ -37,6 +37,12 @@ class Public::PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    if @post.customer == current_customer
+      render :edit
+    else
+      flash[:notice] = "他の会員の投稿は編集できません"
+      redirect_to post_path(@post)
+    end
   end
 
   def update
