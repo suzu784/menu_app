@@ -22,3 +22,9 @@
           last_name_kana: '名前(カナ)'
           email: 'メールアドレス'
           password: 'パスワード'
+          
+        post:
+          cook_name: '料理名'
+          opinion: '感想'
+          star: '難易度'
+          cooked_day: '作った日'
