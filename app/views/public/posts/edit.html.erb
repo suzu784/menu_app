@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col">
           <div class="mt-4">
-              <%= form_with model: @post, url: posts_path, remote: true, method: :post do |f| %>
+              <%= form_with model: @post, url: post_path(@post), remote: true, method: :patch do |f| %>
               <%= render 'layouts/errors', obj: @post %>
               <div class="container mt-3">
                 <div class="border rounded border border-dark" style="height:710px">
