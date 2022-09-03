@@ -1,21 +1,23 @@
 <% recipes.each do |recipe| %>
-  <div class="card mb-3">
+<div class="card-group">
+  <div class="card mb-3" style="max-width: 1040px;">
     <div class="row no-gutters">
-      <div class="col-md-3">
+      <div class="col-md-4">
+        <%= image_tag recipe.get_recipe_image(400, 400), width: '250px', height: '230px' %>
       </div>
-      <div class="col-md-6">
+      <div class="col-sm-4">
         <div class="card-body">
-          <%= link_to "レシピ", post_recipe_path(@post, recipe), class: 'card-title h2' %>
-          <p class="card-text"><small class="text-muted"><%= recipe.created_at.strftime('%Y/%m/%d') %></small></p>
-          <p class="card-text">
-            <% if recipe.customer == current_customer %>
-              <%= link_to  post_recipe_path(@post, recipe), method: :delete do %>
-                <i class="fas fa-trash-alt"></i>
-              <% end %>
+          <h5 class="card-title"><%= link_to "工程", post_recipe_path(@post, recipe) %></h5>
+          <p class="card-text"><%= recipe.content %></p>
+          <p class="card-text"><small class="text-muted"><%= recipe.created_at.strftime('%Y/%m/%d') %></p>
+          <% if recipe.customer == current_customer %>
+            <%= link_to  post_recipe_path(@post, recipe), method: :delete do %>
+              <i class="fas fa-trash-alt"></i>
             <% end %>
-          </p>
+          <% end %>
         </div>
       </div>
     </div>
   </div>
+</div>
 <% end %>

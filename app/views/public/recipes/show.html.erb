@@ -1,26 +1,20 @@
 <div class="container">
   <div class="row">
     <div class="col-md">
-      <h1 class="mt-3 pt-3 text-center">レシピ詳細</h1>
-      <table class="table table-bordered mt-5">
-        <thead>
-          <tr>
-            <th>材料</th>
-            <th>分量</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @recipe_ingredients_all.each do |recipe_ingredient| %>
-            <tr>
-              <td><%= recipe_ingredient.name %></td>
-              <td><%= recipe_ingredient.quantity %>個</td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-      <h2 class="mt-5">工程</h2>
-        <hr>
-        <%= @recipe.content %>
+      <h1 class="mb-5 pt-3 text-center">レシピ工程</h1>
+      <div class="card" style="max-width: 1040px;">
+        <div class="row no-gutters">
+          <div class="col-md-4">
+            <%= image_tag @recipe.get_recipe_image(400, 400), width: '300px', height: '300px' %>
+          </div>
+          <div class="col-sm-4">
+            <div class="card-body">
+              <p class="card-text"><%= @recipe.content %></p>
+              <%= link_to "編集", edit_post_recipe_path(@recipe), class: 'btn btn-success' %>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

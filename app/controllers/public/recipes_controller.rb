@@ -6,6 +6,7 @@ class Public::RecipesController < ApplicationController
     @recipes = Recipe.published.where(post_id: @post.id)
     @recipe = Recipe.new
     @recipe_ingredients = @recipe.recipe_ingredients.build
+    @recipe_ingredients_all = RecipeIngredient.where(recipe_id: @post.recipes.ids)
   end
 
   def show
@@ -30,6 +31,25 @@ class Public::RecipesController < ApplicationController
     end
   end
 
+  def edit
+    @recipe = Recipe.find(params[:id])
+    if @recipe.customer == current_customer
+      render :edit
+    else
+      flash[:notice] = "他の人のレシピは編集できません"
+      redirect_to post_recipe_path(@recipe)
+    end
+  end
+
+  def update
+    @recipe = Recipe.find(params[:id])
+    if @recipe.update(recipe_params)
+      redirect_to post_recipe_path(@recipe)
+    else
+      render :edit
+    end
+  end
+
   def destroy
     @recipe = Recipe.find(params[:id])
     if @recipe.destroy
@@ -47,9 +67,9 @@ class Public::RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.require(:recipe).permit(:status, :content, recipe_ingredients_attributes: [:id, :name, :quantity, :_destroy])
+    params.require(:recipe).permit(:status, :content, :recipe_image, recipe_ingredients_attributes: [:id, :name, :quantity, :_destroy])
   end
   def update_recipe_params
-    params.require(:recipe).permit(:id, :status, :content, recipe_ingredients_attributes: [:id, :name, :quantity, :_destroy])
+    params.require(:recipe).permit(:id, :status, :content, :recipe_image, recipe_ingredients_attributes: [:id, :name, :quantity, :_destroy])
   end
 end

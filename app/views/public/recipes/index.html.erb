@@ -1,24 +1,38 @@
 <div class="text-center">
   <h1 class="w-50 mt-3 pt-3 offset-sm-3"><strong><%= @post.cook_name %>の作り方</strong></h1>
-</div>
-<div class="container mt-5">
-  <div class="row">
-    <div class="col-3">
-      <% if @post.customer == current_customer %>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-          レシピ作成
-        </button>
-        <%= link_to '下書き', confirm_post_recipes_path, class: 'btn btn-success' %>
-      <% end %>
+    <% if @post.customer == current_customer %>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+       工程追加
+      </button>
+      <%= link_to '下書き', confirm_post_recipes_path, class: 'btn btn-success' %>
+    <% end %>
+    <div class="container mt-3">
+    <div class="row">
+      <div class="col-md-4">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>材料</th>
+              <th>分量</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @recipe_ingredients_all.each do |recipe_ingredient| %>
+            <tr>
+              <th><%= recipe_ingredient.name %></th>
+              <th><%= recipe_ingredient.quantity %>個</th>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-lg-8">
+        <%= render 'recipes', recipes: @recipes %>
+      </div>
     </div>
-    <div class="col-9 recipes">
-      <%= render 'recipes', recipes: @recipes %>
     </div>
-  </div>
-</div>
-
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">レシピ</h5>

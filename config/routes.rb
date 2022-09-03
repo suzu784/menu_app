@@ -21,7 +21,7 @@ Rails.application.routes.draw do
        end
        resource :favorites, only: [:create, :destroy]
        resources :post_comments, only: [:create, :destroy]
-       resources :recipes, only: [:index, :show, :create, :destroy] do
+       resources :recipes, only: [:index, :show, :edit, :update, :create, :destroy] do
        collection do
           get :confirm
         end
