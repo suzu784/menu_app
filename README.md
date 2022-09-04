@@ -47,7 +47,7 @@
 ![献立シェアアプリ drawio](https://user-images.githubusercontent.com/85116099/177114247-3dc7c7c3-0a69-4528-947e-ed2dd60176b0.png)
 
 ### インフラ構成図
-![AWS構成図](https://user-images.githubusercontent.com/85116099/185147947-e34a8472-87cf-419b-bd91-b4c8ac49f499.jpg)
+![AWS構成図 drawio (20)](https://user-images.githubusercontent.com/85116099/188300037-f9002341-c70c-4042-864a-2fb1a15a8b44.png)
 
 ## 開発環境
 - OS：Linux(CentOS)
