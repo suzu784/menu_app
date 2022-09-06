@@ -11,8 +11,9 @@
 }
 
 .card-listImage {
-  height: 20vh;
-  width: 20vh;
+  height: 250px;
+  width: 250px;
+  object-fit: cover;
 }
 
 .card-list {
