@@ -26,7 +26,7 @@
 - 料理前や料理中
 - 金欠で自炊したいとき
 
-## gem
+## Gem
 - devise
 - kaminari
 - rubocop-airbnb
